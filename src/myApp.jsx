@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import AgGrid from 'ag-grid';
+import './myApp.css';
 
 var firstNames = ["Sophie", "Isabelle", "Emily", "Olivia", "Lily", "Chloe", "Isabella",
     "Amelia", "Jessica", "Sophia", "Ava", "Charlotte", "Mia", "Lucy", "Grace", "Ruby",
@@ -136,7 +137,7 @@ export class MyApp extends React.Component {
                 </div>
                 <div style={{clear: 'both'}}/>
             </div>
-            <MyGrid mouse="white" style={{width: '100%', height: '400px'}}></MyGrid>
+            <MyGrid style={{width: '100%', height: '400px'}} className="ag-fresh"></MyGrid>
         </div>;
     }
 }
@@ -169,7 +170,7 @@ class MyGrid extends React.Component {
     }
 
     render() {
-        return <div style={this.props.style} />;
+        return <div style={this.props.style} className={this.props.className} />;
     }
 
     createRowData() {
@@ -237,8 +238,7 @@ class MyGrid extends React.Component {
 
 MyGrid.propTypes = {
     'style': React.PropTypes.object,
-    'class': React.PropTypes.string,
-    mouse: React.PropTypes.string
+    'className': React.PropTypes.string
 };
 
     var btBringGridBack;
@@ -337,12 +337,12 @@ MyGrid.propTypes = {
     }
 
     var SKILL_TEMPLATE =
-        '<label style="border: 1px solid lightgrey; margin: 4px; padding: 4px;">' +
+        '<label style="border: 1px solid lightgrey; margin: 4px; padding: 4px; display: inline-block;">' +
         '  <span>' +
         '    <div style="text-align: center;">SKILL_NAME</div>' +
         '    <div>' +
         '      <input type="checkbox"/>' +
-        '      <img src="/images/skills/SKILL.png" width="30px"/>' +
+        '      <img src="images/skills/SKILL.png" width="30px"/>' +
         '    </div>' +
         '  </span>' +
         '</label>';
@@ -368,6 +368,7 @@ MyGrid.propTypes = {
 
     SkillFilter.prototype.getGui = function () {
         var eGui = document.createElement('div');
+        eGui.style.width = '380px';
         var eInstructions = document.createElement('div');
         eInstructions.innerHTML = FILTER_TITLE.replace('TITLE_NAME', 'Custom Skills Filter');
         eGui.appendChild(eInstructions);

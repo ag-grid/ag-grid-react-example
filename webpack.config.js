@@ -20,6 +20,9 @@ module.exports = {
         ]
     },
     resolve: {
-        alias: {"ag-grid" : __dirname + "/node_modules/ag-grid/dist/ag-grid.js"}
+        alias: {
+            "ag-grid" : __dirname + "/node_modules/ag-grid/dist/ag-grid.js",
+            "ag-grid-root" : __dirname + "/node_modules/ag-grid/dist"
+        }
     }
 };
