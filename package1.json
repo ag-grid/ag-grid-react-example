@@ -1,0 +1,33 @@
+{
+  "name": "ag-grid-react-example",
+  "version": "0.0.1",
+  "description": "Example Reach applicaiton using ag-Grid.",
+  "main": "dist/ag-grid-react-example.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ceolter/ag-grid-react-example.git"
+  },
+  "keywords": [
+    "react",
+    "grid",
+    "data",
+    "table"
+  ],
+  "author": "Niall Crosby <niall.crosby@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ceolter/ag-grid/issues"
+  },
+  "homepage": "http://www.ag-grid.com/",
+  "devDependencies": {
+    "webpack": "1.12.11",
+    "react": "0.14.6",
+    "react-dom": "0.14.6",
+    "babel-loader": "6.2.1",
+    "babel-preset-react": "6.3.13",
+    "babel-preset-es2015": "6.3.13"
+  }
+}
