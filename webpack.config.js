@@ -18,5 +18,8 @@ module.exports = {
                 }
             }
         ]
+    },
+    resolve: {
+        alias: {"ag-grid" : __dirname + "/node_modules/ag-grid/dist/ag-grid.js"}
     }
 };
