@@ -1,4 +1,4 @@
-export class RefData {}
+export default class RefData {}
 
 RefData.FIRST_NAMES = [
         "Sophie", "Isabelle", "Emily", "Olivia", "Lily", "Chloe", "Isabella",
