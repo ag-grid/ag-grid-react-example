@@ -5,8 +5,9 @@ export default class SkillsCellRenderer extends React.Component {
 
     render() {
         var skills = [];
+        var rowData = this.props.params.data;
         RefData.IT_SKILLS.forEach( (skill) => {
-            if (this.props.skills[skill]) {
+            if (rowData.skills[skill]) {
                 skills.push(<img key={skill} src={'images/skills/' + skill + '.png'} width={16} title={skill} />);
             }
         });
@@ -16,6 +17,10 @@ export default class SkillsCellRenderer extends React.Component {
 
 }
 
+// the grid will always pass in one props called 'params',
+// which is the grid passing you the params for the cellRenderer.
+// this piece is optional. the grid will always pass the 'params'
+// props, so little need for adding this validation meta-data.
 SkillsCellRenderer.propTypes = {
-    skills: React.PropTypes.object
+    params: React.PropTypes.object
 };

@@ -21,6 +21,7 @@ module.exports = {
     },
     resolve: {
         alias: {
+            "ag-grid-react-component" : __dirname + "/node_modules/ag-grid-react-component/dist/ag-grid-react-component.js",
             "ag-grid" : __dirname + "/node_modules/ag-grid/dist/ag-grid.js",
             "ag-grid-root" : __dirname + "/node_modules/ag-grid/dist"
         }

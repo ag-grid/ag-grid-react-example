@@ -24,8 +24,6 @@
   "homepage": "http://www.ag-grid.com/",
   "devDependencies": {
     "webpack": "1.12.11",
-    "react": "0.14.6",
-    "react-dom": "0.14.6",
     "css-loader": "0.23.1",
     "style-loader": "0.13.0",
     "babel-loader": "6.2.1",
@@ -33,6 +31,9 @@
     "babel-preset-es2015": "6.3.13"
   },
   "dependencies": {
-    "ag-grid": "latest"
+    "react": "0.14.6",
+    "react-dom": "0.14.6",
+    "ag-grid": "latest",
+    "ag-grid-react-component": "latest"
   }
 }
