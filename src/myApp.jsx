@@ -92,6 +92,34 @@ export default class MyApp extends React.Component {
     }
 
     render() {
+        return (
+            // ag-Grid comes with a React Component waiting to be used
+            <AgGridReact
+
+                // listen for events with React callbacks
+                onRowSelected={this.onRowSelected.bind(this)}
+                onCellClicked={this.onCellClicked.bind(this)}
+
+                // binding to properties within React State or Props
+                showToolPanel={this.state.showToolPanel}
+                quickFilterText={this.state.quickFilterText}
+                icons={this.state.icons}
+
+                // column definitions and row data are immutable, the grid
+                // will update when these lists change
+                columnDefs={this.state.columnDefs}
+                rowData={this.state.rowData}
+
+                // or provide props the old way with no binding
+                rowSelection="multiple"
+                enableSorting="true"
+                enableFilter="true"
+                rowHeight="22"
+            />
+        );
+    }
+
+    render() {
         var gridTemplate;
         var bottomHeaderTemplate;
         var topHeaderTemplate;
@@ -139,7 +167,8 @@ export default class MyApp extends React.Component {
             gridTemplate = (
                 <div style={{height: 400}} className="ag-fresh">
                     <AgGridReact
-                        // gridOptions is optional - it's possible to provide all values as React props
+                        // gridOptions is optional - it's possible to provide
+                        // all values as React props
                         gridOptions={this.gridOptions}
 
                         // listening for events

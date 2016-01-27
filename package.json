@@ -33,7 +33,7 @@
   "dependencies": {
     "react": "0.14.6",
     "react-dom": "0.14.6",
-    "ag-grid": "latest",
-    "ag-grid-react-component": "latest"
+    "ag-grid": "3.2.2",
+    "ag-grid-react-component": "3.2.2"
   }
 }
