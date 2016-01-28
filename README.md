@@ -13,5 +13,6 @@ Building
 To build:
 - `npm install`
 - `npm install webpack -g`
-- `webpack`
+- `npm start`
+- navigate to localhost:8080
 
