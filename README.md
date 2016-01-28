@@ -15,8 +15,3 @@ To build:
 - `npm install webpack -g`
 - `webpack`
 
-Contributing
-==============
-
-If you notice anything wrong with this example or have ideas on how it can be improved,
-please raise a Github task.
