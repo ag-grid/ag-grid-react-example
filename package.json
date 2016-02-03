@@ -19,7 +19,7 @@
   "author": "Niall Crosby <niall.crosby@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ceolter/ag-grid/issues"
+    "url": "https://github.com/ceolter/ag-grid-react-example/issues"
   },
   "homepage": "http://www.ag-grid.com/",
   "devDependencies": {
@@ -34,7 +34,7 @@
   "dependencies": {
     "react": "0.14.6",
     "react-dom": "0.14.6",
-    "ag-grid": "3.2.2",
-    "ag-grid-react-component": "3.2.2"
+    "ag-grid": "~3.3.0-alpha.1",
+    "ag-grid-react": "3.3.0-alpha.1"
   }
 }

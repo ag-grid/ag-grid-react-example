@@ -1,11 +1,8 @@
 import SkillsCellRenderer from './SkillsCellRenderer.jsx';
 import ProficiencyCellRenderer from './ProficiencyCellRenderer.jsx';
 import RefData from './RefData';
-import ReactDOM from 'react-dom';
-import React from 'react';
-import AgGrid from 'ag-grid-react-component';
-import {reactCellRendererFactory} from 'ag-grid-react-component';
-import {reactFilterFactory} from 'ag-grid-react-component';
+import {reactCellRendererFactory} from 'ag-grid-react';
+import {reactFilterFactory} from 'ag-grid-react';
 import SkillsFilter from './SkillsFilter.jsx';
 import ProficiencyFilter from './ProficiencyFilter.jsx';
 

@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import {AgGridReact} from 'ag-grid-react-component';
+import {AgGridReact} from 'ag-grid-react';
 import RefData from './RefData';
 import RowDataFactory from './RowDataFactory';
 import ColDefFactory from './ColDefFactory.jsx';
