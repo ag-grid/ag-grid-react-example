@@ -11,7 +11,7 @@ export default class ColDefFactory {
     createColDefs() {
 
         var columnDefs = [
-            {headerName: '', width: 30, checkboxSelection: true, suppressSorting: true,
+            {headerName: '#', width: 30, checkboxSelection: true, suppressSorting: true,
                 suppressMenu: true, pinned: true},
             {
                 headerName: 'Employee',
