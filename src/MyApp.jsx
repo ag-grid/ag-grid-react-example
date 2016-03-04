@@ -91,7 +91,7 @@ export default class MyApp extends React.Component {
         });
     }
 
-    render() {
+    /*render() {
         return (
             // ag-Grid comes with a React Component waiting to be used
             <AgGridReact
@@ -117,7 +117,7 @@ export default class MyApp extends React.Component {
                 rowHeight="22"
             />
         );
-    }
+    }*/
 
     render() {
         var gridTemplate;
