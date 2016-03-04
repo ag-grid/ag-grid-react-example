@@ -55,7 +55,7 @@ export default class MyApp extends React.Component {
         this.setState({showToolPanel: event.target.checked});
     }
 
-    onReady(params) {
+    onGridReady(params) {
         this.api = params.api;
         this.columnApi = params.columnApi;
     }
@@ -172,7 +172,7 @@ export default class MyApp extends React.Component {
                         gridOptions={this.gridOptions}
 
                         // listening for events
-                        onReady={this.onReady.bind(this)}
+                        onGridReady={this.onGridReady.bind(this)}
                         onRowSelected={this.onRowSelected.bind(this)}
                         onCellClicked={this.onCellClicked.bind(this)}
 
