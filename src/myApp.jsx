@@ -6,6 +6,9 @@ import RowDataFactory from './RowDataFactory';
 import ColDefFactory from './ColDefFactory.jsx';
 import './MyApp.css';
 
+// take this line out if you do not want to use ag-Grid-Enterprise
+import 'ag-grid-enterprise';
+
 export default class MyApp extends React.Component {
 
     constructor() {
@@ -55,7 +58,7 @@ export default class MyApp extends React.Component {
         this.setState({showToolPanel: event.target.checked});
     }
 
-    onReady(params) {
+    onGridReady(params) {
         this.api = params.api;
         this.columnApi = params.columnApi;
     }
@@ -89,34 +92,6 @@ export default class MyApp extends React.Component {
         this.setState({
             rowData: newRowData
         });
-    }
-
-    render() {
-        return (
-            // ag-Grid comes with a React Component waiting to be used
-            <AgGridReact
-
-                // listen for events with React callbacks
-                onRowSelected={this.onRowSelected.bind(this)}
-                onCellClicked={this.onCellClicked.bind(this)}
-
-                // binding to properties within React State or Props
-                showToolPanel={this.state.showToolPanel}
-                quickFilterText={this.state.quickFilterText}
-                icons={this.state.icons}
-
-                // column definitions and row data are immutable, the grid
-                // will update when these lists change
-                columnDefs={this.state.columnDefs}
-                rowData={this.state.rowData}
-
-                // or provide props the old way with no binding
-                rowSelection="multiple"
-                enableSorting="true"
-                enableFilter="true"
-                rowHeight="22"
-            />
-        );
     }
 
     render() {
@@ -172,7 +147,7 @@ export default class MyApp extends React.Component {
                         gridOptions={this.gridOptions}
 
                         // listening for events
-                        onReady={this.onReady.bind(this)}
+                        onGridReady={this.onGridReady.bind(this)}
                         onRowSelected={this.onRowSelected.bind(this)}
                         onCellClicked={this.onCellClicked.bind(this)}
 
