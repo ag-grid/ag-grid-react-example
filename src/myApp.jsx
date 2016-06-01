@@ -4,7 +4,7 @@ import {AgGridReact} from 'ag-grid-react';
 import RefData from './RefData';
 import RowDataFactory from './RowDataFactory';
 import ColDefFactory from './ColDefFactory.jsx';
-import './MyApp.css';
+import './myApp.css';
 
 // take this line out if you do not want to use ag-Grid-Enterprise
 import 'ag-grid-enterprise';
