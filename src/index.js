@@ -2,7 +2,7 @@
 
 import ReactDOM from 'react-dom';
 import React from 'react';
-import MyApp from './MyApp.jsx';
+import MyApp from './myApp.jsx';
 // is there a better way of doing this?
 import 'ag-grid-root/dist/styles/ag-grid.css';
 import 'ag-grid-root/dist/styles/theme-fresh.css';
