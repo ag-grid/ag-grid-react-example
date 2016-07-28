@@ -16,9 +16,9 @@ export default class ColDefFactory {
             {
                 headerName: 'Employee',
                 children: [
-                    {headerName: "Name", field: "name",
+                    {headerName: "Name", field: "name", enableRowGroup: true, enablePivot: true,
                         width: 150, pinned: true},
-                    {headerName: "Country", field: "country", width: 150,
+                    {headerName: "Country", field: "country", width: 150, enableRowGroup: true, enablePivot: true,
                         // not bothering with React for country, as it's a simple HTML string
                         cellRenderer: countryCellRenderer, pinned: true,
                         filterParams: {cellRenderer: countryCellRenderer, cellHeight: 20}},
@@ -27,13 +27,13 @@ export default class ColDefFactory {
             {
                 headerName: 'IT Skills',
                 children: [
-                    {headerName: "Skills", width: 125, suppressSorting: true, field: 'skills',
+                    {headerName: "Skills", width: 125, suppressSorting: true, field: 'skills', enableRowGroup: true, enablePivot: true,
                         // using ag-Grid's React cellRenderer factory
                         cellRenderer: reactCellRendererFactory(SkillsCellRenderer),
                         // using ag-Grid's React filter factory
                         filter: reactFilterFactory(SkillsFilter)
                     },
-                    {headerName: "Proficiency", field: "proficiency", filter: 'number', width: 120,
+                    {headerName: "Proficiency", field: "proficiency", filter: 'number', width: 120, enableValue: true,
                         // using ag-Grid's React cellRenderer factory
                         cellRenderer: reactCellRendererFactory(ProficiencyCellRenderer),
                         // using ag-Grid's React filter factory
@@ -56,8 +56,12 @@ export default class ColDefFactory {
 // this is a simple cell renderer, putting together static html, no
 // need to use React for it.
 function countryCellRenderer(params) {
-    var flag = "<img border='0' width='15' height='10' " +
-        "style='margin-bottom: 2px' src='http://flags.fmcdn.net/data/flags/mini/"
-        + RefData.COUNTRY_CODES[params.value] + ".png'>";
-    return flag + " " + params.value;
+    if (params.value) {
+        var flag = "<img border='0' width='15' height='10' " +
+            "style='margin-bottom: 2px' src='http://flags.fmcdn.net/data/flags/mini/"
+            + RefData.COUNTRY_CODES[params.value] + ".png'>";
+        return flag + " " + params.value;
+    } else {
+        return null;
+    }
 }
