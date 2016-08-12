@@ -1,6 +1,6 @@
 {
   "name": "ag-grid-react-example",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "Example Reach applicaiton using ag-Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
@@ -34,8 +34,8 @@
   "dependencies": {
     "react": "0.14.6",
     "react-dom": "0.14.6",
-    "ag-grid": "~5.0.0",
-    "ag-grid-enterprise": "~5.0.0",
-    "ag-grid-react": "~5.0.0"
+    "ag-grid": "~5.1.0",
+    "ag-grid-enterprise": "~5.1.0",
+    "ag-grid-react": "~5.1.0"
   }
 }
