@@ -8,7 +8,7 @@ import ProficiencyFilter from './ProficiencyFilter.jsx';
 
 export default class ColDefFactory {
 
-    createColDefs() {
+    createColDefs(parentReactComponent) {
 
         var columnDefs = [
             {headerName: '#', width: 30, checkboxSelection: true, suppressSorting: true,
@@ -29,15 +29,15 @@ export default class ColDefFactory {
                 children: [
                     {headerName: "Skills", width: 125, suppressSorting: true, field: 'skills', enableRowGroup: true, enablePivot: true,
                         // using ag-Grid's React cellRenderer factory
-                        cellRenderer: reactCellRendererFactory(SkillsCellRenderer),
+                        cellRenderer: reactCellRendererFactory(SkillsCellRenderer, parentReactComponent),
                         // using ag-Grid's React filter factory
-                        filter: reactFilterFactory(SkillsFilter)
+                        filter: reactFilterFactory(SkillsFilter, parentReactComponent)
                     },
                     {headerName: "Proficiency", field: "proficiency", filter: 'number', width: 120, enableValue: true,
                         // using ag-Grid's React cellRenderer factory
-                        cellRenderer: reactCellRendererFactory(ProficiencyCellRenderer),
+                        cellRenderer: reactCellRendererFactory(ProficiencyCellRenderer, parentReactComponent),
                         // using ag-Grid's React filter factory
-                        filter: reactFilterFactory(ProficiencyFilter)}
+                        filter: reactFilterFactory(ProficiencyFilter, parentReactComponent)}
                 ]
             },
             {

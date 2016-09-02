@@ -1,10 +1,11 @@
 {
   "name": "ag-grid-react-example",
-  "version": "5.3.0",
+  "version": "5.3.2",
   "description": "Example Reach applicaiton using ag-Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --hot --inline"
+    "standard": "webpack-dev-server --config webpack.config.standard.js --progress --colors --hot --inline",
+    "large": "webpack-dev-server --config webpack.config.large.js --progress --colors --hot --inline"
   },
   "repository": {
     "type": "git",

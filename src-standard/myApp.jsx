@@ -18,8 +18,8 @@ export default class MyApp extends React.Component {
             quickFilterText: null,
             showGrid: true,
             showToolPanel: false,
-            columnDefs: new ColDefFactory().createColDefs(),
-            rowData: new RowDataFactory().createRowData(),
+            columnDefs: new ColDefFactory().createColDefs(this),
+            rowData: new RowDataFactory().createRowData(this),
             icons: {
                 columnRemoveFromGroup: '<i class="fa fa-remove"/>',
                 filter: '<i class="fa fa-filter"/>',
