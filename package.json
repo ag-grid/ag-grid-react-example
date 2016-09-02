@@ -37,6 +37,6 @@
     "react-dom": "0.14.6",
     "ag-grid": "~5.3.0",
     "ag-grid-enterprise": "~5.3.0",
-    "ag-grid-react": "~5.3.0"
+    "ag-grid-react": "~5.3.2"
   }
 }
