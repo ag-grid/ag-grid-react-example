@@ -1,4 +1,5 @@
 import SkillsCellRenderer from './SkillsCellRenderer.jsx';
+import NameCellEditor from './NameCellEditor.jsx';
 import ProficiencyCellRenderer from './ProficiencyCellRenderer.jsx';
 import RefData from './RefData';
 import {reactCellRendererFactory} from 'ag-grid-react';
@@ -17,9 +18,12 @@ export default class ColDefFactory {
                 headerName: 'Employee',
                 children: [
                     {headerName: "Name", field: "name", enableRowGroup: true, enablePivot: true,
-                        width: 150, pinned: true},
+                        width: 150, pinned: true, editable: true,
+                        // use a React cellEditor
+                        cellEditorFmk: NameCellEditor
+                    },
                     {headerName: "Country", field: "country", width: 150, enableRowGroup: true, enablePivot: true,
-                        // not bothering with React for country, as it's a simple HTML string
+                        // an example of using a non-React cell renderer
                         cellRenderer: countryCellRenderer, pinned: true,
                         filterParams: {cellRenderer: countryCellRenderer, cellHeight: 20}},
                 ]
@@ -29,13 +33,13 @@ export default class ColDefFactory {
                 children: [
                     {headerName: "Skills", width: 125, suppressSorting: true, field: 'skills', enableRowGroup: true, enablePivot: true,
                         // using ag-Grid's React cellRenderer factory
-                        cellRenderer: reactCellRendererFactory(SkillsCellRenderer, parentReactComponent),
+                        cellRendererFmk: SkillsCellRenderer,
                         // using ag-Grid's React filter factory
                         filter: reactFilterFactory(SkillsFilter, parentReactComponent)
                     },
                     {headerName: "Proficiency", field: "proficiency", filter: 'number', width: 120, enableValue: true,
                         // using ag-Grid's React cellRenderer factory
-                        cellRenderer: reactCellRendererFactory(ProficiencyCellRenderer, parentReactComponent),
+                        cellRendererFmk: ProficiencyCellRenderer,
                         // using ag-Grid's React filter factory
                         filter: reactFilterFactory(ProficiencyFilter, parentReactComponent)}
                 ]
