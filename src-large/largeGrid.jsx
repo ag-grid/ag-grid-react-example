@@ -48,15 +48,11 @@ export default class MyApp extends React.Component {
     createColumnDefs() {
         var columnDefs = [];
 
-        // pass in the parent component to use for React component to the cellRenderer.
-        // this is optional. if missing, then react router will not work.
-        var cellRenderer = reactCellRendererFactory(SimpleCellRenderer, this);
-
         this.columnNames.forEach( colName => {
             columnDefs.push({
                 headerName: colName.toUpperCase(),
                 field: colName,
-                cellRenderer: cellRenderer,
+                cellRendererFramework: SimpleCellRenderer,
                 width: 100
             });
         });
