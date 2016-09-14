@@ -11,29 +11,28 @@ export default class NameCellEditor extends React.Component {
     constructor(props) {
         super(props);
         // the entire ag-Grid properties are passed as one single object inside the params
-        var params = props.params;
-        this.state = this.createInitialState(params);
+        this.state = this.createInitialState(props);
     }
 
     // work out how to present the data based on what the user hit. you don't need to do any of
     // this for your ag-Grid cellEditor to work, however it makes sense to do this so the user
     // experience is similar to Excel
-    createInitialState(params) {
+    createInitialState(props) {
 
         var startValue;
         var putCursorAtEndOnFocus = false;
         var highlightAllOnFocus = false;
 
-        if (params.keyPress === KEY_BACKSPACE || params.keyPress === KEY_DELETE) {
+        if (props.keyPress === KEY_BACKSPACE || props.keyPress === KEY_DELETE) {
             // if backspace or delete pressed, we clear the cell
             startValue = '';
-        } else if (params.charPress) {
+        } else if (props.charPress) {
             // if a letter was pressed, we start with the letter
-            startValue = params.charPress;
+            startValue = props.charPress;
         } else {
             // otherwise we start with the current value
-            startValue = params.value;
-            if (params.keyPress === KEY_F2) {
+            startValue = props.value;
+            if (props.keyPress === KEY_F2) {
                 this.putCursorAtEndOnFocus = true;
             } else {
                 this.highlightAllOnFocus = true;

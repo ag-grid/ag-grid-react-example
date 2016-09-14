@@ -7,28 +7,19 @@ import RefData from './RefData';
 export default class ProficiencyCellRenderer extends React.Component {
 
     render() {
-        var params = this.props.params;
         var backgroundColor;
-        if (params.value < 20) {
+        if (this.props.value < 20) {
             backgroundColor = 'red';
-        } else if (params.value < 60) {
+        } else if (this.props.value < 60) {
             backgroundColor = '#ff9900';
         } else {
             backgroundColor = '#00A000';
         }
 
         return (
-            <div className="div-percent-bar" style={{ width: params.value + '%', backgroundColor: backgroundColor }}>
-                <div className="div-percent-value">{params.value}%</div>
+            <div className="div-percent-bar" style={{ width: this.props.value + '%', backgroundColor: backgroundColor }}>
+                <div className="div-percent-value">{this.props.value}%</div>
             </div>
         );
     }
 }
-
-// the grid will always pass in one props called 'params',
-// which is the grid passing you the params for the cellRenderer.
-// this piece is optional. the grid will always pass the 'params'
-// props, so little need for adding this validation meta-data.
-ProficiencyCellRenderer.propTypes = {
-    params: React.PropTypes.object
-};

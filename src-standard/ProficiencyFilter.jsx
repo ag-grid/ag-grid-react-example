@@ -1,5 +1,4 @@
 import React from 'react';
-import RefData from './RefData';
 
 var PROFICIENCY_NAMES = ['No Filter', 'Above 40%', 'Above 60%', 'Above 80%'];
 
@@ -7,7 +6,7 @@ var PROFICIENCY_NAMES = ['No Filter', 'Above 40%', 'Above 60%', 'Above 80%'];
 // a React filter component with ag-Grid.
 export default class ProficiencyFilter extends React.Component {
 
-    constructor() {
+    constructor(props) {
         super();
         this.state = {
             selected: PROFICIENCY_NAMES[0]
@@ -15,14 +14,8 @@ export default class ProficiencyFilter extends React.Component {
     }
 
     // called by agGrid
-    init(params) {
-        this.filterChangedCallback = params.filterChangedCallback;
-        this.valueGetter = params.valueGetter;
-    }
-
-    // called by agGrid
     doesFilterPass(params) {
-        var value = this.valueGetter(params);
+        var value = this.props.valueGetter(params);
         var valueAsNumber = parseFloat(value);
 
         switch (this.state.selected) {
@@ -40,11 +33,9 @@ export default class ProficiencyFilter extends React.Component {
 
     onButtonPressed(name) {
         console.log(name);
-        this.setState({
-            selected: name
-        }, ()=> {
-            this.filterChangedCallback();
-        });
+        var newState = {selected: name};
+        // set the state, and once it is done, then call filterChangedCallback
+        this.setState(newState, this.props.filterChangedCallback);
         console.log(name);
     }
 

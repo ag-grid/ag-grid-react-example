@@ -2,14 +2,12 @@ import SkillsCellRenderer from './SkillsCellRenderer.jsx';
 import NameCellEditor from './NameCellEditor.jsx';
 import ProficiencyCellRenderer from './ProficiencyCellRenderer.jsx';
 import RefData from './RefData';
-import {reactCellRendererFactory} from 'ag-grid-react';
-import {reactFilterFactory} from 'ag-grid-react';
 import SkillsFilter from './SkillsFilter.jsx';
 import ProficiencyFilter from './ProficiencyFilter.jsx';
 
 export default class ColDefFactory {
 
-    createColDefs(parentReactComponent) {
+    createColDefs() {
 
         var columnDefs = [
             {headerName: '#', width: 30, checkboxSelection: true, suppressSorting: true,
@@ -32,16 +30,17 @@ export default class ColDefFactory {
                 headerName: 'IT Skills',
                 children: [
                     {headerName: "Skills", width: 125, suppressSorting: true, field: 'skills', enableRowGroup: true, enablePivot: true,
-                        // using ag-Grid's React cellRenderer factory
-                        cellRendererFmk: SkillsCellRenderer,
-                        // using ag-Grid's React filter factory
-                        filter: reactFilterFactory(SkillsFilter, parentReactComponent)
+                        // supply a React component
+                        cellRendererFramework: SkillsCellRenderer,
+                        // supply a React component
+                        filterFramework: SkillsFilter
                     },
-                    {headerName: "Proficiency", field: "proficiency", filter: 'number', width: 120, enableValue: true,
-                        // using ag-Grid's React cellRenderer factory
-                        cellRendererFmk: ProficiencyCellRenderer,
-                        // using ag-Grid's React filter factory
-                        filter: reactFilterFactory(ProficiencyFilter, parentReactComponent)}
+                    {headerName: "Proficiency", field: "proficiency", width: 120, enableValue: true,
+                        // supply a React component
+                        cellRendererFramework: ProficiencyCellRenderer,
+                        // supply a React component
+                        filterFramework: ProficiencyFilter
+                    }
                 ]
             },
             {

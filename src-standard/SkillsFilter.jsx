@@ -8,11 +8,9 @@ import RefData from './RefData';
 // React design skills.
 export default class SkillsFilter extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            skills: RefData.IT_SKILLS,
-            skillNames: RefData.IT_SKILLS_NAMES,
             android: false,
             css: false,
             html5: false,
@@ -21,9 +19,24 @@ export default class SkillsFilter extends React.Component {
         };
     }
 
-    // called by agGrid
-    init(params) {
-        this.filterChangedCallback = params.filterChangedCallback;
+    getModel() {
+        return {
+            android: this.state.android,
+            css: this.state.css,
+            html5: this.state.html5,
+            mac: this.state.mac,
+            windows: this.state.windows
+        }
+    }
+
+    setModel(model) {
+        this.setState({
+            android: model.android,
+            css: model.css,
+            html5: model.html5,
+            mac: model.mac,
+            windows: model.windows
+        });
     }
 
     // called by agGrid
@@ -32,7 +45,7 @@ export default class SkillsFilter extends React.Component {
         var rowSkills = params.data.skills;
         var passed = true;
 
-        this.state.skills.forEach( (skill) => {
+        RefData.IT_SKILLS.forEach( (skill) => {
             if (this.state[skill]) {
                 if (!rowSkills[skill]) {
                     passed = false;
@@ -54,15 +67,16 @@ export default class SkillsFilter extends React.Component {
         var newValue = event.target.checked;
         var newModel = {};
         newModel[skill] = newValue;
-        this.setState(newModel, ()=> {this.filterChangedCallback();} );
+        // set the state, and once it is done, then call filterChangedCallback
+        this.setState(newModel, this.props.filterChangedCallback );
     }
 
     render() {
 
         var skillsTemplates = [];
-        this.state.skills.forEach( (skill, index) => {
+        RefData.IT_SKILLS.forEach( (skill, index) => {
 
-            var skillName = this.state.skillNames[index];
+            var skillName = RefData.IT_SKILLS_NAMES[index];
             var template = (
                 <label key={skill} style={{border: '1px solid lightgrey', margin: 4, padding: 4, display: 'inline-block'}}>
                     <span>
@@ -91,7 +105,6 @@ export default class SkillsFilter extends React.Component {
     // these are other method that agGrid calls that we
     // could of implemented, but they are optional and
     // we have no use for them in this particular filter.
-    //getApi() {}
     //afterGuiAttached(params) {}
     //onNewRowsLoaded() {}
     //onAnyFilterChanged() {}
