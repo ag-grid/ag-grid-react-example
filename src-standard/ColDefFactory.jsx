@@ -18,7 +18,7 @@ export default class ColDefFactory {
                     {headerName: "Name", field: "name", enableRowGroup: true, enablePivot: true,
                         width: 150, pinned: true, editable: true,
                         // use a React cellEditor
-                        cellEditorFmk: NameCellEditor
+                        cellEditorFramework: NameCellEditor
                     },
                     {headerName: "Country", field: "country", width: 150, enableRowGroup: true, enablePivot: true,
                         // an example of using a non-React cell renderer
