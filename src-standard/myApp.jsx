@@ -162,7 +162,8 @@ export default class MyApp extends React.Component {
                         columnDefs={this.state.columnDefs}
                         rowData={this.state.rowData}
 
-                        // no binding, just providing harde coded strings for the properties
+                        // no binding, just providing hard coded strings for the properties
+                        suppressRowClickSelection="true"
                         rowSelection="multiple"
                         enableColResize="true"
                         enableSorting="true"
