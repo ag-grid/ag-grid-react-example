@@ -71,6 +71,10 @@ export default class SkillsFilter extends React.Component {
         this.setState(newModel, this.props.filterChangedCallback );
     }
 
+    helloFromSkillsFilter() {
+        alert("Hello From The Skills Filter!");
+    }
+
     render() {
 
         var skillsTemplates = [];

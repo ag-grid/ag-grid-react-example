@@ -1,13 +1,11 @@
-import ReactDOM from 'react-dom';
-import React from 'react';
-import {AgGridReact} from 'ag-grid-react';
-import RefData from './RefData';
-import RowDataFactory from './RowDataFactory';
-import ColDefFactory from './ColDefFactory.jsx';
-import './myApp.css';
+import React from "react";
+import {AgGridReact} from "ag-grid-react";
+import RowDataFactory from "./RowDataFactory";
+import ColDefFactory from "./ColDefFactory.jsx";
+import "./myApp.css";
+import "ag-grid-enterprise";
 
 // take this line out if you do not want to use ag-Grid-Enterprise
-import 'ag-grid-enterprise';
 
 export default class MyApp extends React.Component {
 
@@ -40,7 +38,7 @@ export default class MyApp extends React.Component {
         // what you want!
         this.gridOptions = {
             // this is how you listen for events using gridOptions
-            onModelUpdated: function() {
+            onModelUpdated: function () {
                 console.log('event onModelUpdated received');
             },
             // this is a simple property
@@ -94,6 +92,12 @@ export default class MyApp extends React.Component {
         });
     }
 
+    invokeSkillsFilterMethod() {
+        var skillsFilter = this.api.getFilterInstance('skills');
+        var componentInstance = skillsFilter.getFrameworkComponentInstance();
+        componentInstance.helloFromSkillsFilter();
+    }
+
     render() {
         var gridTemplate;
         var bottomHeaderTemplate;
@@ -102,9 +106,14 @@ export default class MyApp extends React.Component {
         topHeaderTemplate = (
             <div>
                 <div style={{float: 'right'}}>
-                    <input type="text" onChange={this.onQuickFilterText.bind(this)} placeholder="Type text to filter..."/>
-                    <button id="btDestroyGrid" disabled={!this.state.showGrid} onClick={this.onShowGrid.bind(this, false)}>Destroy Grid</button>
-                    <button id="btCreateGrid" disabled={this.state.showGrid} onClick={this.onShowGrid.bind(this, true)}>Create Grid</button>
+                    <input type="text" onChange={this.onQuickFilterText.bind(this)}
+                           placeholder="Type text to filter..."/>
+                    <button id="btDestroyGrid" disabled={!this.state.showGrid}
+                            onClick={this.onShowGrid.bind(this, false)}>Destroy Grid
+                    </button>
+                    <button id="btCreateGrid" disabled={this.state.showGrid} onClick={this.onShowGrid.bind(this, true)}>
+                        Create Grid
+                    </button>
                 </div>
                 <div style={{padding: '4px'}}>
                     <b>Employees Skills and Contact Details</b> <span id="rowCount"/>
@@ -130,11 +139,17 @@ export default class MyApp extends React.Component {
                     </div>
                     <div style={{clear: 'both'}}></div>
                     <div style={{padding: 4}} className={'toolbar'}>
+                        <span>
                         <label>
                             <input type="checkbox" onChange={this.onToggleToolPanel.bind(this)}/>
                             Show Tool Panel
                         </label>
                         <button onClick={this.onRefreshData.bind(this)}>Refresh Data</button>
+                            </span>
+                        <span style={{marginLeft: 20}}>
+                            Filter API:
+                            <button onClick={this.invokeSkillsFilterMethod.bind(this, false)}>Invoke Skills Filter Method</button>
+                        </span>
                     </div>
                     <div style={{clear: 'both'}}></div>
                 </div>
