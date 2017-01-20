@@ -2,6 +2,7 @@ import React from "react";
 import {AgGridReact} from "ag-grid-react";
 import RowDataFactory from "./RowDataFactory";
 import ColDefFactory from "./ColDefFactory.jsx";
+import MyReactDateComponent from "./MyReactDateComponent.jsx";
 import "./myApp.css";
 import "ag-grid-enterprise";
 
@@ -37,6 +38,8 @@ export default class MyApp extends React.Component {
         // you do, the providing the gridOptions as a standalone object is just
         // what you want!
         this.gridOptions = {
+            //We register the react date component that ag-grid will use to render
+            dateComponentFramework:MyReactDateComponent,
             // this is how you listen for events using gridOptions
             onModelUpdated: function () {
                 console.log('event onModelUpdated received');
