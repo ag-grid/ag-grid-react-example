@@ -13,9 +13,48 @@ export default class MyReactDateComponent extends React.Component {
     }
 
 
+    onDateChanged () {
+        if (this.refs.dd.value === '' || this.refs.mm.value === '' || this.refs.yyyy.value === '') {
+            return;
+        }
+
+        try {
+            var day = Number(this.refs.dd.value);
+            var month = Number(this.refs.mm.value);
+            var year = Number(this.refs.yyyy.value);
+
+            var date = new Date(year, month - 1, day);
+            if (date){
+                this.setState({
+                    date:date
+                }, this.notifyAgGrid.bind(this))
+            }
+        } catch (e){
+            console.info("ignoring invalid date")
+        }
+    }
+
+    notifyAgGrid (){
+        this.props.onDateChanged();
+    }
+
+    getDate (){
+        return this.state.date;
+    }
+
+    setDate (date){
+        this.setState({
+            date:date
+        })
+    }
+
     render() {
         return (
-            <span>hello world!</span>
+            <div>
+                <input onInput = {this.onDateChanged.bind(this)} ref="dd" placeholder="dd"/>
+                <input onInput = {this.onDateChanged.bind(this)} ref="mm" placeholder="mm"/>
+                <input onInput = {this.onDateChanged.bind(this)} ref="yyyy" placeholder="yyyy"/>
+            </div>
         );
     }
 
