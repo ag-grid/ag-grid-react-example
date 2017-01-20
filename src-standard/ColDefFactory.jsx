@@ -23,7 +23,9 @@ export default class ColDefFactory {
                     {headerName: "Country", field: "country", width: 150, enableRowGroup: true, enablePivot: true,
                         // an example of using a non-React cell renderer
                         cellRenderer: countryCellRenderer, pinned: true,
-                        filterParams: {cellRenderer: countryCellRenderer, cellHeight: 20}},
+                        filterParams: {cellRenderer: countryCellRenderer, cellHeight: 20}}
+                    ,
+                    {headerName: "DOB", field: "dob", width: 150, enableRowGroup: true, enablePivot: true, filter:'date'}
                 ]
             },
             {

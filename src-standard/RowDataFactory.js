@@ -16,6 +16,7 @@ export default class RowDataFactory {
                     windows: Math.random() < 0.4,
                     css: Math.random() < 0.4
                 },
+                dob: RefData.DOB[i % RefData.DOB.length],
                 address: RefData.ADDRESSES[i % RefData.ADDRESSES.length],
                 years: Math.round(Math.random() * 100),
                 proficiency: Math.round(Math.random() * 100),

@@ -56,6 +56,21 @@ RefData.COUNTRIES = [
         {country: "Uruguay", continent: "South America", language: "Spanish"}
     ];
 
+RefData.DOB = [
+    new Date(2000, 0, 1 ),
+    new Date(2001, 1, 2 ),
+    new Date(2002, 2, 3 ),
+    new Date(2003, 3, 4 ),
+    new Date(2004, 4, 5 ),
+    new Date(2005, 5, 6 ),
+    new Date(2006, 6, 7 ),
+    new Date(2007, 7, 8 ),
+    new Date(2008, 8, 9 ),
+    new Date(2009, 9, 10 ),
+    new Date(2010, 10, 11 ),
+    new Date(2011, 11, 12 )
+];
+
 RefData.ADDRESSES = [
         '1197 Thunder Wagon Common, Cataract, RI, 02987-1016, US, (401) 747-0763',
         '3685 Rocky Glade, Showtucket, NU, X1E-9I0, CA, (867) 371-4215',
