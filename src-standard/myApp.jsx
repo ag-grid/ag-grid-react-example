@@ -101,6 +101,14 @@ export default class MyApp extends React.Component {
         componentInstance.helloFromSkillsFilter();
     }
 
+    dobFilter () {
+        let dateFilterComponent = this.gridOptions.api.getFilterInstance('dob');
+        dateFilterComponent.setFilterType('equals');
+        dateFilterComponent.setDateFrom('2000-01-01');
+        this.gridOptions.api.onFilterChanged();
+
+    }
+
     render() {
         var gridTemplate;
         var bottomHeaderTemplate;
@@ -152,6 +160,7 @@ export default class MyApp extends React.Component {
                         <span style={{marginLeft: 20}}>
                             Filter API:
                             <button onClick={this.invokeSkillsFilterMethod.bind(this, false)}>Invoke Skills Filter Method</button>
+                            <button onClick={this.dobFilter.bind(this)}>DOB equals to 01/01/2000</button>
                         </span>
                     </div>
                     <div style={{clear: 'both'}}></div>
