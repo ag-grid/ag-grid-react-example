@@ -25,7 +25,11 @@ export default class ColDefFactory {
                         cellRenderer: countryCellRenderer, pinned: true,
                         filterParams: {cellRenderer: countryCellRenderer, cellHeight: 20}}
                     ,
-                    {headerName: "DOB", field: "dob", width: 150, enableRowGroup: true, enablePivot: true, filter:'date'}
+                    {headerName: "DOB", field: "dob", width: 90, enableRowGroup: true, enablePivot: true, filter:'date', cellRenderer: function(params) {
+                        return  pad(params.value.getDate(), 2) + '/' +
+                                pad(params.value.getMonth() + 1, 2)+ '/' +
+                                params.value.getFullYear();
+                    }}
                 ]
             },
             {
@@ -69,4 +73,11 @@ function countryCellRenderer(params) {
     } else {
         return null;
     }
+}
+
+//Utility function used to pad the date formatting.
+function pad(num, totalStringSize) {
+    let asString = num + "";
+    while (asString.length < totalStringSize) asString = "0" + asString;
+    return asString;
 }
