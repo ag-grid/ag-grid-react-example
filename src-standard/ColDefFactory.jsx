@@ -4,6 +4,7 @@ import ProficiencyCellRenderer from './ProficiencyCellRenderer.jsx';
 import RefData from './RefData';
 import SkillsFilter from './SkillsFilter.jsx';
 import ProficiencyFilter from './ProficiencyFilter.jsx';
+import MyReactHeaderGroupComponent from './MyReactHeaderGroupComponent.jsx';
 
 export default class ColDefFactory {
 
@@ -14,22 +15,28 @@ export default class ColDefFactory {
                 suppressMenu: true, pinned: true},
             {
                 headerName: 'Employee',
+                headerGroupComponentFramework: MyReactHeaderGroupComponent,
                 children: [
-                    {headerName: "Name", field: "name", enableRowGroup: true, enablePivot: true,
+                    {
+                        headerName: "Name", field: "name", enableRowGroup: true, enablePivot: true,
                         width: 150, pinned: true, editable: true,
                         // use a React cellEditor
                         cellEditorFramework: NameCellEditor
-                    },
-                    {headerName: "Country", field: "country", width: 150, enableRowGroup: true, enablePivot: true,
+                    }, {
+                        headerName: "Country", field: "country", width: 150, enableRowGroup: true, enablePivot: true,
                         // an example of using a non-React cell renderer
                         cellRenderer: countryCellRenderer, pinned: true,
-                        filterParams: {cellRenderer: countryCellRenderer, cellHeight: 20}}
-                    ,
-                    {headerName: "DOB", field: "dob", width: 110, enableRowGroup: true, enablePivot: true, filter:'date', cellRenderer: function(params) {
-                        return  pad(params.value.getDate(), 2) + '/' +
-                                pad(params.value.getMonth() + 1, 2)+ '/' +
-                                params.value.getFullYear();
-                    }}
+                        filterParams: {
+                            cellRenderer: countryCellRenderer, cellHeight: 20
+                        }, columnGroupShow: 'open'
+                    }, {
+                        headerName: "DOB", field: "dob", width: 110, enableRowGroup: true, enablePivot: true, filter:'date',
+                        pinned: true, cellRenderer: function(params) {
+                            return  pad(params.value.getDate(), 2) + '/' +
+                                    pad(params.value.getMonth() + 1, 2)+ '/' +
+                                    params.value.getFullYear();
+                        }, columnGroupShow: 'open'
+                    }
                 ]
             },
             {
