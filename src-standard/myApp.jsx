@@ -3,6 +3,7 @@ import {AgGridReact} from "ag-grid-react";
 import RowDataFactory from "./RowDataFactory";
 import ColDefFactory from "./ColDefFactory.jsx";
 import MyReactDateComponent from "./MyReactDateComponent.jsx";
+import MyReactHeaderComponent from "./MyReactHeaderComponent.jsx";
 import "./myApp.css";
 import "ag-grid-enterprise";
 
@@ -43,6 +44,12 @@ export default class MyApp extends React.Component {
             // this is how you listen for events using gridOptions
             onModelUpdated: function () {
                 console.log('event onModelUpdated received');
+            },
+            defaultColDef : {
+                headerComponentFramework : MyReactHeaderComponent,
+                headerComponentParams : {
+                    menuIcon: 'fa-bars'
+                }
             },
             // this is a simple property
             rowBuffer: 10 // no need to set this, the default is fine for almost all scenarios
@@ -203,7 +210,7 @@ export default class MyApp extends React.Component {
             );
         }
 
-        return <div style={{width: '800px'}}>
+        return <div style={{width: '1024px'}}>
             <div style={{padding: '4px'}}>
                 {topHeaderTemplate}
                 {bottomHeaderTemplate}

@@ -25,7 +25,7 @@ export default class ColDefFactory {
                         cellRenderer: countryCellRenderer, pinned: true,
                         filterParams: {cellRenderer: countryCellRenderer, cellHeight: 20}}
                     ,
-                    {headerName: "DOB", field: "dob", width: 90, enableRowGroup: true, enablePivot: true, filter:'date', cellRenderer: function(params) {
+                    {headerName: "DOB", field: "dob", width: 110, enableRowGroup: true, enablePivot: true, filter:'date', cellRenderer: function(params) {
                         return  pad(params.value.getDate(), 2) + '/' +
                                 pad(params.value.getMonth() + 1, 2)+ '/' +
                                 params.value.getFullYear();
@@ -41,7 +41,7 @@ export default class ColDefFactory {
                         // supply a React component
                         filterFramework: SkillsFilter
                     },
-                    {headerName: "Proficiency", field: "proficiency", width: 120, enableValue: true,
+                    {headerName: "Proficiency", field: "proficiency", width: 135, enableValue: true,
                         // supply a React component
                         cellRendererFramework: ProficiencyCellRenderer,
                         // supply a React component
