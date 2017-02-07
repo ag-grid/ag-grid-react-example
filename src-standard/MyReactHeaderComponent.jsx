@@ -30,7 +30,7 @@ export default class MyReactHeaderComponent extends React.Component {
 
 
         let menuButton = null;
-        if (this.props.enableSorting){
+        if (this.props.enableMenu){
             menuButton = <div ref="menuButton" className="customHeaderMenuButton" onClick={this.onMenuClick.bind(this)}><i className={"fa " + this.props.menuIcon}/></div>
         }
 
