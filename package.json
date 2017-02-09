@@ -6,7 +6,9 @@
   "scripts": {
     "standard": "webpack-dev-server --config webpack.config.standard.js --progress --colors --hot --inline",
     "grouped": "webpack-dev-server --config webpack.config.grouped.js --progress --colors --hot --inline",
-    "large": "webpack-dev-server --config webpack.config.large.js --progress --colors --hot --inline"
+    "large": "webpack-dev-server --config webpack.config.large.js --progress --colors --hot --inline",
+    "clean": "rimraf dist",
+    "build-standard": "npm run clean && webpack --config webpack.config.standard.js --progress --profile --bail"
   },
   "repository": {
     "type": "git",
@@ -35,10 +37,12 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "rimraf": "2.5.x",
     "react": "0.14.6",
     "react-dom": "0.14.6",
-    "ag-grid": "7.2.x",
-    "ag-grid-enterprise": "7.2.x",
-    "ag-grid-react": "7.2.x"
+    "ag-grid": "8.0.x",
+    "ag-grid-enterprise": "8.0.x",
+    "ag-grid-react": "8.0.x"
   }
 }
+
