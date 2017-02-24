@@ -5,7 +5,7 @@ export default class RowDataFactory {
     createRowData() {
         var rowData = [];
 
-        for (var i = 0; i < 1000; i++) {
+        for (var i = 0; i < 200; i++) {
             var countryData = RefData.COUNTRIES[i % RefData.COUNTRIES.length];
             rowData.push({
                 name: RefData.FIRST_NAMES[i % RefData.FIRST_NAMES.length] + ' ' + RefData.LAST_NAMES[i % RefData.LAST_NAMES.length],

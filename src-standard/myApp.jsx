@@ -204,7 +204,6 @@ export default class MyApp extends React.Component {
                         enableFilter="true"
                         groupHeaders="true"
                         rowHeight="22"
-                        debug="true"
                     />
                 </div>
             );
