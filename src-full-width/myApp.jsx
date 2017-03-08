@@ -7,106 +7,94 @@ import MyReactHeaderComponent from "./MyReactHeaderComponent.jsx";
 import "./myApp.css";
 import "ag-grid-enterprise";
 
-function DetailPanelCellRenderer() {}
 
-DetailPanelCellRenderer.prototype.init = function(params) {
-    // trick to convert string of html into dom object
-    var eTemp = document.createElement('div');
-    eTemp.innerHTML = this.getTemplate(params);
-    this.eGui = eTemp.firstElementChild;
-
-    this.setupDetailGrid(params.data);
-    this.consumeMouseWheelOnDetailGrid();
-    this.addSeachFeature();
-    this.addButtonListeners();
-};
-
-DetailPanelCellRenderer.prototype.setupDetailGrid = function(callRecords) {
-
-    this.detailGridOptions = {
-        enableSorting: true,
-        enableFilter: true,
-        enableColResize: true,
-        rowData: callRecords,
-        columnDefs: detailColumnDefs,
-        onGridReady: function(params) {
-            setTimeout( function() { params.api.sizeColumnsToFit(); }, 0);
-        }
-    };
-
-    var eDetailGrid = this.eGui.querySelector('.full-width-grid');
-    new agGrid.Grid(eDetailGrid, this.detailGridOptions);
-};
-
-DetailPanelCellRenderer.prototype.getTemplate = function(params) {
-
-    var parentRecord = params.node.parent.data;
-
-    var template =
-        '<div class="full-width-panel">' +
-        '  <div class="full-width-details">' +
-        '    <div class="full-width-detail"><img width="120px" src="https://www.ag-grid.com/images/'+parentRecord.image+'.png"/></div>' +
-        '    <div class="full-width-detail"><b>Name: </b>'+parentRecord.name+'</div>' +
-        '    <div class="full-width-detail"><b>Account: </b>'+parentRecord.account+'</div>' +
-        '  </div>'+
-        '  <div class="full-width-grid"></div>' +
-        '  <div class="full-width-grid-toolbar">' +
-        '       <img class="full-width-phone-icon" src="https://www.ag-grid.com/images/phone.png"/>' +
-        '       <button><img src="https://www.ag-grid.com/images/fire.png"/></button>' +
-        '       <button><img src="https://www.ag-grid.com/images/frost.png"/></button>' +
-        '       <button><img src="https://www.ag-grid.com/images/sun.png"/></button>' +
-        '       <input class="full-width-search" placeholder="Search..."/>' +
-        '  </div>'+
-        '</div>';
-
-    return template;
-};
-
-DetailPanelCellRenderer.prototype.getGui = function() {
-    return this.eGui;
-};
-
-DetailPanelCellRenderer.prototype.destroy = function() {
-    this.detailGridOptions.api.destroy();
-};
-
-DetailPanelCellRenderer.prototype.addSeachFeature = function() {
-    var tfSearch = this.eGui.querySelector('.full-width-search');
-    var gridApi = this.detailGridOptions.api;
-
-    var searchListener = function() {
-        var filterText = tfSearch.value;
-        gridApi.setQuickFilter(filterText);
-    };
-
-    tfSearch.addEventListener('input', searchListener);
-};
-
-DetailPanelCellRenderer.prototype.addButtonListeners = function() {
-    var eButtons = this.eGui.querySelectorAll('.full-width-grid-toolbar button');
-
-    for (var i = 0;  i<eButtons.length; i++) {
-        eButtons[i].addEventListener('click', function() {
-            window.alert('Sample button pressed!!');
-        });
+export class DetailPanelCellRenderer extends React.Component{
+    
+    init(params) {
+        this.setupDetailGrid(params.data);
+        this.consumeMouseWheelOnDetailGrid();
+        this.addSeachFeature();
+        this.addButtonListeners();
     }
-};
+    
+    setupDetailGrid(callRecords) {
+    
+        this.detailGridOptions = {
+            enableSorting: true,
+            enableFilter: true,
+            enableColResize: true,
+            rowData: callRecords,
+            columnDefs: detailColumnDefs,
+            onGridReady: function(params) {
+                setTimeout( function() { params.api.sizeColumnsToFit(); }, 0);
+            }
+        };
+    
+        var eDetailGrid = this.eGui.querySelector('.full-width-grid');
+        new agGrid.Grid(eDetailGrid, this.detailGridOptions);
+    }
+    
+    destroy() {
+        this.detailGridOptions.api.destroy();
+    }
+    
+    addSeachFeature() {
+        var tfSearch = this.eGui.querySelector('.full-width-search');
+        var gridApi = this.detailGridOptions.api;
 
-// if we don't do this, then the mouse wheel will be picked up by the main
-// grid and scroll the main grid and not this component. this ensures that
-// the wheel move is only picked up by the text field
-DetailPanelCellRenderer.prototype.consumeMouseWheelOnDetailGrid = function() {
-    var eDetailGrid = this.eGui.querySelector('.full-width-grid');
+        var searchListener = function() {
+            var filterText = tfSearch.value;
+            gridApi.setQuickFilter(filterText);
+        };
+    
+        tfSearch.addEventListener('input', searchListener);
+    }
+    
+    addButtonListeners() {
+        var eButtons = this.eGui.querySelectorAll('.full-width-grid-toolbar button');
+    
+        for (var i = 0;  i<eButtons.length; i++) {
+            eButtons[i].addEventListener('click', function() {
+                window.alert('Sample button pressed!!');
+            });
+        }
+    }
+    
+    // if we don't do this, then the mouse wheel will be picked up by the main
+    // grid and scroll the main grid and not this component. this ensures that
+    // the wheel move is only picked up by the text field
+    consumeMouseWheelOnDetailGrid() {
+        var eDetailGrid = this.eGui.querySelector('.full-width-grid');
+    
+        var mouseWheelListener = function (event) {
+            event.stopPropagation();
+        };
+    
+        // event is 'mousewheel' for IE9, Chrome, Safari, Opera
+        eDetailGrid.addEventListener('mousewheel', mouseWheelListener);
+        // event is 'DOMMouseScroll' Firefox
+        eDetailGrid.addEventListener('DOMMouseScroll', mouseWheelListener);
+    }
 
-    var mouseWheelListener = function(event) {
-        event.stopPropagation();
-    };
+    render (){
+        return <div><div class="full-width-panel">
+              <div class="full-width-details">
+                <div class="full-width-detail"><b>Name: </b>+parentRecord.name+</div>
+                <div class="full-width-detail"><b>Account: </b>+parentRecord.account+</div>
+              </div>
+              <div class="full-width-grid"></div>
+              <div class="full-width-grid-toolbar">
+                   <img class="full-width-phone-icon" src="https://www.ag-grid.com/images/phone.png"/>
+                   <button><img src="https://www.ag-grid.com/images/fire.png"/></button>
+                   <button><img src="https://www.ag-grid.com/images/frost.png"/></button>
+                   <button><img src="https://www.ag-grid.com/images/sun.png"/></button>
+                   <input class="full-width-search" placeholder="Search..."/>
+              </div>
+            </div></div>;
+    }
+}
 
-    // event is 'mousewheel' for IE9, Chrome, Safari, Opera
-    eDetailGrid.addEventListener('mousewheel', mouseWheelListener);
-    // event is 'DOMMouseScroll' Firefox
-    eDetailGrid.addEventListener('DOMMouseScroll', mouseWheelListener);
-};
+
 
 // take this line out if you do not want to use ag-Grid-Enterprise
 // a list of names we pick from when generating data
@@ -164,11 +152,11 @@ function createRowData() {
     return rowData;
 }
 
-var minuteCellFormatter = function(params) {
+var minuteCellFormatter = function (params) {
     return params.value.toLocaleString() + 'm';
 };
 
-var secondCellFormatter = function(params) {
+var secondCellFormatter= function (params) {
     return params.value.toLocaleString() + 's';
 };
 
@@ -310,7 +298,7 @@ export default class MyApp extends React.Component {
     onGetRowHeight (params) {
         var rowIsDetailRow = params.node.level===1;
         // return 100 when detail row, otherwise return 25
-        return rowIsDetailRow ? 200 : 25;
+        return rowIsDetailRow ? 75 : 25;
     }
 
     onGetNodeChildDetails (record) {
@@ -419,7 +407,7 @@ export default class MyApp extends React.Component {
                         suppressMenuFilterPanel="true"
                         isFullWidthCell = {this.onIsFullWidthCell.bind(this)}
                         // see ag-Grid docs cellRenderer for details on how to build cellRenderers
-                        fullWidthCellRenderer= {DetailPanelCellRenderer}
+                        fullWidthCellRendererFramework= {DetailPanelCellRenderer}
                         getRowHeight={this.onGetRowHeight.bind(this)}
                         getNodeChildDetails={this.onGetNodeChildDetails.bind(this)}
                     />
