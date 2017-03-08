@@ -1,6 +1,6 @@
 {
   "name": "ag-grid-react-example",
-  "version": "8.1.0",
+  "version": "8.2.0",
   "description": "Example Reach applicaiton using ag-Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
@@ -40,9 +40,9 @@
     "rimraf": "2.5.x",
     "react": "0.14.6",
     "react-dom": "0.14.6",
-    "ag-grid": "8.1.x",
-    "ag-grid-enterprise": "8.1.x",
-    "ag-grid-react": "8.1.x"
+    "ag-grid": "8.2.x",
+    "ag-grid-enterprise": "8.2.x",
+    "ag-grid-react": "8.2.x"
   }
 }
 
