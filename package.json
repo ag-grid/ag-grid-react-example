@@ -4,6 +4,7 @@
   "description": "Example Reach applicaiton using ag-Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
+    "full-width": "webpack-dev-server --config webpack.config.full-width.js --progress --colors --hot --inline",
     "standard": "webpack-dev-server --config webpack.config.standard.js --progress --colors --hot --inline",
     "grouped": "webpack-dev-server --config webpack.config.grouped.js --progress --colors --hot --inline",
     "large": "webpack-dev-server --config webpack.config.large.js --progress --colors --hot --inline",
