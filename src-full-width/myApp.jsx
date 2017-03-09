@@ -1,80 +1,12 @@
 import React from "react";
-import * as agGrid from "ag-grid";
 import {AgGridReact} from "ag-grid-react";
-import RowDataFactory from "./RowDataFactory";
-import MyReactDateComponent from "./MyReactDateComponent.jsx";
-import MyReactHeaderComponent from "./MyReactHeaderComponent.jsx";
 import "./myApp.css";
 import "ag-grid-enterprise";
 
 
 export class DetailPanelCellRenderer extends React.Component{
     
-    init(params) {
-        this.setupDetailGrid(params.data);
-        this.consumeMouseWheelOnDetailGrid();
-        this.addSeachFeature();
-        this.addButtonListeners();
-    }
-    
-    setupDetailGrid(callRecords) {
-    
-        this.detailGridOptions = {
-            enableSorting: true,
-            enableFilter: true,
-            enableColResize: true,
-            rowData: callRecords,
-            columnDefs: detailColumnDefs,
-            onGridReady: function(params) {
-                setTimeout( function() { params.api.sizeColumnsToFit(); }, 0);
-            }
-        };
-    
-        var eDetailGrid = this.eGui.querySelector('.full-width-grid');
-        new agGrid.Grid(eDetailGrid, this.detailGridOptions);
-    }
-    
-    destroy() {
-        this.detailGridOptions.api.destroy();
-    }
-    
-    addSeachFeature() {
-        var tfSearch = this.eGui.querySelector('.full-width-search');
-        var gridApi = this.detailGridOptions.api;
 
-        var searchListener = function() {
-            var filterText = tfSearch.value;
-            gridApi.setQuickFilter(filterText);
-        };
-    
-        tfSearch.addEventListener('input', searchListener);
-    }
-    
-    addButtonListeners() {
-        var eButtons = this.eGui.querySelectorAll('.full-width-grid-toolbar button');
-    
-        for (var i = 0;  i<eButtons.length; i++) {
-            eButtons[i].addEventListener('click', function() {
-                window.alert('Sample button pressed!!');
-            });
-        }
-    }
-    
-    // if we don't do this, then the mouse wheel will be picked up by the main
-    // grid and scroll the main grid and not this component. this ensures that
-    // the wheel move is only picked up by the text field
-    consumeMouseWheelOnDetailGrid() {
-        var eDetailGrid = this.eGui.querySelector('.full-width-grid');
-    
-        var mouseWheelListener = function (event) {
-            event.stopPropagation();
-        };
-    
-        // event is 'mousewheel' for IE9, Chrome, Safari, Opera
-        eDetailGrid.addEventListener('mousewheel', mouseWheelListener);
-        // event is 'DOMMouseScroll' Firefox
-        eDetailGrid.addEventListener('DOMMouseScroll', mouseWheelListener);
-    }
 
     render (){
         return <div><div class="full-width-panel">
@@ -191,7 +123,6 @@ export default class MyApp extends React.Component {
             quickFilterText: null,
             showGrid: true,
             showToolPanel: false,
-            rowData: new RowDataFactory().createRowData(),
             icons: {
                 columnRemoveFromGroup: '<i class="fa fa-remove"/>',
                 filter: '<i class="fa fa-filter"/>',
@@ -214,13 +145,11 @@ export default class MyApp extends React.Component {
             columnDefs: masterColumnDefs,
             rowData: rowData,
             //We register the react date component that ag-grid will use to render
-            dateComponentFramework:MyReactDateComponent,
             // this is how you listen for events using gridOptions
             onModelUpdated: function () {
                 console.log('event onModelUpdated received');
             },
             defaultColDef : {
-                headerComponentFramework : MyReactHeaderComponent,
                 headerComponentParams : {
                     menuIcon: 'fa-bars'
                 }
