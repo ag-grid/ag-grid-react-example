@@ -1,5 +1,9 @@
 module.exports = {
     entry: "./src-standard/index.js",
+	devServer: {
+		inline:true,
+		port: 8008
+	},
     output: {
         path: __dirname,
         filename: "dist/bundle.js"
