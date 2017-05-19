@@ -48,6 +48,7 @@ export default class extends Component {
 
         // grid events
         this.onGridReady = this.onGridReady.bind(this);
+        this.onRowClicked = this.onRowClicked.bind(this);
 
         // component events
         this.updateQuote = this.updateQuote.bind(this);
@@ -68,6 +69,10 @@ export default class extends Component {
         this.gridApi.addItems(map(this.props.selectedExchange.supportedStocks, symbol => this.exchangeService.getTicker(symbol)));
 
         this.gridApi.sizeColumnsToFit();
+    }
+
+    onRowClicked(params) {
+        this.props.onRowClicked(params.data.symbol);
     }
 
     componentWillMount() {
@@ -151,7 +156,8 @@ export default class extends Component {
                     enableSorting="true"
 
                     // events
-                    onGridReady={this.onGridReady}>
+                    onGridReady={this.onGridReady}
+                    onRowClicked={this.onRowClicked}>
                 </AgGridReact>
             </div>
         );

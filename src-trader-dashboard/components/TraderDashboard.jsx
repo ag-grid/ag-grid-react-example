@@ -36,7 +36,7 @@ export default class TraderDashboard extends Component {
                         onExchangeChanged={this.onExchangeChanged}>
                     </ControlPanel>
                 </div>
-                <StockPanel selectedExchange={this.state.selectedExchange}></StockPanel>
+                <StockPanel selectedExchange={this.state.selectedExchange}/>
             </div>
         );
     }

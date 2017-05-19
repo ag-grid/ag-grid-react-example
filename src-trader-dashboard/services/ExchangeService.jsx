@@ -17,6 +17,8 @@ export default class {
         ];
 
         this.initialiseTickerData();
+
+        this.timestamp = new Date();
     }
 
     initialiseTickerData() {
@@ -94,6 +96,102 @@ export default class {
         return find(this.exchanges, (exchange) => {
             return exchange.symbol === exchangeName;
         })
+    }
+
+    formatNumber(input) {
+        return input.toFixed(2);
+    }
+
+    formatWithDecimalPlaces(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    getTickerDetail(symbol) {
+        let ticker = this.getTicker(symbol);
+        let currentPrice = ticker.price;
+        let tenthOfCurrentPrice = currentPrice / 10;
+        let previousPrice = +currentPrice + this.random(-tenthOfCurrentPrice, tenthOfCurrentPrice);
+
+        let twentiethOfCurrentPrice = currentPrice / 20;
+        let yearAgoPrice = this.random(-twentiethOfCurrentPrice, twentiethOfCurrentPrice);
+
+        let range = `${this.formatNumber(previousPrice)} - ${this.formatNumber(currentPrice)}`;
+        let fiftyTwoWeek = `${this.formatNumber(yearAgoPrice)} - ${this.formatNumber(currentPrice)}`;
+
+        let open = this.formatNumber(ticker.bid); // not the same, but will do for demo purposes
+
+        let vol = this.formatWithDecimalPlaces(this.random(5000, 20000).toFixed(2));
+        let avg = `${this.formatNumber(this.random(10, 30))}M`;
+
+        let dividend = this.random(0, 1).toFixed(2);
+        let yld = this.random(1, 2).toFixed(2);
+
+        let eps = this.random(5, 10).toFixed(2);
+
+        let shares = `${this.random(3000, 10000).toFixed(2)}M`;
+
+        let marketCap = `${this.random(100000, 900000).toFixed(2)}M`;
+
+        let historicalData = this.generateHistoricalData(100, this.timestamp, currentPrice);
+
+        return {
+            pricingDelta: {
+                currentPrice,
+                previousPrice
+            },
+            timestamp: this.timestamp.toDateString(),
+            tickerSummary: {
+                range,
+                fiftyTwoWeek,
+                open,
+                vol,
+                avg,
+                dividend,
+                yld,
+                eps,
+                shares,
+                marketCap
+            },
+            historicalData
+        }
+    }
+
+    formatDate(date) {
+        // todo remove substring(2,4) and change parseTime instead
+        let year = ("" + date.getFullYear()).substring(2, 4);
+        return `${date.getDate()}-${date.getMonth()+1}-${year}`
+        // return `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()
+    }
+
+    generateHistoricalData(numberOfPoints, endDate, endPrice) {
+        let historicalData = [{
+            "date": this.formatDate(endDate),
+            "price": endPrice
+        }
+        ];
+
+        let numberOfTransitions = 15;
+        let pointsPerTransition = numberOfPoints / numberOfTransitions;
+
+        let lastDate = endDate;
+        let lastPrice = endPrice;
+        for (let transition = 0; transition < numberOfTransitions; transition++) {
+            let swing = (Math.random() >= 0.5) ? 1 : -1;
+
+            for (let i = 0; i <= pointsPerTransition; i++) {
+                lastDate.setDate(lastDate.getDate() - 1);
+                lastPrice = lastPrice + (swing * this.random(-1, 10));
+
+                historicalData.push({
+                    "date": this.formatDate(lastDate),
+                    "price": lastPrice
+                })
+            }
+        }
+
+        historicalData = historicalData.reverse();
+
+        return historicalData;
     }
 }
 
