@@ -14,6 +14,19 @@ export default class extends Component {
         this.onRowClicked = this.onRowClicked.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.selectedExchange !== this.props.selectedExchange) {
+            this.setState({
+                selectedSymbol: null
+            })
+        }
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.selectedExchange !== this.props.selectedExchange ||
+            nextState.selectedSymbol !== this.state.selectedSymbol;
+    }
+
     onRowClicked(selectedSymbol) {
         this.setState({
             selectedSymbol
@@ -25,7 +38,7 @@ export default class extends Component {
             <div>
                 <div style={{float: "left", marginRight: 25}}>
                     <LiveUpdatesGrid selectedExchange={this.props.selectedExchange}
-                                     onRowClicked={this.onRowClicked} />
+                                     onRowClicked={this.onRowClicked}/>
                 </div>
                 <div style={{float: "left"}}>
                     <StockDetailPanel selectedSymbol={this.state.selectedSymbol}

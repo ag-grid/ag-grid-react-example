@@ -10,29 +10,38 @@ export default class extends Component {
             currentPrice: null,
             delta: null,
             deltaPercentage: null
-        }
+        };
+
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        return !isEqual(this.props.pricingDelta, nextProps.pricingDelta);
+    componentDidMount() {
+        this.updatePriceDelta(this.props.pricingDelta);
     }
 
     componentWillReceiveProps(nextProps, nextState) {
         if (!isEqual(this.props.pricingDelta, nextProps.pricingDelta)) {
-            let pricingDelta = nextProps.pricingDelta;
-            let delta = pricingDelta.currentPrice - pricingDelta.previousPrice;
-            let deltaPercentage = (pricingDelta.currentPrice - pricingDelta.previousPrice) / pricingDelta.currentPrice;
-
-            this.setState({
-                currentPrice: pricingDelta.currentPrice,
-                delta,
-                deltaPercentage
-            })
+            this.updatePriceDelta(nextProps.pricingDelta);
         }
     }
 
+    updatePriceDelta(pricingDelta) {
+        let delta = pricingDelta.currentPrice - pricingDelta.previousPrice;
+        let deltaPercentage = (pricingDelta.currentPrice - pricingDelta.previousPrice) / pricingDelta.currentPrice;
+
+        this.setState({
+            currentPrice: pricingDelta.currentPrice,
+            delta,
+            deltaPercentage
+        })
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return !isEqual(this.props.pricingDelta, nextProps.pricingDelta) ||
+            !isEqual(this.state, nextState);
+    }
+
     numberFormatter(input) {
-        return input.toFixed(2);
+        return input ? input.toFixed(2) : null;
     }
 
     render() {

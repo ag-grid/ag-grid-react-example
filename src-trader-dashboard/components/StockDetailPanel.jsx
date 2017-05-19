@@ -21,12 +21,9 @@ export default class extends Component {
         }
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        return nextProps.selectedSymbol !== this.props.selectedSymbol;
-    }
-
     componentWillReceiveProps(nextProps, nextState) {
-        if (nextProps.selectedSymbol !== this.props.selectedSymbol) {
+        if (nextProps.selectedSymbol &&
+            nextProps.selectedSymbol !== this.props.selectedSymbol) {
             let stockDetail = this.exchangeService.getTickerDetail(nextProps.selectedSymbol);
 
             this.setState({
@@ -38,15 +35,23 @@ export default class extends Component {
         }
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.selectedSymbol !== this.props.selectedSymbol;
+    }
+
     render() {
-        return (
-            <div>
-                <StockPriceDeltaPanel pricingDelta={this.state.pricingDelta}/>
-                <StockTimestampPanel timestamp={this.state.timestamp}
-                                     exchangeName={this.props.exchangeName}/>
-                <StockSummaryPanel tickerSummary={this.state.tickerSummary}/>
-                <StockHistoricalChartPanel historicalData={this.state.historicalData} />
-            </div>
-        );
+        if (!this.props.selectedSymbol) {
+            return null;
+        } else {
+            return (
+                <div>
+                    <StockPriceDeltaPanel pricingDelta={this.state.pricingDelta}/>
+                    <StockTimestampPanel timestamp={this.state.timestamp}
+                                         exchangeName={this.props.exchangeName}/>
+                    <StockSummaryPanel tickerSummary={this.state.tickerSummary}/>
+                    <StockHistoricalChartPanel historicalData={this.state.historicalData}/>
+                </div>
+            );
+        }
     }
 }
