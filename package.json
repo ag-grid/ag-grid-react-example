@@ -7,6 +7,7 @@
     "full-width": "webpack-dev-server --config webpack.config.full-width.js --progress --colors --hot --inline",
     "standard": "webpack-dev-server --config webpack.config.standard.js --progress --colors --hot --inline",
     "grouped": "webpack-dev-server --config webpack.config.grouped.js --progress --colors --hot --inline",
+    "trader": "webpack-dev-server --content-base src-trader-dashboard/ --config webpack.config.trader.js --progress --colors --hot --inline",
     "large": "webpack-dev-server --config webpack.config.large.js --progress --colors --hot --inline",
     "clean": "rimraf dist",
     "build-standard": "npm run clean && webpack --config webpack.config.standard.js --progress --profile --bail"
@@ -42,10 +43,12 @@
     "ag-grid": "10.0.x",
     "ag-grid-enterprise": "10.0.x",
     "ag-grid-react": "10.0.x",
-    "d3": "^4.9.1",
-    "lodash": "^4.17.4",
+    "d3": "4.9.1",
+    "lodash": "4.17.4",
     "react": "15.5.x",
     "react-dom": "15.5.x",
+    "react-redux": "5.0.5",
+    "redux": "3.6.0",
     "rimraf": "2.5.x"
   }
 }
