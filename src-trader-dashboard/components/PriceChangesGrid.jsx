@@ -1,4 +1,8 @@
 import React, {Component} from "react";
+
+// take this line out if you do not want to use ag-Grid-Enterprise
+import "ag-grid-enterprise";
+
 import {AgGridReact} from "ag-grid-react";
 
 import map from "lodash/map";
@@ -40,6 +44,15 @@ export default class extends Component {
                     cellFormatter: this.numberFormatter,
                     cellRenderer: 'animateShowChange',
                     cellStyle: {'text-align': 'right'}
+                },
+                {
+                    headerName: 'Recommendation',
+                    field: 'recommendation',
+                    cellEditor: 'richSelect',
+                    cellEditorParams: {
+                        values: ['Buy', 'Hold', 'Sell']
+                    },
+                    editable: true
                 }
             ]
         };
@@ -66,7 +79,9 @@ export default class extends Component {
         this.gridApi = params.api;
         this.columnApi = params.columnApi;
 
-        this.gridApi.addItems(map(this.props.selectedExchange.supportedStocks, symbol => this.exchangeService.getTicker(symbol)));
+        // make realistic - call in a batch
+        let rowData = map(this.props.selectedExchange.supportedStocks, symbol => this.exchangeService.getTicker(symbol));
+        this.gridApi.addItems(rowData);
 
         this.gridApi.sizeColumnsToFit();
     }
@@ -148,7 +163,7 @@ export default class extends Component {
 
     render() {
         return (
-            <div style={{height: 400, width: 800}}
+            <div style={{height: 500, width: 800}}
                  className="ag-fresh">
                 <AgGridReact
                     // properties

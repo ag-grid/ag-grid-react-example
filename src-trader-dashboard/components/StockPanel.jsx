@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 
-import LiveUpdatesGrid from "./LiveUpdatesGrid.jsx";
+import PriceChangesGrid from "./PriceChangesGrid.jsx";
 import StockDetailPanel from "./StockDetailPanel.jsx";
+import FxQuoteMatrix from "./FxQuoteMatrix.jsx";
 
 export default class extends Component {
     constructor(props) {
@@ -35,14 +36,19 @@ export default class extends Component {
 
     render() {
         return (
-            <div>
-                <div style={{float: "left", marginRight: 25}}>
-                    <LiveUpdatesGrid selectedExchange={this.props.selectedExchange}
-                                     onRowClicked={this.onRowClicked}/>
-                </div>
-                <div style={{float: "left"}}>
-                    <StockDetailPanel selectedSymbol={this.state.selectedSymbol}
-                                      exchangeName={this.props.selectedExchange.name}/>
+            <div style={{width: 1250}}>
+                {/*<div>*/}
+                    {/*<div style={{float: "left", marginRight: 25}}>*/}
+                        {/*<PriceChangesGrid selectedExchange={this.props.selectedExchange}*/}
+                                          {/*onRowClicked={this.onRowClicked}/>*/}
+                    {/*</div>*/}
+                    {/*<div style={{float: "left"}}>*/}
+                        {/*<StockDetailPanel selectedSymbol={this.state.selectedSymbol}*/}
+                                          {/*exchangeName={this.props.selectedExchange.name}/>*/}
+                    {/*</div>*/}
+                {/*</div>*/}
+                <div style={{width: "100%", clear: "both", paddingTop: 25}}>
+                    <FxQuoteMatrix/>
                 </div>
             </div>
         );
