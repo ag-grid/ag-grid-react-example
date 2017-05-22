@@ -40,16 +40,16 @@
     "webpack-dev-server": "1.14.1"
   },
   "dependencies": {
-    "ag-grid": "10.0.x",
-    "ag-grid-enterprise": "10.0.x",
-    "ag-grid-react": "10.0.x",
     "d3": "4.9.1",
     "lodash": "4.17.4",
     "react": "15.5.x",
     "react-dom": "15.5.x",
     "react-redux": "5.0.5",
     "redux": "3.6.0",
-    "rimraf": "2.5.x"
+    "rimraf": "2.5.x",
+    "ag-grid": "10.0.x",
+    "ag-grid-enterprise": "10.0.x",
+    "ag-grid-react": "10.0.x"
   }
 }
 
