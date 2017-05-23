@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 
 const SRC_DIR = path.resolve(__dirname, 'src-trader-dashboard');
@@ -20,7 +19,7 @@ module.exports = {
                 include: SRC_DIR,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react', 'es2015']
+                    presets: ['react', 'es2015', 'stage-0']
                 }
             }
         ]
