@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 import PriceChangesGrid from "./PriceChangesGrid.jsx";
 import StockDetailPanel from "./StockDetailPanel.jsx";
-import FxQuoteMatrix from "./FxQuoteMatrix.jsx";
+import FxPanel from "./FxPanel.jsx";
 
 export default class extends Component {
     constructor(props) {
@@ -48,7 +48,7 @@ export default class extends Component {
                     </div>
                 </div>
                 <div style={{width: "100%", clear: "both", paddingTop: 25}}>
-                    <FxQuoteMatrix/>
+                    <FxPanel/>
                 </div>
             </div>
         );

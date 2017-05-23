@@ -1,6 +1,6 @@
 import {createStore} from "redux";
 
-import fxData from "../reducers/fxData";
+import fxData from "../reducers/fxDataReducer.jsx";
 
 class StoreService {
 }

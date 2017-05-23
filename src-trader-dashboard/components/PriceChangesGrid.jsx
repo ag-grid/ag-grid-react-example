@@ -41,15 +41,6 @@ export default class extends Component {
                     cellFormatter: this.numberFormatter,
                     cellRenderer: 'animateShowChange',
                     cellStyle: {'text-align': 'right'}
-                },
-                {
-                    headerName: 'Recommendation',
-                    field: 'recommendation',
-                    cellEditor: 'richSelect',
-                    cellEditorParams: {
-                        values: ['Buy', 'Hold', 'Sell']
-                    },
-                    editable: true
                 }
             ]
         };

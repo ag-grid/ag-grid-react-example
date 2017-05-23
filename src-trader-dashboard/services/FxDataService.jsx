@@ -1,7 +1,8 @@
 import sampleSize from "lodash/sampleSize";
+import cloneDeep from "lodash/cloneDeep";
 
 import StoreService from "./StoreService";
-import fxDataUpdated from "../actions/fxDataUpdated";
+import {fxDataUpdated, fxTopMoversUpdated} from "../actions/fxDataActions";
 
 import HorizontalBarComponent from "../components/renderers/HorizontalBarComponent.jsx";
 
@@ -9,14 +10,32 @@ export default class {
     constructor() {
         this.store = StoreService.STORE;
 
-        this.fxData = this.createFxMatrixSnapshot();
+        this.createFxMatrixSnapshot();
+        this.calculateTopMovers();
 
         this.store.dispatch(fxDataUpdated(this.fxData));
+        this.store.dispatch(fxTopMoversUpdated(this.fxTopMovers));
 
         setInterval(() => {
             this.applyDeltasToFxData();
+
             this.store.dispatch(fxDataUpdated(this.fxData));
-        }, 1500)
+        }, 1500);
+
+        setInterval(() => {
+            this.calculateTopMovers();
+
+            this.store.dispatch(fxTopMoversUpdated(this.fxTopMovers));
+        }, 2500);
+    }
+
+    calculateTopMovers() {
+        let fxData = cloneDeep(this.fxData);
+        fxData.sort((a, b) => {
+            return Math.abs(b.pct_net_change) - Math.abs(a.pct_net_change);
+        });
+
+        this.fxTopMovers = fxData.slice(0, 20);
     }
 
     applyDeltasToFxData() {
@@ -34,7 +53,7 @@ export default class {
             row['pct_net_change'] = multiplier * (this.random(30, 100) / 100).toFixed(2);
 
             for (let symbolToUpdate of fxSymbolsToUpdate) {
-                if(row[symbolToUpdate] === null) {
+                if (row[symbolToUpdate] === null) {
                     continue;
                 }
 
@@ -42,7 +61,6 @@ export default class {
                 row[symbolToUpdate] = (multiplier * Math.random()).toFixed(2);
             }
         }
-        return this.fxData;
     }
 
     random(min, max) {
@@ -75,7 +93,8 @@ export default class {
 
             rowData.push(row);
         }
-        return rowData;
+
+        this.fxData = rowData;
     }
 }
 
@@ -169,251 +188,3 @@ const FX_CURRENCY_MATRIX = [
     ["CHFJPY", "0.60", "0.96", "0.22", "0.52", "0.63", "0.24", "0.76", "0.91", "0.80", "-0.14", "0.59", "-0.01", "0.60", "-0.08", "0.63", "0.39", "0.30", "-0.71", "0.18", "0.94", "-0.30", "0.28", "0.87", "0.92", "-0.19", "0.18", "-0.40", "0.44", "0.88", "0.52", "0.50", "0.44", "0.84", "0.24", "0.09", "0.15", "0.10", "0.30", "-0.05", "0.79", null, "0.99"],
     ["CHFCAD", "0.93", "0.24", "0.05", "0.40", "0.75", "0.12", "0.90", "0.56", "0.46", "0.62", "0.71", "0.01", "0.04", "0.02", "0.49", "0.51", "-0.94", "0.93", "0.80", "-0.40", "0.79", "0.82", "-0.04", "0.38", "-0.24", "-0.17", "0.78", "-0.42", "0.92", "-0.83", "-0.01", "0.54", "0.73", "0.52", "0.95", "0.44", "0.90", "0.81", "0.42", "0.26", "0.36", null]
 ];
-
-// for (i = 0; i < MAJOR_CURRENCIES.length; i++) {
-//     for (j = 0; j < MAJOR_CURRENCIES.length; j++) {
-//         if (i === j) {
-//             continue;
-//         }
-//         console.log(`${MAJOR_CURRENCIES[i] + MAJOR_CURRENCIES[j]}`);
-//     }
-// }
-
-// let rows = [];
-// let row = ['Symbol'];
-//
-// rows = [];
-// for (j = 0; j < FX_CURRENCY_CODE.length; j++) {
-//     row.push(FX_CURRENCY_CODE[j]);
-// }
-// rows.push(row);
-//
-// for (i = 0; i < FX_CURRENCY_CODE.length; i++) {
-//     let row = [];
-//     row.push(FX_CURRENCY_CODE[i]);
-//
-//     for (j = 0; j < FX_CURRENCY_CODE.length; j++) {
-//         if (i === j) {
-//             row.push(null);
-//         } else {
-//             var mutliplier = ((Math.random() * 10) > 8) ? -1 : 1;
-//             row.push((mutliplier * Math.random()).toFixed(2))
-//             // row.push(`${FX_CURRENCY_CODE[j]} value`)
-//         }
-//     }
-//
-//     rows.push(row);
-// }
-//
-// JSON.stringify(rows);
-//
-// const FX_CURRENCY_CODE = [
-//     'USDGBP',
-//     'USDEUR',
-//     'USDAED',
-//     'USDJPY',
-//     'USDCAD',
-//     'USDCHF',
-//     'GBPUSD',
-//     'GBPEUR',
-//     'GBPAED',
-//     'GBPJPY',
-//     'GBPCAD',
-//     'GBPCHF',
-//     'EURUSD',
-//     'EURGBP',
-//     'EURAED',
-//     'EURJPY',
-//     'EURCAD',
-//     'EURCHF',
-//     'AEDUSD',
-//     'AEDGBP',
-//     'AEDEUR',
-//     'AEDJPY',
-//     'AEDCAD',
-//     'AEDCHF',
-//     'JPYUSD',
-//     'JPYGBP',
-//     'JPYEUR',
-//     'JPYAED',
-//     'JPYCAD',
-//     'JPYCHF',
-//     'CADUSD',
-//     'CADGBP',
-//     'CADEUR',
-//     'CADAED',
-//     'CADJPY',
-//     'CADCHF',
-//     'CHFUSD',
-//     'CHFGBP',
-//     'CHFEUR',
-//     'CHFAED',
-//     'CHFJPY',
-//     'CHFCAD'
-// ];
-//
-// const MAJOR_CURRENCIES = [
-//     'USD',
-//     'GBP',
-//     'EUR',
-//     'AED',
-//     'JPY',
-//     'CAD',
-//     'CHF'];
-//
-// const SECONDARY_CURRENCIES = [
-//     'AFN',
-//     'ALL',
-//     'AMD',
-//     'ANG',
-//     'AOA',
-//     'ARS',
-//     'AUD',
-//     'AWG',
-//     'AZN',
-//     'BAM',
-//     'BBD',
-//     'BDT',
-//     'BGN',
-//     'BHD',
-//     'BIF',
-//     'BMD',
-//     'BND',
-//     'BOB',
-//     'BRL',
-//     'BSD',
-//     'BTN',
-//     'BWP',
-//     'BYN',
-//     'BZD',
-//     'CDF',
-//     'CLP',
-//     'CNY',
-//     'COP',
-//     'CRC',
-//     'CUC',
-//     'CUP',
-//     'CVE',
-//     'CZK',
-//     'DJF',
-//     'DKK',
-//     'DOP',
-//     'DZD',
-//     'EGP',
-//     'ERN',
-//     'ETB',
-//     'FJD',
-//     'FKP',
-//     'GEL',
-//     'GGP',
-//     'GHS',
-//     'GIP',
-//     'GMD',
-//     'GNF',
-//     'GTQ',
-//     'GYD',
-//     'HKD',
-//     'HNL',
-//     'HRK',
-//     'HTG',
-//     'HUF',
-//     'IDR',
-//     'ILS',
-//     'IMP',
-//     'INR',
-//     'IQD',
-//     'IRR',
-//     'ISK',
-//     'JEP',
-//     'JMD',
-//     'JOD',
-//     'KES',
-//     'KGS',
-//     'KHR',
-//     'KMF',
-//     'KPW',
-//     'KRW',
-//     'KWD',
-//     'KYD',
-//     'KZT',
-//     'LAK',
-//     'LBP',
-//     'LKR',
-//     'LRD',
-//     'LSL',
-//     'LYD',
-//     'MAD',
-//     'MDL',
-//     'MGA',
-//     'MKD',
-//     'MMK',
-//     'MNT',
-//     'MOP',
-//     'MRO',
-//     'MUR',
-//     'MVR',
-//     'MWK',
-//     'MXN',
-//     'MYR',
-//     'MZN',
-//     'NAD',
-//     'NGN',
-//     'NIO',
-//     'NOK',
-//     'NPR',
-//     'NZD',
-//     'OMR',
-//     'PAB',
-//     'PEN',
-//     'PGK',
-//     'PHP',
-//     'PKR',
-//     'PLN',
-//     'PYG',
-//     'QAR',
-//     'RON',
-//     'RSD',
-//     'RUB',
-//     'RWF',
-//     'SAR',
-//     'SBD',
-//     'SCR',
-//     'SDG',
-//     'SEK',
-//     'SGD',
-//     'SHP',
-//     'SLL',
-//     'SOS',
-//     'SPL',
-//     'SRD',
-//     'STD',
-//     'SVC',
-//     'SYP',
-//     'SZL',
-//     'THB',
-//     'TJS',
-//     'TMT',
-//     'TND',
-//     'TOP',
-//     'TRY',
-//     'TTD',
-//     'TVD',
-//     'TWD',
-//     'TZS',
-//     'UAH',
-//     'UGX',
-//     'UYU',
-//     'UZS',
-//     'VEF',
-//     'VND',
-//     'VUV',
-//     'WST',
-//     'XAF',
-//     'XCD',
-//     'XDR',
-//     'XOF',
-//     'XPF',
-//     'YER',
-//     'ZMW',
-//     'ZWD',
-//     'ZAR'];

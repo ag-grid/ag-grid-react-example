@@ -5,18 +5,13 @@ import {AgGridReact} from "ag-grid-react";
 
 import assign from "lodash/assign";
 import uniq from "lodash/uniq";
-import cloneDeep from "lodash/cloneDeep";
-
-import FxDataService from "../services/FxDataService.jsx";
 
 class FxQuoteMatrix extends Component {
     constructor(props) {
         super(props);
 
-        this.fxDataService = new FxDataService();
-
         this.state = {
-            columnDefs: this.fxDataService.getFxMatrixHeaderNames()
+            columnDefs: this.props.fxDataService.getFxMatrixHeaderNames()
         };
 
         // grid events
@@ -28,48 +23,43 @@ class FxQuoteMatrix extends Component {
         this.columnApi = params.columnApi;
     }
 
+    componentDidMount() {
+        this.gridApi.setRowData(this.props.rowData);
+    }
+
     componentWillReceiveProps(nextProps) {
-        if (!this.gridApi) {
-            return;
-        }
+        const newRowData = nextProps.rowData;
 
-        if (!this.props.rowData ||
-            this.props.rowData.length === 0) {
-            this.gridApi.setRowData(nextProps.rowData);
-        } else {
-            const newRowData = nextProps.rowData;
+        const updatedNodes = [];
+        const updatedCols = [];
 
-            const updatedNodes = [];
-            const updatedCols = [];
+        for (let i = 0; i < newRowData.length; i++) {
+            // note that for this use case we assume the existing and new row data have the same
+            // row and column order
+            let node = this.gridApi.getModel().getRow(i);
+            let newRow = newRowData[i];
 
-            for (let i = 0; i < newRowData.length; i++) {
-                // note that for this use case we assume the existing and new row data have the same
-                // row and column order
-                let node = this.gridApi.getModel().getRow(i);
-                let newRow = newRowData[i];
+            const {data} = node;
+            let updated = false;
+            for (const def of this.state.columnDefs) {
+                if (data[def.field] !== newRow[def.field]) {
+                    updatedCols.push(def.field);
 
-                const {data} = node;
-                let updated = false;
-                for (const def of this.state.columnDefs) {
-                    if (data[def.field] !== newRow[def.field]) {
-                        updatedCols.push(def.field);
-
-                        updated = true;
-                    }
-                }
-                if(updated) {
-                    assign(data, newRow);
-                    updatedNodes.push(node);
+                    updated = true;
                 }
             }
-
-            this.gridApi.refreshCells(updatedNodes, uniq(updatedCols));
+            if(updated) {
+                assign(data, newRow);
+                updatedNodes.push(node);
+            }
         }
+
+        this.gridApi.refreshCells(updatedNodes, uniq(updatedCols));
     }
 
     render() {
         return (
-            <div style={{height: 410, width: "100%"}}
+            <div style={{height: 410, width: 800}}
                  className="ag-fresh">
                 <AgGridReact
                     // properties
