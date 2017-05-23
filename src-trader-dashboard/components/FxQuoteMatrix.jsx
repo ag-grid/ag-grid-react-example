@@ -1,18 +1,22 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+
 import {AgGridReact} from "ag-grid-react";
 
-import ExchangeService from "../services/ExchangeService.jsx";
+import assign from "lodash/assign";
+import uniq from "lodash/uniq";
+import cloneDeep from "lodash/cloneDeep";
+
+import FxDataService from "../services/FxDataService.jsx";
 
 class FxQuoteMatrix extends Component {
     constructor(props) {
         super(props);
 
-        this.exchangeService = new ExchangeService();
+        this.fxDataService = new FxDataService();
 
         this.state = {
-            columnDefs: this.exchangeService.getFxMatrixHeaderNames(),
-            // rowData: this.exchangeService.getFxMatrixSnapshot()
+            columnDefs: this.fxDataService.getFxMatrixHeaderNames()
         };
 
         // grid events
@@ -24,56 +28,52 @@ class FxQuoteMatrix extends Component {
         this.columnApi = params.columnApi;
     }
 
-
-    // componentWillUnmount() {
-    //     this.exchangeService.removeSubscribers();
-    // }
-
     componentWillReceiveProps(nextProps) {
-        console.log(props);
-    //     if (nextProps.selectedExchange.supportedStocks !== this.props.selectedExchange.supportedStocks) {
-    //         if (!this.gridApi) {
-    //             return;
-    //         }
-    //
-    //         const currentSymbols = this.props.selectedExchange.supportedStocks;
-    //         const nextSymbols = nextProps.selectedExchange.supportedStocks;
-    //
-    //         // Unsubscribe to current ones that will be removed
-    //         const symbolsRemoved = difference(currentSymbols, nextSymbols);
-    //         forEach(symbolsRemoved, symbol => {
-    //             this.exchangeService.removeSubscriber(this.updateQuote, symbol);
-    //         });
-    //
-    //         // Subscribe to new ones that need to be added
-    //         const symbolsAdded = difference(nextSymbols, currentSymbols);
-    //         forEach(symbolsAdded, symbol => {
-    //             this.exchangeService.addSubscriber(this.updateQuote, symbol);
-    //         });
-    //
-    //         // Remove ag-grid nodes as necessary
-    //         const nodesToRemove = [];
-    //         this.gridApi.forEachNode(node => {
-    //             const {data} = node;
-    //             if (includes(symbolsRemoved, data.symbol)) {
-    //                 nodesToRemove.push(node);
-    //             }
-    //         });
-    //         this.gridApi.removeItems(nodesToRemove);
-    //
-    //         // Insert new ag-grid nodes as necessary
-    //         this.gridApi.addItems(map(symbolsAdded, symbol => this.exchangeService.getTicker(symbol)));
-    //     }
+        if (!this.gridApi) {
+            return;
+        }
+
+        if (!this.props.rowData ||
+            this.props.rowData.length === 0) {
+            this.gridApi.setRowData(nextProps.rowData);
+        } else {
+            const newRowData = nextProps.rowData;
+
+            const updatedNodes = [];
+            const updatedCols = [];
+
+            for (let i = 0; i < newRowData.length; i++) {
+                // note that for this use case we assume the existing and new row data have the same
+                // row and column order
+                let node = this.gridApi.getModel().getRow(i);
+                let newRow = newRowData[i];
+
+                const {data} = node;
+                let updated = false;
+                for (const def of this.state.columnDefs) {
+                    if (data[def.field] !== newRow[def.field]) {
+                        updatedCols.push(def.field);
+
+                        updated = true;
+                    }
+                }
+                if(updated) {
+                    assign(data, newRow);
+                    updatedNodes.push(node);
+                }
+            }
+
+            this.gridApi.refreshCells(updatedNodes, uniq(updatedCols));
+        }
     }
 
     render() {
         return (
-            <div style={{height: 500, width: "100%"}}
+            <div style={{height: 410, width: "100%"}}
                  className="ag-fresh">
                 <AgGridReact
                     // properties
                     columnDefs={this.state.columnDefs}
-                    rowData={this.state.rowData}
                     enableSorting="false"
                     enableFilter="false"
 
@@ -88,7 +88,7 @@ class FxQuoteMatrix extends Component {
 export default connect(
     (state) => {
         return {
-            rowData: state.fxRowData
+            rowData: state.fxData
         }
     }
 )(FxQuoteMatrix);

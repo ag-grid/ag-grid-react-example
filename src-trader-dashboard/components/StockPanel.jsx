@@ -12,7 +12,7 @@ export default class extends Component {
             selectedSymbol: null
         };
 
-        this.onRowClicked = this.onRowClicked.bind(this);
+        this.onSelectionChanged = this.onSelectionChanged.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -28,7 +28,7 @@ export default class extends Component {
             nextState.selectedSymbol !== this.state.selectedSymbol;
     }
 
-    onRowClicked(selectedSymbol) {
+    onSelectionChanged(selectedSymbol) {
         this.setState({
             selectedSymbol
         })
@@ -37,16 +37,16 @@ export default class extends Component {
     render() {
         return (
             <div style={{width: 1250}}>
-                {/*<div>*/}
-                    {/*<div style={{float: "left", marginRight: 25}}>*/}
-                        {/*<PriceChangesGrid selectedExchange={this.props.selectedExchange}*/}
-                                          {/*onRowClicked={this.onRowClicked}/>*/}
-                    {/*</div>*/}
-                    {/*<div style={{float: "left"}}>*/}
-                        {/*<StockDetailPanel selectedSymbol={this.state.selectedSymbol}*/}
-                                          {/*exchangeName={this.props.selectedExchange.name}/>*/}
-                    {/*</div>*/}
-                {/*</div>*/}
+                <div>
+                    <div style={{float: "left", marginRight: 25}}>
+                        <PriceChangesGrid selectedExchange={this.props.selectedExchange}
+                                          onSelectionChanged={this.onSelectionChanged}/>
+                    </div>
+                    <div style={{float: "left"}}>
+                        <StockDetailPanel selectedSymbol={this.state.selectedSymbol}
+                                          exchangeName={this.props.selectedExchange.name}/>
+                    </div>
+                </div>
                 <div style={{width: "100%", clear: "both", paddingTop: 25}}>
                     <FxQuoteMatrix/>
                 </div>
