@@ -3,6 +3,8 @@ import sampleSize from "lodash/sampleSize";
 import StoreService from "./StoreService";
 import fxDataUpdated from "../actions/fxDataUpdated";
 
+import HorizontalBarComponent from "../components/renderers/HorizontalBarComponent.jsx";
+
 export default class {
     constructor() {
         this.store = StoreService.STORE;
@@ -27,7 +29,9 @@ export default class {
             let swing = Math.floor(this.random(-maxSwing, maxSwing));
             row.last = row.last + swing;
             row.net = swing;
-            row.pct_net_change = (row.net / row.last).toFixed(2);
+
+            let multiplier = ((Math.random() * 10) > 5) ? -1 : 1;
+            row['pct_net_change'] = multiplier * (this.random(30, 100) / 100).toFixed(2);
 
             for (let symbolToUpdate of fxSymbolsToUpdate) {
                 if(row[symbolToUpdate] === null) {
@@ -65,7 +69,9 @@ export default class {
             // last, net and % change are different
             row['last'] = Math.floor(this.random(7000, 170000));
             row['net'] = Math.floor(this.random(-500, 500));
-            row['pct_net_change'] = this.random(-1, 1).toFixed(2);
+
+            let multiplier = ((Math.random() * 10) > 5) ? -1 : 1;
+            row['pct_net_change'] = multiplier * (this.random(30, 100) / 100).toFixed(2);
 
             rowData.push(row);
         }
@@ -99,15 +105,8 @@ const FX_DELTA_HEADERS = [
     {
         field: 'pct_net_change',
         headerName: '% NC',
-        headerClass: 'align-right',
-        cellClass: 'align-right', // to be removed once the component is in place
-        // cellRendererFramework: HorizontalBarComponent,
-        width: 50,
-        cellClassRules: {
-            'pct-change-green': 'x > 0',
-            'pct-change-amber': 'x <= 0 && x >= -0.10',
-            'pct-change-red': 'x < -0.10'
-        }
+        cellRendererFramework: HorizontalBarComponent,
+        width: 85
     },
 ].concat(FX_CURRENCY_SYMBOLS.map((symbol) => {
     "use strict";
@@ -118,7 +117,7 @@ const FX_DELTA_HEADERS = [
         cellClass: 'align-right',
         cellRenderer: 'animateShowChange',
         cellClassRules: {
-            'fx-postive': 'x > 0.8',
+            'fx-positive': 'x > 0.8',
             'fx-null': 'x === null',
             'fx-negative': 'x < -0.8'
         }

@@ -7,6 +7,7 @@ import {Provider} from "react-redux";
 
 import "ag-grid-root/dist/styles/ag-grid.css";
 import "ag-grid-root/dist/styles/theme-fresh.css";
+// import "ag-grid-root/dist/styles/theme-blue.css";
 
 import StoreService from './services/StoreService';
 import TraderDashboard from "./components/TraderDashboard.jsx";
