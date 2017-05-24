@@ -48,7 +48,7 @@ class FxQuoteMatrix extends Component {
                     updated = true;
                 }
             }
-            if(updated) {
+            if (updated) {
                 assign(data, newRow);
                 updatedNodes.push(node);
             }

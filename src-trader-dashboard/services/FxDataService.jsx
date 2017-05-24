@@ -10,12 +10,19 @@ export default class {
     constructor() {
         this.store = StoreService.STORE;
 
+        // create the initial state of the fx data
         this.createFxMatrixSnapshot();
         this.calculateTopMovers();
 
+        // and dispatch it
         this.store.dispatch(fxDataUpdated(this.fxData));
         this.store.dispatch(fxTopMoversUpdated(this.fxTopMovers));
 
+        // periodically update the fx and top mover information
+        this.kickOffPeriodicUpdates();
+    }
+
+    kickOffPeriodicUpdates() {
         setInterval(() => {
             this.applyDeltasToFxData();
 
@@ -29,6 +36,10 @@ export default class {
         }, 2500);
     }
 
+    /*
+     * the rest of this class exists primarily to create mock data - it can safely be ignored
+     * as it is secondary to the main ideas being demonstrated by the rest of the application
+     */
     calculateTopMovers() {
         let fxData = cloneDeep(this.fxData);
         fxData.sort((a, b) => {

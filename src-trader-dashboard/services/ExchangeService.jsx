@@ -8,19 +8,49 @@ import keys from "lodash/keys";
 export default class {
     constructor() {
         this.subscribers = {};
-
-        this.exchanges = [
-            {name: 'Nasdaq Stock Market', symbol: 'NASDAQ', supportedStocks: NASDAQ_SYMBOLS},
-            {name: 'London Stock Exchange', symbol: 'LSE', supportedStocks: LSE_SYMBOLS},
-            {name: 'Japan Exchange Group', symbol: 'JSE', supportedStocks: JSE_SYMBOLS},
-            {name: 'Deutsche Börse', symbol: 'DE', supportedStocks: DE_SYMBOLS}
-        ];
-
-        this.initialiseTickerData();
-
         this.timestamp = new Date();
+
+        // create the initial state of data
+        this.initialiseTickerData();
     }
 
+    addSubscriber(subscriber, symbol) {
+        if (!this.subscribers[symbol]) {
+            this.subscribers[symbol] = [];
+        }
+        this.subscribers[symbol].push(subscriber);
+
+        if (!this.updateInterval) {
+            this.updateInterval = setInterval(this.applyDeltasToTickerData.bind(this), 500);
+        }
+    }
+
+    removeSubscriber(subscriber, symbol) {
+        remove(this.subscribers[symbol], subscriber);
+    }
+
+    getTicker(symbol) {
+        return this.tickerData[symbol];
+    }
+
+    getExchanges() {
+        return EXCHANGES;
+    }
+
+    getExchangeInformation(exchangeName) {
+        return find(EXCHANGES, (exchange) => {
+            return exchange.symbol === exchangeName;
+        })
+    }
+
+    getTickerDetail(symbol) {
+        return this.createTickerDetail(symbol);
+    }
+
+    /*
+     * the rest of this class exists primarily to create mock data - it can safely be ignored
+     * as it is secondary to the main ideas being demonstrated by the rest of the application
+     */
     initialiseTickerData() {
         this.tickerData = {};
 
@@ -37,23 +67,12 @@ export default class {
             price,
             bid: price - this.random(1, 3),
             ask: price + this.random(1, 3),
-            recommendation: ['Buy','Hold','Sell'][Math.floor(this.random(0, 2))]
+            recommendation: ['Buy', 'Hold', 'Sell'][Math.floor(this.random(0, 2))]
         }
     }
 
     random(min, max) {
         return parseFloat((Math.random() * (max - min + 1) + min))
-    }
-
-    addSubscriber(subscriber, symbol) {
-        if (!this.subscribers[symbol]) {
-            this.subscribers[symbol] = [];
-        }
-        this.subscribers[symbol].push(subscriber);
-
-        if (!this.updateInterval) {
-            this.updateInterval = setInterval(this.applyDeltasToTickerData.bind(this), 500);
-        }
     }
 
     applyDeltasToTickerData() {
@@ -81,24 +100,6 @@ export default class {
         });
     }
 
-    removeSubscriber(subscriber, symbol) {
-        remove(this.subscribers[symbol], subscriber);
-    }
-
-    getTicker(symbol) {
-        return this.tickerData[symbol];
-    }
-
-    getExchanges() {
-        return this.exchanges;
-    }
-
-    getExchangeInformation(exchangeName) {
-        return find(this.exchanges, (exchange) => {
-            return exchange.symbol === exchangeName;
-        })
-    }
-
     formatNumber(input) {
         return input.toFixed(2);
     }
@@ -107,7 +108,7 @@ export default class {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    getTickerDetail(symbol) {
+    createTickerDetail(symbol) {
         let ticker = this.getTicker(symbol);
         let currentPrice = ticker.price;
         let tenthOfCurrentPrice = currentPrice / 10;
@@ -326,4 +327,11 @@ const DE_SYMBOLS = [
     "STS.L",
     "BKIR.L",
     "AFMF.L",
+];
+
+const EXCHANGES = [
+    {name: 'Nasdaq Stock Market', symbol: 'NASDAQ', supportedStocks: NASDAQ_SYMBOLS},
+    {name: 'London Stock Exchange', symbol: 'LSE', supportedStocks: LSE_SYMBOLS},
+    {name: 'Japan Exchange Group', symbol: 'JSE', supportedStocks: JSE_SYMBOLS},
+    {name: 'Deutsche Börse', symbol: 'DE', supportedStocks: DE_SYMBOLS}
 ];
