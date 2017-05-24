@@ -5,9 +5,8 @@ import ColDefFactory from "./ColDefFactory.jsx";
 import MyReactDateComponent from "./MyReactDateComponent.jsx";
 import MyReactHeaderComponent from "./MyReactHeaderComponent.jsx";
 import "./myApp.css";
-import "ag-grid-enterprise";
-
 // take this line out if you do not want to use ag-Grid-Enterprise
+import "ag-grid-enterprise";
 
 export default class MyApp extends React.Component {
 
@@ -40,20 +39,24 @@ export default class MyApp extends React.Component {
         // what you want!
         this.gridOptions = {
             //We register the react date component that ag-grid will use to render
-            dateComponentFramework:MyReactDateComponent,
+            dateComponentFramework: MyReactDateComponent,
             // this is how you listen for events using gridOptions
             onModelUpdated: function () {
                 console.log('event onModelUpdated received');
             },
-            defaultColDef : {
-                headerComponentFramework : MyReactHeaderComponent,
-                headerComponentParams : {
+            defaultColDef: {
+                headerComponentFramework: MyReactHeaderComponent,
+                headerComponentParams: {
                     menuIcon: 'fa-bars'
                 }
             },
             // this is a simple property
             rowBuffer: 10 // no need to set this, the default is fine for almost all scenarios
         };
+
+        this.onGridReady = this.onGridReady.bind(this);
+        this.onRowSelected = this.onRowSelected.bind(this);
+        this.onCellClicked = this.onCellClicked.bind(this);
     }
 
     onShowGrid(show) {
@@ -108,7 +111,7 @@ export default class MyApp extends React.Component {
         componentInstance.helloFromSkillsFilter();
     }
 
-    dobFilter () {
+    dobFilter() {
         let dateFilterComponent = this.gridOptions.api.getFilterInstance('dob');
         dateFilterComponent.setFilterType('equals');
         dateFilterComponent.setDateFrom('2000-01-01');
@@ -181,9 +184,9 @@ export default class MyApp extends React.Component {
                         gridOptions={this.gridOptions}
 
                         // listening for events
-                        onGridReady={this.onGridReady.bind(this)}
-                        onRowSelected={this.onRowSelected.bind(this)}
-                        onCellClicked={this.onCellClicked.bind(this)}
+                        onGridReady={this.onGridReady}
+                        onRowSelected={this.onRowSelected}
+                        onCellClicked={this.onCellClicked}
 
                         // binding to simple properties
                         showToolPanel={this.state.showToolPanel}
