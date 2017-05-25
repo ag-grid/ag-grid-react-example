@@ -6,6 +6,10 @@ import NavItem from "./NavItem";
 import DynamicComponentsExample from "./dynamicComponentExample/DynamicComponentsExample";
 import RichComponentsExample from "./richComponentExample/RichComponentsExample";
 import EditorComponentsExample from "./editorComponentExample/EditorComponentsExample";
+import FloatingRowComponentExample from "./floatingRowExample/FloatingRowComponentExample";
+import FullWidthComponentExample from "./fullWidthExample/FullWidthComponentExample";
+import GroupedRowInnerRendererComponentExample from "./groupedRowInnerRendererExample/GroupedRowInnerRendererComponentExample";
+import FilterComponentExample from "./filterComponentExample/FilterComponentExample";
 
 const Header = () => (
     <header>
@@ -35,10 +39,10 @@ class App extends Component {
                     <Route exact path='/dynamic' component={DynamicComponentsExample}/>
                     <Route exact path='/rich-dynamic' component={RichComponentsExample}/>
                     <Route exact path='/editor' component={EditorComponentsExample}/>
-                    {/*<Route exact path='/floating-row' component={RichComponentsExample}/>*/}
-                    {/*<Route exact path='/full-width' component={RichComponentsExample}/>*/}
-                    {/*<Route exact path='/group-row' component={RichComponentsExample}/>*/}
-                    {/*<Route exact path='/filter' component={RichComponentsExample}/>*/}
+                    <Route exact path='/floating-row' component={FloatingRowComponentExample}/>
+                    <Route exact path='/full-width' component={FullWidthComponentExample}/>
+                    <Route exact path='/group-row' component={GroupedRowInnerRendererComponentExample}/>
+                    <Route exact path='/filter' component={FilterComponentExample}/>
                     {/*<Route exact path='/master-detail' component={RichComponentsExample}/>*/}
                     {/*<Route exact path='/grouped-data' component={RichComponentsExample}/>*/}
                 </Switch>

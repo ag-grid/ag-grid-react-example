@@ -7,7 +7,6 @@ export default class MoodEditor extends Component {
 
         this.onHappyClick = this.onHappyClick.bind(this);
         this.onSadClick = this.onSadClick.bind(this);
-        this.onKeyDown = this.onKeyDown.bind(this);
 
         this.state = {
             happy: false
