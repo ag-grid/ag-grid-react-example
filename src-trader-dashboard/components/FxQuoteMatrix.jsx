@@ -21,10 +21,10 @@ class FxQuoteMatrix extends Component {
     onGridReady(params) {
         this.gridApi = params.api;
         this.columnApi = params.columnApi;
-    }
 
-    componentDidMount() {
-        this.gridApi.setRowData(this.props.rowData);
+        if (this.props.rowData) {
+            this.gridApi.setRowData(this.props.rowData)
+        }
     }
 
     componentWillReceiveProps(nextProps) {
