@@ -6,7 +6,7 @@ module.exports = {
     entry: SRC_DIR + "/index.js",
     output: {
         path: __dirname,
-        filename: "dist/bundle.js"
+        filename: "dist/react-trader.js"
     },
     module: {
         loaders: [
