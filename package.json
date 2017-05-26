@@ -7,15 +7,15 @@
     "trader": "webpack-dev-server --content-base src-trader-dashboard/ --config webpack.config.trader.js --progress --colors --hot --inline",
     "examples": "webpack-dev-server --content-base src/ --config webpack.config.examples.js --progress --colors --hot --inline",
     "large": "webpack-dev-server --config webpack.config.large.js --progress --colors --hot --inline",
-
-
     "clean": "rimraf dist",
     "mkdirs": "mkdir -p dist/trader/dist dist/examples/dist",
-    "copy": "cp -r images dist/examples && cp src/index.html dist/examples && cp src-trader-dashboard/index.html dist/trader && cp dist/react-examples.js dist/examples/dist && cp dist/react-trader.js dist/trader/dist",
+    "copy-examples": "cp -r images dist/examples && cp src/index.html dist/examples && cp dist/react-examples.js dist/examples/dist && cp -r src dist/examples",
+    "copy-trader": "cp src-trader-dashboard/index.html dist/trader && cp dist/react-trader.js dist/trader/dist",
+    "copy": "npm run copy-examples && npm run copy-trader",
     "build-examples": "webpack --config webpack.config.examples.js --progress --profile --bail",
     "build-dashboard": "webpack --config webpack.config.trader.js --progress --profile --bail",
     "build-all": "npm run build-examples && npm run build-dashboard",
-    "build" : "npm run clean && npm run mkdirs && npm run build-all && npm run copy"
+    "build": "npm run clean && npm run mkdirs && npm run build-all && npm run copy"
   },
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
     "webpack-dev-server": "1.14.x"
   },
   "dependencies": {
-    "ag-grid": "10.0.x",
+    "ag-grid": "file:/Users/seanlandsman/IdeaProjects/ag/ag-grid/core-docs/ag-grid",
     "ag-grid-enterprise": "10.0.x",
     "ag-grid-react": "10.0.x",
     "bootstrap": "^3.3.7",
@@ -56,8 +56,8 @@
     "react": "15.5.x",
     "react-dom": "15.5.x",
     "react-redux": "5.0.x",
-    "react-router-dom": "4.1.x",
     "redux": "3.6.x",
-    "rimraf": "2.5.x"
+    "rimraf": "2.5.x",
+    "url-search-params-polyfill": "^1.2.0"
   }
 }
