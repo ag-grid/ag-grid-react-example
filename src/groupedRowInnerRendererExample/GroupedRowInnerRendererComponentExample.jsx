@@ -1,10 +1,11 @@
 import React, {Component} from "react";
-import ReactDOM from "react-dom";
 
 import {AgGridReact} from "ag-grid-react";
 import MedalRenderer from "./MedalRenderer";
 
-import "ag-grid-enterprise/main";
+import "./GroupedRowInnerRendererComponentExample.css";
+
+import "ag-grid-enterprise";
 
 export default class GroupedRowInnerRendererComponentExample extends Component {
     constructor(props) {

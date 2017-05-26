@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Route, Switch, NavLink, Redirect} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 
 import NavItem from "./NavItem";
 
@@ -10,6 +10,8 @@ import FloatingRowComponentExample from "./floatingRowExample/FloatingRowCompone
 import FullWidthComponentExample from "./fullWidthExample/FullWidthComponentExample";
 import GroupedRowInnerRendererComponentExample from "./groupedRowInnerRendererExample/GroupedRowInnerRendererComponentExample";
 import FilterComponentExample from "./filterComponentExample/FilterComponentExample";
+import RichGridExample from "./richGridExample/RichGridExample";
+import MasterDetailExample from "./masterDetailExample/MasterDetailExample";
 
 const Header = () => (
     <header>
@@ -23,10 +25,9 @@ const Header = () => (
             <NavItem to='/group-row'>Grouped Row Inner Renderer Example</NavItem>
             <NavItem to='/filter'>Filters Component Example</NavItem>
             <NavItem to='/master-detail'>Master Detail Example</NavItem>
-            <NavItem to='/grouped-data'>Grouped Data Example</NavItem>
         </ul>
     </header>
-)
+);
 
 class App extends Component {
     render() {
@@ -34,8 +35,8 @@ class App extends Component {
             <div>
                 <Header/>
                 <Switch>
-                    <Redirect from="/" exact to="/dynamic" />
-                    {/*<Route exact path='/rich-dynamic' component={DynamicComponentsExample}/>*/}
+                    <Redirect from="/" exact to="/rich-grid"/>
+                    <Route exact path='/rich-grid' component={RichGridExample}/>
                     <Route exact path='/dynamic' component={DynamicComponentsExample}/>
                     <Route exact path='/rich-dynamic' component={RichComponentsExample}/>
                     <Route exact path='/editor' component={EditorComponentsExample}/>
@@ -43,8 +44,7 @@ class App extends Component {
                     <Route exact path='/full-width' component={FullWidthComponentExample}/>
                     <Route exact path='/group-row' component={GroupedRowInnerRendererComponentExample}/>
                     <Route exact path='/filter' component={FilterComponentExample}/>
-                    {/*<Route exact path='/master-detail' component={RichComponentsExample}/>*/}
-                    {/*<Route exact path='/grouped-data' component={RichComponentsExample}/>*/}
+                    <Route exact path='/master-detail' component={MasterDetailExample}/>
                 </Switch>
             </div>
         )

@@ -11,10 +11,7 @@ export default class FullWidthComponentExample extends Component {
             gridOptions: {},
 
             rowData: this.createRowData(),
-            columnDefs: this.createColumnDefs(),
-
-            topFloatingRowData: [{row: "Top Row", number: "Top Number"}],
-            bottomFloatingRowData: [{row: "Bottom Row", number: "Bottom Number"}]
+            columnDefs: this.createColumnDefs()
         };
 
         this.onGridReady = this.onGridReady.bind(this);

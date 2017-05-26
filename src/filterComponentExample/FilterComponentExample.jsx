@@ -2,7 +2,8 @@ import React, {Component} from "react";
 
 import {AgGridReact} from "ag-grid-react";
 
-import "ag-grid-enterprise/main";
+import "ag-grid-enterprise";
+
 import PartialMatchFilter from "./PartialMatchFilter";
 
 export default class FilterComponentExample extends Component {
