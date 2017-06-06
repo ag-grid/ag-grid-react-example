@@ -67,7 +67,7 @@ export default class FilterComponentExample extends Component {
         return (
             <div style={{height: 400, width: 945}}
                  className="ag-fresh">
-                <h1>Group Row Renderer Example</h1>
+                <h1>Filter Component Example</h1>
                 <button style={{marginBottom: 10}} onClick={this.onClicked}>Filter Instance Method</button>
                 <AgGridReact
                     // properties

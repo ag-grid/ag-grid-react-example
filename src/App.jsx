@@ -11,6 +11,7 @@ import FullWidthComponentExample from "./fullWidthExample/FullWidthComponentExam
 import GroupedRowInnerRendererComponentExample from "./groupedRowInnerRendererExample/GroupedRowInnerRendererComponentExample";
 import FilterComponentExample from "./filterComponentExample/FilterComponentExample";
 import MasterDetailExample from "./masterDetailExample/MasterDetailExample";
+import SimpleReduxExample from "./simpleReduxExample/SimpleReduxExample";
 
 class App extends Component {
     constructor(props) {
@@ -49,6 +50,7 @@ class App extends Component {
                     <li role="presentation" className={this.state.example === 'group-row' ? 'active' : null} onClick={() => this.setExample("group-row")}><a href="#">Grouped Row Inner Renderer Example</a></li>
                     <li role="presentation" className={this.state.example === 'filter' ? 'active' : null} onClick={() => this.setExample("filter")}><a href="#">Filters Component Example</a></li>
                     <li role="presentation" className={this.state.example === 'master-detail' ? 'active' : null} onClick={() => this.setExample("master-detail")}><a href="#">Master Detail Example</a></li>
+                    <li role="presentation" className={this.state.example === 'simple-redux' ? 'active' : null} onClick={() => this.setExample("simple-redux")}><a href="#">Simple Redux Example</a></li>
                 </ul>)
         }
 
@@ -77,6 +79,9 @@ class App extends Component {
                 break;
             case 'master-detail':
                 example = <MasterDetailExample/>;
+                break;
+            case 'simple-redux':
+                example = <SimpleReduxExample/>;
                 break;
             default:
                 example = <RichGridExample/>;

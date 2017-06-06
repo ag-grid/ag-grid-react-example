@@ -65,10 +65,10 @@ class TopMoversGrid extends Component {
                     // properties
                     columnDefs={this.state.columnDefs}
                     rowData={this.props.rowData}
-                    enableSorting="true"
+                    enableSorting
                     enableFilter="false"
-                    animateRows="true"
-                    enableImmutableMode="true"
+                    animateRows
+                    deltaRowDataMode
                     getRowNodeId={this.getRowNodeId}
 
                     // events
