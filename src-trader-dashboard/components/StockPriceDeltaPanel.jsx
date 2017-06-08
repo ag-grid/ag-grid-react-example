@@ -18,7 +18,7 @@ export default class extends Component {
         this.updatePriceDelta(this.props.pricingDelta);
     }
 
-    componentWillReceiveProps(nextProps, nextState) {
+    componentWillReceiveProps(nextProps) {
         if (!isEqual(this.props.pricingDelta, nextProps.pricingDelta)) {
             this.updatePriceDelta(nextProps.pricingDelta);
         }
@@ -73,7 +73,7 @@ export default class extends Component {
 
         let swingStyle = this.state.delta >= 0 ? positiveSwingStyle : negativeSwingStyle;
 
-        if(!this.props.pricingDelta) {
+        if (!this.props.pricingDelta) {
             return null;
         } else {
             return (

@@ -29,7 +29,7 @@ export default class extends Component {
 
     static get defaultProps() {
         return {
-            graphHeight: 320,
+            graphHeight: 230,
             graphWidth: 400
         }
     }

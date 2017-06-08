@@ -4,16 +4,14 @@ import React from "react";
 import {render} from "react-dom";
 
 import {Provider} from "react-redux";
-import {createStore} from "redux";
-
-import TraderDashboard from "./components/TraderDashboard.jsx";
 
 import "ag-grid-root/dist/styles/ag-grid.css";
 import "ag-grid-root/dist/styles/theme-fresh.css";
 
-import fxData from "./reducers/fxData";
+import StoreService from './services/StoreService';
+import TraderDashboard from "./components/TraderDashboard.jsx";
 
-let store = createStore(fxData);
+let store = StoreService.STORE;
 
 document.addEventListener('DOMContentLoaded', () => {
     render(
