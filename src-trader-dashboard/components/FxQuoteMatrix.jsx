@@ -16,6 +16,9 @@ class FxQuoteMatrix extends Component {
 
         // grid events
         this.onGridReady = this.onGridReady.bind(this);
+
+        // grid callbacks
+        this.getRowNodeId = this.getRowNodeId.bind(this);
     }
 
     onGridReady(params) {
@@ -27,34 +30,31 @@ class FxQuoteMatrix extends Component {
         }
     }
 
+    getRowNodeId(data) {
+        return data.symbol;
+    }
+
     componentWillReceiveProps(nextProps) {
         const newRowData = nextProps.rowData;
 
-        const updatedNodes = [];
-        const updatedCols = [];
+        const updatedRows = [];
 
         for (let i = 0; i < newRowData.length; i++) {
-            // note that for this use case we assume the existing and new row data have the same
-            // row and column order
-            let node = this.gridApi.getModel().getRow(i);
             let newRow = newRowData[i];
+            let currentRowNode = this.gridApi.getRowNode(newRow.symbol);
 
-            const {data} = node;
-            let updated = false;
+            const {data} = currentRowNode;
             for (const def of this.state.columnDefs) {
                 if (data[def.field] !== newRow[def.field]) {
-                    updatedCols.push(def.field);
-
-                    updated = true;
+                    updatedRows.push(newRow);
+                    break;
                 }
-            }
-            if (updated) {
-                assign(data, newRow);
-                updatedNodes.push(node);
             }
         }
 
-        this.gridApi.refreshCells(updatedNodes, uniq(updatedCols));
+
+        this.gridApi.updateRowData({update: updatedRows});
+
     }
 
     render() {
@@ -66,6 +66,9 @@ class FxQuoteMatrix extends Component {
                     columnDefs={this.state.columnDefs}
                     enableSorting="false"
                     enableFilter="false"
+
+                    // callbacks
+                    getRowNodeId={this.getRowNodeId}
 
                     // events
                     onGridReady={this.onGridReady}>

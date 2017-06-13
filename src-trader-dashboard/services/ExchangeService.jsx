@@ -1,5 +1,4 @@
 import concat from "lodash/concat";
-import remove from "lodash/remove";
 import uniq from "lodash/uniq";
 import find from "lodash/find";
 import sampleSize from "lodash/sampleSize";
@@ -26,7 +25,12 @@ export default class {
     }
 
     removeSubscriber(subscriber, symbol) {
-        remove(this.subscribers[symbol], subscriber);
+        let subscribers = this.subscribers[symbol];
+        subscribers.splice(subscribers.indexOf(subscriber), 1);
+    }
+
+    removeSubscribers() {
+        this.subscribers = {};
     }
 
     getTicker(symbol) {

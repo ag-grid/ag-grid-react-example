@@ -43,6 +43,8 @@ class TopMoversGrid extends Component {
 
         // grid events
         this.onGridReady = this.onGridReady.bind(this);
+
+        // grid callbacks
         this.getRowNodeId = this.getRowNodeId.bind(this);
     }
 

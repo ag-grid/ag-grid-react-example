@@ -6,7 +6,6 @@ import map from "lodash/map";
 import difference from "lodash/difference";
 import forEach from "lodash/forEach";
 import includes from "lodash/includes";
-import assign from "lodash/assign";
 
 import ExchangeService from "../services/ExchangeService.jsx";
 
@@ -51,6 +50,9 @@ export default class extends Component {
         this.onGridReady = this.onGridReady.bind(this);
         this.onSelectionChanged = this.onSelectionChanged.bind(this);
 
+        // grid callbacks
+        this.getRowNodeId = this.getRowNodeId.bind(this);
+
         // component events
         this.updateSymbol = this.updateSymbol.bind(this);
     }
@@ -69,12 +71,16 @@ export default class extends Component {
 
         // make realistic - call in a batch
         let rowData = map(this.props.selectedExchange.supportedStocks, symbol => this.exchangeService.getTicker(symbol));
-        this.gridApi.addItems(rowData);
+        this.gridApi.updateRowData({add: rowData});
 
         // select the first symbol to show the chart
         this.gridApi.getModel().getRow(0).setSelected(true);
 
         this.gridApi.sizeColumnsToFit();
+    }
+
+    getRowNodeId(data) {
+        return data.symbol;
     }
 
     onSelectionChanged() {
@@ -108,25 +114,25 @@ export default class extends Component {
                 this.exchangeService.removeSubscriber(this.updateSymbol, symbol);
             });
 
+            // Remove ag-grid nodes as necessary
+            const rowsToRemove = [];
+            this.gridApi.forEachNode(node => {
+                const {data} = node;
+                if (includes(symbolsRemoved, data.symbol)) {
+                    rowsToRemove.push(data);
+                }
+            });
+            this.gridApi.updateRowData({remove: rowsToRemove});
+
             // Subscribe to new ones that need to be added
             const symbolsAdded = difference(nextSymbols, currentSymbols);
             forEach(symbolsAdded, symbol => {
                 this.exchangeService.addSubscriber(this.updateSymbol, symbol);
             });
 
-            // Remove ag-grid nodes as necessary
-            const nodesToRemove = [];
-            this.gridApi.forEachNode(node => {
-                const {data} = node;
-                if (includes(symbolsRemoved, data.symbol)) {
-                    nodesToRemove.push(node);
-                }
-            });
-            this.gridApi.removeItems(nodesToRemove);
-
             // Insert new ag-grid nodes as necessary
             let rowData = map(symbolsAdded, symbol => this.exchangeService.getTicker(symbol));
-            this.gridApi.addItems(rowData);
+            this.gridApi.updateRowData({add: rowData});
 
             // select the first symbol to show the chart
             this.gridApi.getModel().getRow(0).setSelected(true);
@@ -139,24 +145,8 @@ export default class extends Component {
             return;
         }
 
-        const updatedNodes = [];
-        const updatedCols = [];
-
-        this.gridApi.forEachNode(node => {
-            const {data} = node;
-            if (data.symbol === symbol.symbol) {
-                for (const def of this.state.columnDefs) {
-                    if (data[def.field] !== symbol[def.field]) {
-                        updatedCols.push(def.field);
-                    }
-                }
-                assign(data, symbol);
-                updatedNodes.push(node);
-            }
-        });
-
-        this.gridApi.refreshCells(updatedNodes, updatedCols);
-    };
+        this.gridApi.updateRowData({update: [symbol]});
+    }
 
     render() {
         return (
@@ -167,6 +157,9 @@ export default class extends Component {
                     columnDefs={this.state.columnDefs}
                     enableSorting="true"
                     rowSelection="single"
+
+                    // callbacks
+                    getRowNodeId={this.getRowNodeId}
 
                     // events
                     onGridReady={this.onGridReady}
