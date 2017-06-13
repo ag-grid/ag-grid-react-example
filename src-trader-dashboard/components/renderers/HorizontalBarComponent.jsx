@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import * as PropTypes from 'prop-types';
 
 export default class HorizontalBarComponent extends Component {
 
@@ -38,5 +39,5 @@ export default class HorizontalBarComponent extends Component {
 }
 
 HorizontalBarComponent.propTypes = {
-    params: React.PropTypes.object
+    params: PropTypes.object
 };

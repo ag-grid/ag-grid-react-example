@@ -1,14 +1,18 @@
 import React from 'react';
+import * as PropTypes from 'prop-types';
 
 // Header component to be used as default for all the columns.
-export default class MyReactHeaderGroupComponent extends React.Component {
+export default class HeaderGroupComponent extends React.Component {
 
     constructor(props) {
         super(props);
         this.props.columnGroup.getOriginalColumnGroup().addEventListener('expandedChanged', this.onExpandChanged.bind(this));
         this.state = {
-            expanded:null
-        }
+            expanded: null
+        };
+    }
+
+    componentDidMount() {
         this.onExpandChanged();
     }
 
@@ -36,6 +40,6 @@ export default class MyReactHeaderGroupComponent extends React.Component {
 // which is the grid passing you the params for the cellRenderer.
 // this piece is optional. the grid will always pass the 'params'
 // props, so little need for adding this validation meta-data.
-MyReactHeaderGroupComponent.propTypes = {
-    params: React.PropTypes.object
+HeaderGroupComponent.propTypes = {
+    params: PropTypes.object
 };

@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
+import * as PropTypes from "prop-types";
 
 // Date Component to be used in the date filter.
 // This is a very simple example of how a React component can be plugged as a DateComponentFramework
 // as you can see, the only requirement is that the React component implements the required methods
 // getDate and setDate and that it calls back into props.onDateChanged every time that the date changes.
-export default class MyReactDateComponent extends React.Component {
+export default class DateComponent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -27,7 +28,7 @@ export default class MyReactDateComponent extends React.Component {
     render() {
         //Inlining styles to make simpler the component
         let filterStyle = {
-            margin:'2px'
+            margin: '2px'
         };
         let ddStyle = {
             width: '30px'
@@ -50,9 +51,12 @@ export default class MyReactDateComponent extends React.Component {
         return (
             <div style={filterStyle}>
                 <span style={resetStyle} onClick={this.resetDate.bind(this)}>x</span>
-                <input onInput = {this.onDateChanged.bind(this)} ref="dd" placeholder="dd" style={ddStyle} value={this.state.textBoxes.dd} maxLength="2"/>/
-                <input onInput = {this.onDateChanged.bind(this)} ref="mm" placeholder="mm" style={mmStyle} value={this.state.textBoxes.mm} maxLength="2"/>/
-                <input onInput = {this.onDateChanged.bind(this)} ref="yyyy" placeholder="yyyy" style={yyyyStyle} value={this.state.textBoxes.yyyy} maxLength="4"/>
+                <input onInput={this.onDateChanged.bind(this)} ref="dd" placeholder="dd" style={ddStyle}
+                       value={this.state.textBoxes.dd} maxLength="2"/>/
+                <input onInput={this.onDateChanged.bind(this)} ref="mm" placeholder="mm" style={mmStyle}
+                       value={this.state.textBoxes.mm} maxLength="2"/>/
+                <input onInput={this.onDateChanged.bind(this)} ref="yyyy" placeholder="yyyy" style={yyyyStyle}
+                       value={this.state.textBoxes.yyyy} maxLength="4"/>
             </div>
         );
     }
@@ -61,20 +65,20 @@ export default class MyReactDateComponent extends React.Component {
     //          METHODS REQUIRED BY AG-GRID
     //*********************************************************************************
 
-    getDate (){
+    getDate() {
         //ag-grid will call us here when in need to check what the current date value is hold by this
         //component.
         return this.state.date;
     }
 
-    setDate (date){
+    setDate(date) {
         //ag-grid will call us here when it needs this component to update the date that it holds.
         this.setState({
-            date:date,
-            textBoxes:{
-                dd: date.getDate(),
-                mm: date.getMonth() + 1,
-                yyyy: date.getFullYear()
+            date,
+            textBoxes: {
+                dd: date ? date.getDate() : '',
+                mm: date ? date.getMonth() + 1 : '',
+                yyyy: date ? date.getFullYear() : ''
             }
         })
     }
@@ -83,10 +87,10 @@ export default class MyReactDateComponent extends React.Component {
     //          LINKS THE INTERNAL STATE AND AG-GRID
     //*********************************************************************************
 
-    updateAndNotifyAgGrid (date, textBoxes){
-        this.setState ({
+    updateAndNotifyAgGrid(date, textBoxes) {
+        this.setState({
                 date: date,
-                textBoxes:textBoxes
+                textBoxes: textBoxes
             },
             //Callback after the state is set. This is where we tell ag-grid that the date has changed so
             //it will proceed with the filtering and we can then expect ag-Grid to call us back to getDate
@@ -99,23 +103,23 @@ export default class MyReactDateComponent extends React.Component {
     //          LINKING THE UI, THE STATE AND AG-GRID
     //*********************************************************************************
 
-    resetDate (){
+    resetDate() {
         let date = null;
         let textBoxes = {
-            dd : '',
-            mm : '',
-            yyyy : '',
+            dd: '',
+            mm: '',
+            yyyy: '',
         };
 
         this.updateAndNotifyAgGrid(date, textBoxes)
     }
 
-    onDateChanged () {
+    onDateChanged() {
         let date = this.parseDate(this.refs.dd.value, this.refs.mm.value, this.refs.yyyy.value);
         let textBoxes = {
-            dd : this.refs.dd.value,
-            mm : this.refs.mm.value,
-            yyyy : this.refs.yyyy.value,
+            dd: this.refs.dd.value,
+            mm: this.refs.mm.value,
+            yyyy: this.refs.yyyy.value,
         };
 
         this.updateAndNotifyAgGrid(date, textBoxes)
@@ -125,7 +129,7 @@ export default class MyReactDateComponent extends React.Component {
     //          INTERNAL LOGIC
     //*********************************************************************************
 
-    parseDate (dd, mm, yyyy){
+    parseDate(dd, mm, yyyy) {
         //If any of the three input date fields are empty, stop and return null
         if (dd.trim() === '' || mm.trim() === '' || yyyy.trim() === '') {
             return null;
@@ -138,7 +142,7 @@ export default class MyReactDateComponent extends React.Component {
         let date = new Date(year, month - 1, day);
 
         //If the date is not valid
-        if (isNaN(date.getTime())){
+        if (isNaN(date.getTime())) {
             return null;
         }
 
@@ -150,7 +154,7 @@ export default class MyReactDateComponent extends React.Component {
         //If the javascript date parts don't match the provided fields, we assume that the input is non
         //sensical... ie: Day=-1 or month=14, if this is the case, we return null
         //This also protects us from non sensical dates like dd=31, mm=2 of any year
-        if (date.getDate() != day || date.getMonth() + 1 != month || date.getFullYear() != year){
+        if (date.getDate() != day || date.getMonth() + 1 != month || date.getFullYear() != year) {
             return null;
         }
 
@@ -162,6 +166,6 @@ export default class MyReactDateComponent extends React.Component {
 // which is the grid passing you the params for the cellRenderer.
 // this piece is optional. the grid will always pass the 'params'
 // props, so little need for adding this validation meta-data.
-MyReactDateComponent.propTypes = {
-    params: React.PropTypes.object
+DateComponent.propTypes = {
+    params: PropTypes.object
 };

@@ -42,6 +42,7 @@
     "babel-preset-react": "6.24.x",
     "babel-preset-stage-0": "6.24.x",
     "babel-preset-stage-1": "6.24.x",
+    "prop-types": "15.5.x",
     "css-loader": "0.23.x",
     "mkdirp": "0.5.1",
     "ncp": "2.0.0",

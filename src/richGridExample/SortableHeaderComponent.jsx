@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
+import * as PropTypes from "prop-types";
 
 // Header component to be used as default for all the columns.
-export default class MyReactHeaderComponent extends React.Component {
+export default class SortableHeaderComponent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -11,27 +12,32 @@ export default class MyReactHeaderComponent extends React.Component {
         //The state of this component contains the current sort state of this column
         //The possible values are: 'asc', 'desc' and ''
         this.state = {
-           sorted: ''
+            sorted: ''
         }
     }
 
 
     render() {
         let sortElements = [];
-        if (this.props.enableSorting){
+        if (this.props.enableSorting) {
             let downArrowClass = "customSortDownLabel " + (this.state.sorted === 'desc' ? " active" : "");
             let upArrowClass = "customSortUpLabel " + (this.state.sorted === 'asc' ? " active" : "");
             let removeArrowClass = "customSortRemoveLabel " + (this.state.sorted === '' ? " active" : "");
 
-            sortElements.push(<div className={downArrowClass} onClick={this.onSortRequested.bind(this, 'desc')}><i className="fa fa-long-arrow-down"/></div>)
-            sortElements.push(<div className={upArrowClass} onClick={this.onSortRequested.bind(this, 'asc')}><i className="fa fa-long-arrow-up"/></div>)
-            sortElements.push(<div className={removeArrowClass} onClick={this.onSortRequested.bind(this, '')}><i className="fa fa-times"/></div>)
+            sortElements.push(<div key={`up${this.props.displayName}`} className={downArrowClass} onClick={this.onSortRequested.bind(this, 'desc')}><i
+                className="fa fa-long-arrow-down"/></div>)
+            sortElements.push(<div key={`down${this.props.displayName}`} className={upArrowClass} onClick={this.onSortRequested.bind(this, 'asc')}><i
+                className="fa fa-long-arrow-up"/></div>)
+            sortElements.push(<div key={`minus${this.props.displayName}`} className={removeArrowClass} onClick={this.onSortRequested.bind(this, '')}><i
+                className="fa fa-times"/></div>)
         }
 
 
         let menuButton = null;
-        if (this.props.enableMenu){
-            menuButton = <div ref="menuButton" className="customHeaderMenuButton" onClick={this.onMenuClick.bind(this)}><i className={"fa " + this.props.menuIcon}/></div>
+        if (this.props.enableMenu) {
+            menuButton =
+                <div ref="menuButton" className="customHeaderMenuButton" onClick={this.onMenuClick.bind(this)}><i
+                    className={"fa " + this.props.menuIcon}/></div>
         }
 
         return <div>
@@ -41,16 +47,16 @@ export default class MyReactHeaderComponent extends React.Component {
         </div>
     }
 
-    onSortRequested (order, event) {
-        this.props.setSort (order, event.shiftKey);
+    onSortRequested(order, event) {
+        this.props.setSort(order, event.shiftKey);
     };
 
-    onSortChanged (){
-        if (this.props.column.isSortAscending()){
+    onSortChanged() {
+        if (this.props.column.isSortAscending()) {
             this.setState({
                 sorted: 'asc'
             })
-        } else if (this.props.column.isSortDescending()){
+        } else if (this.props.column.isSortDescending()) {
             this.setState({
                 sorted: 'desc'
             })
@@ -61,8 +67,8 @@ export default class MyReactHeaderComponent extends React.Component {
         }
     };
 
-    onMenuClick (){
-        this.props.showColumnMenu (this.refs.menuButton);
+    onMenuClick() {
+        this.props.showColumnMenu(this.refs.menuButton);
     };
 
 }
@@ -71,6 +77,6 @@ export default class MyReactHeaderComponent extends React.Component {
 // which is the grid passing you the params for the cellRenderer.
 // this piece is optional. the grid will always pass the 'params'
 // props, so little need for adding this validation meta-data.
-MyReactHeaderComponent.propTypes = {
-    params: React.PropTypes.object
+SortableHeaderComponent.propTypes = {
+    params: PropTypes.object
 };

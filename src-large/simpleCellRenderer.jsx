@@ -1,4 +1,5 @@
 import React from 'react';
+import * as PropTypes from 'prop-types';
 
 export default class SimpleCellRenderer extends React.Component {
     render() {
@@ -11,5 +12,5 @@ export default class SimpleCellRenderer extends React.Component {
 }
 
 SimpleCellRenderer.propTypes = {
-    params: React.PropTypes.object
+    params: PropTypes.object
 };
