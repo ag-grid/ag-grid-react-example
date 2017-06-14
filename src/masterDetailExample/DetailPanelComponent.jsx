@@ -16,6 +16,9 @@ export default class DetailPanelComponent extends Component {
 
         this.onGridReady = this.onGridReady.bind(this);
         this.onSearchTextChange = this.onSearchTextChange.bind(this);
+
+        // override the containing div so that the child grid fills the row height
+        this.props.reactContainer.style.height = "100%";
     }
 
     onGridReady(params) {

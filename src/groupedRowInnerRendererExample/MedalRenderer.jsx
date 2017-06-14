@@ -8,6 +8,9 @@ export default class MedalRenderer extends Component {
         this.gold = this.props.data.gold;
         this.silver = this.props.data.silver;
         this.bronze = this.props.data.bronze;
+
+        // override the containing div so that the +/- and label are inline
+        this.props.reactContainer.style.display = "inline-block";
     }
 
     render() {
