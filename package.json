@@ -17,7 +17,8 @@
     "build-all": "npm run build-examples && npm run build-dashboard",
     "build": "npm run clean && npm run mkdirs && npm run build-all && npm run copy",
     "copy-to-docs": "ncp dist/examples ../ag-grid-docs/src/react-examples/examples && ncp dist/trader ../ag-grid-docs/src/react-examples/trader",
-    "build-to-docs": "npm run build && npm run copy-to-docs"
+    "build-to-docs": "npm run build && npm run copy-to-docs",
+    "start": "npm run examples"
   },
   "repository": {
     "type": "git",
@@ -63,7 +64,7 @@
     "url-search-params-polyfill": "1.2.0",
     "ag-grid": "10.1.x",
     "ag-grid-enterprise": "10.1.x",
-    "ag-grid-react": "10.1.x"
+    "ag-grid-react": "file:../ag-grid-react"
   }
 }
 
