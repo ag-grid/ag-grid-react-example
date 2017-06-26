@@ -44,7 +44,7 @@ export default class DetailPanelComponent extends Component {
                 headerName: 'Duration',
                 field: 'duration',
                 cellClass: 'call-record-cell',
-                cellFormatter: this.secondCellFormatter
+                valueFormatter: this.secondCellFormatter
             },
             {headerName: 'Switch', field: 'switchCode', cellClass: 'call-record-cell'}];
 

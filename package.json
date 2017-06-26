@@ -1,6 +1,6 @@
 {
   "name": "ag-grid-react-example",
-  "version": "10.0.0",
+  "version": "11.0.0",
   "description": "Example Reach applicaiton using ag-Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
@@ -62,9 +62,9 @@
     "react-redux": "5.0.x",
     "redux": "3.6.x",
     "url-search-params-polyfill": "1.2.0",
-    "ag-grid": "10.1.x",
-    "ag-grid-enterprise": "10.1.x",
-    "ag-grid-react": "file:../ag-grid-react"
+    "ag-grid": "11.0.x",
+    "ag-grid-enterprise": "11.0.x",
+    "ag-grid-react": "11.0.x"
   }
 }
 
