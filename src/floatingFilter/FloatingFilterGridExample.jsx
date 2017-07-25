@@ -52,7 +52,7 @@ export default class FloatingFilterGridExample extends Component {
 
         return (
             <div style={style} className="ag-fresh">
-                <h1>Simple ag-Grid React Example</h1>
+                <h1>Floating Filter Example</h1>
                 <AgGridReact
                     // properties
                     columnDefs={this.state.columnDefs}
