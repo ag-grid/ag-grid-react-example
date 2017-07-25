@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import {AgGridReact} from "ag-grid-react";
 import FloatingFilter from "./floatingFilter";
+import overrideStyle from "./floatingFilter.css";
 
-export default class extends Component {
+export default class FloatingFilterGridExample extends Component {
     constructor(props) {
         super(props);
 
@@ -21,7 +22,12 @@ export default class extends Component {
 
     createColumnDefs() {
         return [
-            {headerName: "Make", field: "make", floatingFilterComponentFramework: FloatingFilter, filter:'set'},
+            {
+                headerName: "Make",
+                field: "make",
+                floatingFilterComponentFramework: FloatingFilter,
+                filter: 'set'
+            },
             {headerName: "Model", field: "model"},
             {headerName: "Price", field: "price"}
         ];
@@ -36,13 +42,16 @@ export default class extends Component {
     }
 
     render() {
-        let containerStyle = {
-            height: 115,
-            width: 500
+        let divStyle = {
+            height: 400,
+            width: 945
         };
 
+        // combine the styles
+        const style = Object.assign({}, divStyle, overrideStyle);
+
         return (
-            <div style={containerStyle} className="ag-fresh">
+            <div style={style} className="ag-fresh">
                 <h1>Simple ag-Grid React Example</h1>
                 <AgGridReact
                     // properties

@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import {AgGridReact} from "ag-grid-react";
 import StyledRenderer from "./StyledRenderer";
 
-export default class FloatingRowComponentExample extends Component {
+export default class PinnedRowComponentExample extends Component {
     constructor(props) {
         super(props);
 
@@ -33,8 +33,8 @@ export default class FloatingRowComponentExample extends Component {
                 headerName: "Row",
                 field: "row",
                 width: 400,
-                floatingCellRendererFramework: StyledRenderer,
-                floatingCellRendererParams: {
+                pinnedRowCellRendererFramework: StyledRenderer,
+                pinnedRowCellRendererParams: {
                     style: {'fontWeight': 'bold'}
                 }
             },
@@ -42,8 +42,8 @@ export default class FloatingRowComponentExample extends Component {
                 headerName: "Number",
                 field: "number",
                 width: 399,
-                floatingCellRendererFramework: StyledRenderer,
-                floatingCellRendererParams: {
+                pinnedRowCellRendererFramework: StyledRenderer,
+                pinnedRowCellRendererParams: {
                     style: {'fontStyle': 'italic'}
                 }
             },
@@ -55,7 +55,7 @@ export default class FloatingRowComponentExample extends Component {
 
         for (let i = 0; i < 15; i++) {
             rowData.push({
-                row: "Rou " + i,
+                row: "Row " + i,
                 number: Math.round(Math.random() * 100)
             });
         }
