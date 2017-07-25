@@ -43,22 +43,27 @@
     "babel-preset-react": "6.24.x",
     "babel-preset-stage-0": "6.24.x",
     "babel-preset-stage-1": "6.24.x",
-    "prop-types": "15.5.x",
     "css-loader": "0.23.x",
     "mkdirp": "0.5.1",
     "ncp": "2.0.0",
+    "prop-types": "15.5.x",
     "rimraf": "2.5.x",
     "style-loader": "0.13.x",
     "webpack": "1.12.x",
-    "webpack-dev-server": "1.14.x"
+    "webpack-dev-server": "1.14.x",
+    "gulp": "3.9.x",
+    "gulp-typescript": "3.1.x",
+    "merge2": "1.0.x",
+    "typescript": "2.3.x"
   },
   "dependencies": {
     "bootstrap": "3.3.7",
     "d3": "4.9.1",
     "file-loader": "0.11.1",
     "lodash": "4.17.4",
-    "react": "15.5.x",
-    "react-dom": "15.5.x",
+    "react": "15.6.x",
+    "react-dom": "15.6.x",
+    "react-dom-factories" : "1.0.0",
     "react-redux": "5.0.x",
     "redux": "3.6.x",
     "url-search-params-polyfill": "1.2.0",
@@ -67,5 +72,3 @@
     "ag-grid-react": "12.0.x"
   }
 }
-
-
