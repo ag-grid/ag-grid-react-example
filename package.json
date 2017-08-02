@@ -12,6 +12,7 @@
     "copy-examples": "ncp images dist/examples/images && ncp src/index.html dist/examples/index.html && ncp dist/react-examples.js dist/examples/dist/react-examples.js && ncp src dist/examples/src",
     "copy-trader": "ncp src-trader-dashboard/index.html dist/trader/index.html && ncp dist/react-trader.js dist/trader/dist/react-trader.js",
     "copy": "npm run copy-examples && npm run copy-trader",
+    "build-large": "webpack --config webpack.config.large.js --progress --profile --bail",
     "build-examples": "webpack --config webpack.config.examples.js --progress --profile --bail",
     "build-dashboard": "webpack --config webpack.config.trader.js --progress --profile --bail",
     "build-all": "npm run build-examples && npm run build-dashboard",
@@ -57,18 +58,18 @@
     "typescript": "2.3.x"
   },
   "dependencies": {
+    "ag-grid": "12.0.x",
+    "ag-grid-enterprise": "12.0.x",
+    "ag-grid-react": "12.0.x",
     "bootstrap": "3.3.7",
     "d3": "4.9.1",
     "file-loader": "0.11.1",
     "lodash": "4.17.4",
-    "react": "15.6.x",
-    "react-dom": "15.6.x",
-    "react-dom-factories" : "1.0.0",
+    "react": "16.0.0-beta.1",
+    "react-dom": "^16.0.0-beta.1",
+    "react-dom-factories": "1.0.0",
     "react-redux": "5.0.x",
     "redux": "3.6.x",
-    "url-search-params-polyfill": "1.2.0",
-    "ag-grid": "12.0.x",
-    "ag-grid-enterprise": "12.0.x",
-    "ag-grid-react": "12.0.x"
+    "url-search-params-polyfill": "1.2.0"
   }
 }
