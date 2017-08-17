@@ -17,7 +17,7 @@
     "build-dashboard": "webpack --config webpack.config.trader.js --progress --profile --bail",
     "build-all": "npm run build-examples && npm run build-dashboard",
     "build": "npm run clean && npm run mkdirs && npm run build-all && npm run copy",
-    "copy-to-docs": "ncp dist/examples ../ag-grid-docs/src/react-examples/examples && ncp dist/trader ../ag-grid-docs/src/react-examples/trader",
+    "copy-to-docs": "ncp dist/examples ../ag-grid-docs/src/framework-examples/react-examples/examples && ncp dist/trader ../ag-grid-docs/src/framework-examples/react-examples/trader",
     "build-to-docs": "npm run build && npm run copy-to-docs",
     "start": "npm run examples"
   },

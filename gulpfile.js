@@ -9,7 +9,6 @@ const tsConfig = '../ag-grid-react/tsconfig.json';
 const tsProject = gulpTypescript.createProject(tsConfig);
 
 function rebuildAgGridReact() {
-    console.log("hre");
     const tsResult = gulp
         .src('../ag-grid-react/src/**/*.ts')
         .pipe(tsProject());
