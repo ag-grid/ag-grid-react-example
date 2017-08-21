@@ -8,6 +8,7 @@ export default class FloatingFilter extends Component {
         }
     }
 
+    // when does this get called? how to test this?
     onParentModelChanged(parentModel) {
         this.setState({
             parentModel: parentModel
