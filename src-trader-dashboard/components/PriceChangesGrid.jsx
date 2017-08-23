@@ -23,21 +23,21 @@ export default class extends Component {
                 {
                     field: 'price',
                     headerName: 'Price',
-                    cellFormatter: this.numberFormatter,
+                    valueFormatter: this.numberFormatter,
                     cellRenderer: 'animateShowChange',
                     cellStyle: {'text-align': 'right'}
                 },
                 {
                     field: 'bid',
                     headerName: 'Bid',
-                    cellFormatter: this.numberFormatter,
+                    valueFormatter: this.numberFormatter,
                     cellRenderer: 'animateShowChange',
                     cellStyle: {'text-align': 'right'}
                 },
                 {
                     field: 'ask',
                     headerName: 'Ask',
-                    cellFormatter: this.numberFormatter,
+                    valueFormatter: this.numberFormatter,
                     cellRenderer: 'animateShowChange',
                     cellStyle: {'text-align': 'right'}
                 }
