@@ -13,6 +13,7 @@ import FilterComponentExample from "./filterComponentExample/FilterComponentExam
 import MasterDetailExample from "./masterDetailExample/MasterDetailExample";
 import SimpleReduxExample from "./simpleReduxExample/SimpleReduxExample";
 import FloatingFilterGridExample from "./floatingFilter/FloatingFilterGridExample";
+import SimpleReduxDynamicExample from "./simpleReduxDynamicComponentExample/SimpleReduxExample";
 
 class App extends Component {
     constructor(props) {
@@ -52,6 +53,7 @@ class App extends Component {
                     <li role="presentation" className={this.state.example === 'floating-filter' ? 'active' : null} onClick={() => this.setExample("floating-filter")}><a href="#">Floating Filters</a></li>
                     <li role="presentation" className={this.state.example === 'master-detail' ? 'active' : null} onClick={() => this.setExample("master-detail")}><a href="#">Master Detail Example</a></li>
                     <li role="presentation" className={this.state.example === 'simple-redux' ? 'active' : null} onClick={() => this.setExample("simple-redux")}><a href="#">Simple Redux Example</a></li>
+                    <li role="presentation" className={this.state.example === 'simple-redux-dynamic' ? 'active' : null} onClick={() => this.setExample("simple-redux-dynamic")}><a href="#">Simple Redux Dynamic Component Example</a></li>
                 </ul>)
         }
 
@@ -86,6 +88,9 @@ class App extends Component {
                 break;
             case 'floating-filter':
                 example = <FloatingFilterGridExample/>;
+                break;
+            case 'simple-redux-dynamic':
+                example = <SimpleReduxDynamicExample/>;
                 break;
             default:
                 example = <RichGridExample/>;
