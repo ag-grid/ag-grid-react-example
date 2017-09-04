@@ -6,7 +6,6 @@ import DateComponent from "./DateComponent.jsx";
 import SortableHeaderComponent from "./SortableHeaderComponent";
 
 import "./RichGridExample.css";
-
 // take this line out if you do not want to use ag-Grid-Enterprise
 import "ag-grid-enterprise";
 
@@ -29,7 +28,10 @@ export default class RichGridExample extends Component {
                 groupExpanded: '<i class="fa fa-minus-square-o"/>',
                 groupContracted: '<i class="fa fa-plus-square-o"/>',
                 columnGroupOpened: '<i class="fa fa-minus-square-o"/>',
-                columnGroupClosed: '<i class="fa fa-plus-square-o"/>'
+                columnGroupClosed: '<i class="fa fa-plus-square-o"/>',
+                checkboxChecked: '<i class="fa fa-arrow-left"/>',
+                checkboxUnchecked: '<i class="fa fa-arrow-right"/>',
+                checkboxIndeterminate: '<i class="fa fa-arrow-up"/>'
             }
         };
 
@@ -119,7 +121,7 @@ export default class RichGridExample extends Component {
         // simply wait for the next tick
         setTimeout(() => {
             this.gridOptions.api.onFilterChanged();
-        },0)
+        }, 0)
     }
 
     render() {
@@ -153,7 +155,9 @@ export default class RichGridExample extends Component {
                         <span>
                             Grid API:
                             {/* use ref to access the api in selectAll */}
-                            <button onClick={() => { this.refs.myGrid.api.selectAll() }}>Select All</button>
+                            <button onClick={() => {
+                                this.refs.myGrid.api.selectAll()
+                            }}>Select All</button>
                             <button onClick={this.deselectAll.bind(this)}>Clear Selection</button>
                         </span>
                         <span style={{marginLeft: 20}}>
