@@ -25,5 +25,5 @@ Building
 To build:
 - `npm install`
 - `npm install webpack -g`
-- `npm run example`, `npm run large` or `npm run trader`
+- `npm run examples`, `npm run large` or `npm run trader`
 - navigate to localhost:8080
