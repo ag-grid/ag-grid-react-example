@@ -44,7 +44,7 @@ export default class FloatingFilterGridExample extends Component {
     render() {
         let divStyle = {
             height: 400,
-            width: 945
+            width: 900
         };
 
         // combine the styles

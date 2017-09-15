@@ -32,7 +32,7 @@ class GridComponent extends Component {
     // row data will be provided via redux on this.props.rowData
     render() {
         return (
-            <div style={{height: 400, width: 945, marginTop: 15}}
+            <div style={{height: 400, width: 900, marginTop: 15}}
                  className="ag-fresh">
                 <AgGridReact
                     // properties

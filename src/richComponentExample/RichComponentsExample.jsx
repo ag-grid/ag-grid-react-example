@@ -25,7 +25,11 @@ export default class RichComponentsExample extends Component {
 
     createColumnDefs() {
         return [
-            {headerName: "Name", field: "name", width: 200},
+            {
+                headerName: "Name",
+                field: "name",
+                width: 200
+            },
             {
                 headerName: "Ratio Component",
                 field: "ratios",
@@ -60,8 +64,7 @@ export default class RichComponentsExample extends Component {
 
     render() {
         return (
-            <div style={{height: 400, width: 945}}
-                 className="ag-fresh">
+            <div style={{height: 370, width: 900}} className="ag-fresh">
                 <h1>Dynamic React Components - Richer Example</h1>
                 <AgGridReact
                     // properties
@@ -72,6 +75,24 @@ export default class RichComponentsExample extends Component {
                     // events
                     onGridReady={this.onGridReady}>
                 </AgGridReact>
+                <div className="row">
+                    <div className="col-sm-12">
+                        <h5>This example demonstrates Dynamic React Components with ag-Grid. Functionally similar
+                            to the <a href="/dynamic">Dynamic React Components Example</a> but with slightly richer components.</h5>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12">
+                        <div className="card">
+                            <div className="card-body">
+                                <h4 className="card-title">React Functionality</h4>
+                                <p className="card-text">Utilise React Components within ag-Grid</p>
+                                <a target="_blank" href="https://www.ag-grid.com/best-react-data-grid/?framework=react" className="btn btn-primary">React with ag-Grid</a>
+                                <a target="_blank" href="https://www.ag-grid.com/javascript-grid-cell-rendering-components/?framework=react" className="btn btn-primary">React Renderers</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

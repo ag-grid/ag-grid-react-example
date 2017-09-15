@@ -58,6 +58,9 @@
     "typescript": "2.3.x"
   },
   "dependencies": {
+    "ag-grid": "13.1.x",
+    "ag-grid-enterprise": "13.1.x",
+    "ag-grid-react": "13.1.x",
     "bootstrap": "3.3.7",
     "d3": "4.9.1",
     "file-loader": "0.11.1",
@@ -66,10 +69,8 @@
     "react-dom": "15.6.x",
     "react-dom-factories": "1.0.0",
     "react-redux": "5.0.x",
+    "react-router-dom": "4.2.x",
     "redux": "3.6.x",
-    "url-search-params-polyfill": "1.2.0",
-    "ag-grid": "13.1.x",
-    "ag-grid-enterprise": "13.1.x",
-    "ag-grid-react": "13.1.x"
+    "url-search-params-polyfill": "1.2.0"
   }
 }

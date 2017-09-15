@@ -65,7 +65,7 @@ export default class PinnedRowComponentExample extends Component {
 
     render() {
         return (
-            <div style={{height: 400, width: 945}}
+            <div style={{height: 400, width: 900}}
                  className="ag-fresh">
                 <h1>Pinned Row Renderer Example</h1>
                 <AgGridReact

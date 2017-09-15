@@ -16,6 +16,7 @@ export default class ColDefFactory {
                 checkboxSelection: true,
                 suppressSorting: true,
                 suppressMenu: true,
+                suppressFilter: true,
                 pinned: true
             },
             {
@@ -32,7 +33,8 @@ export default class ColDefFactory {
                         editable: true,
                         // use a React cellEditor
                         cellEditorFramework: NameCellEditor
-                    }, {
+                    },
+                    {
                         headerName: "Country",
                         field: "country",
                         width: 150,
@@ -44,9 +46,9 @@ export default class ColDefFactory {
                         filterParams: {
                             cellRenderer: countryCellRenderer,
                             cellHeight: 20
-                        },
-                        columnGroupShow: 'open'
-                    }, {
+                        }
+                    },
+                    {
                         headerName: "DOB",
                         field: "dob",
                         width: 110,

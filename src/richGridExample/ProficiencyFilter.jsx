@@ -37,6 +37,10 @@ export default class ProficiencyFilter extends React.Component {
         this.setState(newState, this.props.filterChangedCallback);
     }
 
+    getModel() {
+        return ''
+    }
+
     render() {
         var rows = [];
         PROFICIENCY_NAMES.forEach( (name)=> {

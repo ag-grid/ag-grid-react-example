@@ -106,7 +106,7 @@ export default class GroupedRowInnerRendererComponentExample extends Component {
 
     render() {
         return (
-            <div style={{height: 400, width: 945}}
+            <div style={{height: 400, width: 900}}
                  className="ag-fresh">
                 <h1>Group Row Renderer Example</h1>
                 <AgGridReact

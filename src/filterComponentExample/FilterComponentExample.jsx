@@ -66,10 +66,10 @@ export default class FilterComponentExample extends Component {
 
     render() {
         return (
-            <div style={{height: 400, width: 945}}
+            <div style={{height: 400, width: 900}}
                  className="ag-fresh">
                 <h1>Filter Component Example</h1>
-                <button style={{marginBottom: 10}} onClick={this.onClicked}>Filter Instance Method</button>
+                <button style={{marginBottom: 10}} onClick={this.onClicked} className="btn btn-primary">Filter Instance Method</button>
                 <AgGridReact
                     // properties
                     columnDefs={this.state.columnDefs}
