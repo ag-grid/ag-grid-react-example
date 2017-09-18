@@ -9,8 +9,8 @@ export default class RichComponentsExample extends Component {
         super(props);
 
         this.state = {
-            rowData: this.createRowData(),
-            columnDefs: this.createColumnDefs()
+            rowData: RichComponentsExample.createRowData(),
+            columnDefs: RichComponentsExample.createColumnDefs()
         };
 
         this.onGridReady = this.onGridReady.bind(this);
@@ -23,7 +23,7 @@ export default class RichComponentsExample extends Component {
         this.gridApi.sizeColumnsToFit();
     }
 
-    createColumnDefs() {
+    static createColumnDefs() {
         return [
             {
                 headerName: "Name",
@@ -44,7 +44,7 @@ export default class RichComponentsExample extends Component {
             }
         ];    }
 
-    createRowData() {
+    static createRowData() {
         return [
             {name: 'Homer Simpson', ratios: {top: 0.25, bottom: 0.75}},
             {name: 'Marge Simpson', ratios: {top: 0.67, bottom: 0.39}},

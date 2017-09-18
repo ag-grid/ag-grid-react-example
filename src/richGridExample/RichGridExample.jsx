@@ -140,10 +140,11 @@ export default class RichGridExample extends Component {
                             <button onClick={this.setCountryVisible.bind(this, true)} className="btn btn-primary">Show Country Column</button>
                         </span>
                     </div>
-                    <div style={{display: "inline-block",width: "100%", marginTop: 10, marginBottom: 10}}>
+                    <div style={{display: "inline-block", width: "100%", marginTop: 10, marginBottom: 10}}>
                         <div style={{float: "left"}}>
                             <label>
-                                <input type="checkbox" onChange={this.onToggleToolPanel.bind(this)} style={{marginRight: 5}}/>
+                                <input type="checkbox" onChange={this.onToggleToolPanel.bind(this)}
+                                       style={{marginRight: 5}}/>
                                 Show Tool Panel
                             </label>
                         </div>

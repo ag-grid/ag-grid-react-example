@@ -13,8 +13,8 @@ export default class FilterComponentExample extends Component {
         this.state = {
             gridOptions: {},
 
-            rowData: this.createRowData(),
-            columnDefs: this.createColumnDefs(),
+            rowData: FilterComponentExample.createRowData(),
+            columnDefs: FilterComponentExample.createColumnDefs(),
         };
 
         this.onGridReady = this.onGridReady.bind(this);
@@ -32,7 +32,7 @@ export default class FilterComponentExample extends Component {
         this.gridApi.getFilterInstance("name").getFrameworkComponentInstance().componentMethod("Hello World!");
     }
 
-    createColumnDefs() {
+    static createColumnDefs() {
         return [
             {headerName: "Row", field: "row", width: 400},
             {
@@ -45,7 +45,7 @@ export default class FilterComponentExample extends Component {
         ];
     }
 
-    createRowData() {
+    static createRowData() {
         return [
             {"row": "Row 1", "name": "Michael Phelps"},
             {"row": "Row 2", "name": "Natalie Coughlin"},

@@ -42,8 +42,8 @@ export default class SkillsFilter extends React.Component {
     // called by agGrid
     doesFilterPass(params) {
 
-        var rowSkills = params.data.skills;
-        var passed = true;
+        const rowSkills = params.data.skills;
+        let passed = true;
 
         RefData.IT_SKILLS.forEach((skill) => {
             if (this.state[skill]) {
@@ -62,14 +62,14 @@ export default class SkillsFilter extends React.Component {
 
     // called by agGrid
     isFilterActive() {
-        var somethingSelected = this.state.android || this.state.css ||
+        const somethingSelected = this.state.android || this.state.css ||
             this.state.html5 || this.state.mac || this.state.windows;
         return somethingSelected;
     };
 
     onSkillChanged(skill, event) {
-        var newValue = event.target.checked;
-        var newModel = {};
+        const newValue = event.target.checked;
+        const newModel = {};
         newModel[skill] = newValue;
         // set the state, and once it is done, then call filterChangedCallback
         this.setState(newModel, this.props.filterChangedCallback);
@@ -81,11 +81,11 @@ export default class SkillsFilter extends React.Component {
 
     render() {
 
-        var skillsTemplates = [];
+        const skillsTemplates = [];
         RefData.IT_SKILLS.forEach((skill, index) => {
 
-            var skillName = RefData.IT_SKILLS_NAMES[index];
-            var template = (
+            const skillName = RefData.IT_SKILLS_NAMES[index];
+            const template = (
                 <label key={skill}
                        style={{border: '1px solid lightgrey', margin: 4, padding: 4, display: 'inline-block'}}>
                     <span>
