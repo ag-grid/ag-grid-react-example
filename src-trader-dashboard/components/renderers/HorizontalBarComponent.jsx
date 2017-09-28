@@ -3,6 +3,14 @@ import * as PropTypes from 'prop-types';
 
 export default class HorizontalBarComponent extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            value: this.props.value
+        }
+    }
+
     render() {
         let positiveChange = {
             fill: "green"
@@ -19,7 +27,7 @@ export default class HorizontalBarComponent extends Component {
             textAlign: "right"
         };
 
-        let pctNetChange = this.props.value;
+        let pctNetChange = this.state.value;
         let pctNetChangeBar = Math.min(Math.abs(pctNetChange) * 100, 100) / 2;
 
         let barWidth = `${pctNetChangeBar}%`;
@@ -35,6 +43,13 @@ export default class HorizontalBarComponent extends Component {
                 <div style={text}>{pctNetChange}</div>
             </div>
         )
+    }
+
+    refresh(params) {
+        this.setState({
+            value: params.value
+        });
+        return true;
     }
 }
 

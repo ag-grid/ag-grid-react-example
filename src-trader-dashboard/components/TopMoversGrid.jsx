@@ -34,7 +34,7 @@ class TopMoversGrid extends Component {
                     cellRenderer: 'animateShowChange',
                     cellClass: 'align-right',
                     sort: 'desc',
-                    cellFormatter(params) {
+                    valueFormatter(params) {
                         return params.value.toFixed(2)
                     }
                 },
