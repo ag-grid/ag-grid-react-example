@@ -41,8 +41,12 @@ export default class ProficiencyFilter extends React.Component {
         this.setState(newState, this.props.filterChangedCallback);
     }
 
+
     getModel() {
         return ''
+    }
+
+    setModel(model) {
     }
 
     render() {
