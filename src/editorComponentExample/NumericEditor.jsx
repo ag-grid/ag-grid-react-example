@@ -32,11 +32,12 @@ export default class MoodEditor extends Component {
     }
 
     focus() {
-        setTimeout(() => {
-            this.refs.input.focus();
-            this.refs.input.setSelectionRange(this.state.value.length, this.state.value.length);
-
-        })
+        if (!this.cancelBeforeStart) {
+            setTimeout(() => {
+                this.refs.input.focus();
+                this.refs.input.setSelectionRange(this.state.value.length, this.state.value.length);
+            })
+        }
     }
 
     getValue() {

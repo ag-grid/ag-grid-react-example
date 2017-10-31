@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react'
+import React from 'react'
+import * as PropTypes from 'prop-types';
 import {Route, Link} from 'react-router-dom'
 
 // for bootstrap li active functionality

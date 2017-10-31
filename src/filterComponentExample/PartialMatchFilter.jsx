@@ -34,7 +34,7 @@ export default class PartialMatchFilter extends Component {
         this.state.text = model ? model.value : '';
     }
 
-    afterGuiAttached(params) {
+    componentDidMount() {
         this.focus();
     }
 
