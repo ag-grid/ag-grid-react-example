@@ -7,7 +7,6 @@ import ProficiencyFilter from './ProficiencyFilter.jsx';
 import HeaderGroupComponent from './HeaderGroupComponent.jsx';
 
 export default class ColDefFactory {
-
     createColDefs() {
         return [
             {
@@ -51,7 +50,7 @@ export default class ColDefFactory {
                     {
                         headerName: "DOB",
                         field: "dob",
-                        width: 110,
+                        width: 145,
                         enableRowGroup: true,
                         enablePivot: true,
                         filter: 'date',
