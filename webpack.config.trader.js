@@ -26,7 +26,9 @@ module.exports = {
     },
     resolve: {
         alias: {
-            "ag-grid-root" : __dirname + "/node_modules/ag-grid"
+            "ag-grid": path.resolve('./node_modules/ag-grid'),
+            "ag-grid-enterprise": path.resolve('./node_modules/ag-grid-enterprise'),
+            react: path.resolve('./node_modules/react')
         },
         extensions: ['', '.js', '.jsx']
     }

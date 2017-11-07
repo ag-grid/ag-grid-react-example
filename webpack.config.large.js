@@ -1,8 +1,12 @@
+const path = require('path');
+
+const SRC_DIR = path.resolve(__dirname, 'src-large');
+
 module.exports = {
-    entry: "./src-large/index.js",
+    entry: SRC_DIR + "/index.js",
     output: {
         path: __dirname,
-        filename: "dist/bundle.js"
+        filename: "dist/react-large.js"
     },
     module: {
         loaders: [
@@ -12,16 +16,20 @@ module.exports = {
             },
             {
                 test: /\.js$|\.jsx$/,
+                include: SRC_DIR,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react', 'es2015']
+                    presets: ['react', 'es2015', 'stage-0']
                 }
             }
         ]
     },
     resolve: {
         alias: {
-            "ag-grid-root" : __dirname + "/node_modules/ag-grid"
-        }
+            "ag-grid": path.resolve('./node_modules/ag-grid'),
+            "ag-grid-enterprise": path.resolve('./node_modules/ag-grid-enterprise'),
+            react: path.resolve('./node_modules/react')
+        },
+        extensions: ['', '.js', '.jsx']
     }
 };
