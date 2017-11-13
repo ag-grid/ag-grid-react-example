@@ -12,7 +12,6 @@ import PinnedRowComponentExample from "./pinnedRowExample/PinnedRowComponentExam
 import FullWidthComponentExample from "./fullWidthExample/FullWidthComponentExample";
 import GroupedRowInnerRendererComponentExample from "./groupedRowInnerRendererExample/GroupedRowInnerRendererComponentExample";
 import FilterComponentExample from "./filterComponentExample/FilterComponentExample";
-import MasterDetailExample from "./masterDetailExample/MasterDetailExample";
 import SimpleReduxExample from "./simpleReduxExample/SimpleReduxExample";
 import FloatingFilterGridExample from "./floatingFilter/FloatingFilterGridExample";
 import SimpleReduxDynamicExample from "./simpleReduxDynamicComponentExample/SimpleReduxExample";
@@ -29,7 +28,6 @@ const SideBar = () => (
                 <NavItem to='/full-width'>Full Width Renderer Example</NavItem>
                 <NavItem to='/group-row'>Grouped Row Inner Renderer Example</NavItem>
                 <NavItem to='/filter'>Filters Component Example</NavItem>
-                <NavItem to='/master-detail'>Master Detail Example</NavItem>
                 <NavItem to='/floating-filter'>Floating Filters</NavItem>
                 <NavItem to='/simple-redux'>Simple Redux Example</NavItem>
                 <NavItem to='/simple-redux-dynamic'>Simple Redux Dynamic Component Example</NavItem>
@@ -54,7 +52,6 @@ class App extends Component {
                         <Route exact path='/full-width' component={FullWidthComponentExample}/>
                         <Route exact path='/group-row' component={GroupedRowInnerRendererComponentExample}/>
                         <Route exact path='/filter' component={FilterComponentExample}/>
-                        <Route exact path='/master-detail' component={MasterDetailExample}/>
                         <Route exact path='/floating-filter' component={FloatingFilterGridExample}/>
                         <Route exact path='/simple-redux' component={SimpleReduxExample}/>
                         <Route exact path='/simple-redux-dynamic' component={SimpleReduxDynamicExample}/>
