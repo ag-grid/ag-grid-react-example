@@ -1,6 +1,6 @@
 {
   "name": "ag-grid-react-example",
-  "version": "14.2.0",
+  "version": "15.0.0",
   "description": "Example Reach applicaiton using ag-Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
@@ -58,9 +58,9 @@
     "typescript": "2.3.x"
   },
   "dependencies": {
-    "ag-grid": "^14.0.0",
-    "ag-grid-enterprise": "^14.0.0",
-    "ag-grid-react": "^14.0.0",
+    "ag-grid": "^15.x",
+    "ag-grid-enterprise": "^15.x",
+    "ag-grid-react": "^15.x",
     "bootstrap": "3.3.7",
     "d3": "4.9.1",
     "file-loader": "0.11.1",
