@@ -77,8 +77,10 @@ export default class RichGridDeclarativeExample extends Component {
 
     dobFilter = () => {
         let dateFilterComponent = this.api.getFilterInstance('dob');
-        dateFilterComponent.setFilterType('equals');
-        dateFilterComponent.setDateFrom('2000-01-01');
+        dateFilterComponent.setModel({
+            type: 'equals',
+            dateFrom: '2000-01-01'
+        });
 
         // as the date filter is a React component, and its using setState internally, we need
         // to allow time for the state to be set (as setState is an async operation)
@@ -194,7 +196,7 @@ export default class RichGridDeclarativeExample extends Component {
                             <AgGridColumn headerName="Employee" headerGroupComponentFramework={HeaderGroupComponent}>
                                 <AgGridColumn field="name" width={150} enableRowGroup enablePivot pinned editable cellEditorFramework={NameCellEditor}></AgGridColumn>
                                 <AgGridColumn field="country" width={150} enableRowGroup enablePivot pinned editable cellRenderer={RichGridDeclarativeExample.countryCellRenderer} filterParams={{cellRenderer: RichGridDeclarativeExample.countryCellRenderer, cellHeight:20}}></AgGridColumn>
-                                <AgGridColumn field="dob" width={145} headerName="DOB" filter="date" pinned columnGroupShow="open" cellRenderer={RichGridDeclarativeExample.dateCellRenderer}></AgGridColumn>
+                                <AgGridColumn field="dob" width={145} headerName="DOB" filter="agDateColumnFilter" pinned columnGroupShow="open" cellRenderer={RichGridDeclarativeExample.dateCellRenderer}></AgGridColumn>
                             </AgGridColumn>
                             <AgGridColumn headerName="IT Skills">
                                 <AgGridColumn field="skills" width={120} enableRowGroup enablePivot suppressSorting cellRendererFramework={SkillsCellRenderer} filterFramework={SkillsFilter}></AgGridColumn>
