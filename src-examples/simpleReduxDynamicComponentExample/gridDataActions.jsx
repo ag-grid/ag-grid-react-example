@@ -4,6 +4,7 @@ export function updateRowData(rowData) {
         rowData
     }
 }
+
 export function setCurrency(currencySymbol, exchangeRate) {
     return {
         type: 'CURRENCY_CHANGED',

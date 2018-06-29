@@ -5,7 +5,7 @@ import {render} from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 
 import "ag-grid/dist/styles/ag-grid.css";
-import "ag-grid/dist/styles/theme-fresh.css";
+import "ag-grid/dist/styles/ag-theme-balham.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
 import App from "./App";

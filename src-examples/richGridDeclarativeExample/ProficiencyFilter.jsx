@@ -54,7 +54,7 @@ export default class ProficiencyFilter extends React.Component {
         PROFICIENCY_NAMES.forEach((name) => {
             const selected = this.state.selected === name;
             rows.push(
-                <div key={name}>
+                <div key={name} style={{marginTop: 3}}>
                     <label style={{paddingLeft: 4}}>
                         <input type="radio" checked={selected} name={Math.random()}
                                onChange={this.onButtonPressed.bind(this, name)}/>

@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {Provider} from "react-redux";
 import {createStore} from "redux";
-
 // take this line out if you do not want to use ag-Grid-Enterprise
 import "ag-grid-enterprise";
 
@@ -26,8 +25,8 @@ export default class SimpleReduxExample extends Component {
             <Provider store={store}>
                 <div>
                     <h1>Simple Redux Example using Connected React Components</h1>
-                    <HeaderComponent />
-                    <GridComponent />
+                    <HeaderComponent/>
+                    <GridComponent/>
                 </div>
             </Provider>
         )

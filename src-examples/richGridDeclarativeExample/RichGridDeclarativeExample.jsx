@@ -12,7 +12,6 @@ import HeaderGroupComponent from './HeaderGroupComponent.jsx';
 import SortableHeaderComponent from './SortableHeaderComponent.jsx';
 
 import "./RichGridDeclarativeExample.css";
-
 // take this line out if you do not want to use ag-Grid-Enterprise
 import "ag-grid-enterprise";
 
@@ -123,13 +122,21 @@ export default class RichGridDeclarativeExample extends Component {
                     <div>
                         <span>
                             Grid API:
-                            <button onClick={() => { this.api.selectAll() }} className="btn btn-primary">Select All</button>
-                            <button onClick={() => { this.api.deselectAll() }} className="btn btn-primary">Clear Selection</button>
+                            <button onClick={() => {
+                                this.api.selectAll()
+                            }} className="btn btn-primary">Select All</button>
+                            <button onClick={() => {
+                                this.api.deselectAll()
+                            }} className="btn btn-primary">Clear Selection</button>
                         </span>
                         <span style={{float: "right"}}>
                             Column API:
-                            <button onClick={() => { this.columnApi.setColumnVisible('country', false) }} className="btn btn-primary">Hide Country Column</button>
-                            <button onClick={() => { this.columnApi.setColumnVisible('country', true) }} className="btn btn-primary">Show Country Column</button>
+                            <button onClick={() => {
+                                this.columnApi.setColumnVisible('country', false)
+                            }} className="btn btn-primary">Hide Country Column</button>
+                            <button onClick={() => {
+                                this.columnApi.setColumnVisible('country', true)
+                            }} className="btn btn-primary">Show Country Column</button>
                         </span>
                     </div>
                     <div style={{display: "inline-block", width: "100%", marginTop: 10, marginBottom: 10}}>
@@ -150,10 +157,11 @@ export default class RichGridDeclarativeExample extends Component {
                             <button onClick={this.invokeSkillsFilterMethod}
                                     className="btn btn-primary">Invoke Skills Filter Method
                             </button>
-                            <button onClick={this.dobFilter} className="btn btn-primary">DOB equals to 01/01/2000ß</button>
+                            <button onClick={this.dobFilter} className="btn btn-primary">DOB equals to 01/01/2000ß
+                            </button>
                         </div>
                     </div>
-                    <div style={{height: 400, width: 900}} className="ag-fresh">
+                    <div style={{height: 400, width: 900}} className="ag-theme-balham">
                         <AgGridReact
                             // listening for events
                             onGridReady={this.onGridReady}
@@ -179,7 +187,6 @@ export default class RichGridDeclarativeExample extends Component {
                             enableFilter
                             floatingFilter
                             groupHeaders
-                            rowHeight="22"
 
                             // setting grid wide date component
                             dateComponentFramework={DateComponent}
@@ -192,20 +199,36 @@ export default class RichGridDeclarativeExample extends Component {
                                 }
                             }}
                         >
-                            <AgGridColumn headerName="#" width={30} checkboxSelection suppressSorting suppressMenu suppressFilter pinned></AgGridColumn>
+                            <AgGridColumn headerName="#" width={30}
+                                          checkboxSelection suppressSorting suppressMenu suppressFilter pinned>
+                            </AgGridColumn>
                             <AgGridColumn headerName="Employee" headerGroupComponentFramework={HeaderGroupComponent}>
-                                <AgGridColumn field="name" width={150} enableRowGroup enablePivot pinned editable cellEditorFramework={NameCellEditor}></AgGridColumn>
-                                <AgGridColumn field="country" width={150} enableRowGroup enablePivot pinned editable cellRenderer={RichGridDeclarativeExample.countryCellRenderer} filterParams={{cellRenderer: RichGridDeclarativeExample.countryCellRenderer, cellHeight:20}}></AgGridColumn>
-                                <AgGridColumn field="dob" width={145} headerName="DOB" filter="agDateColumnFilter" pinned columnGroupShow="open" cellRenderer={RichGridDeclarativeExample.dateCellRenderer}></AgGridColumn>
+                                <AgGridColumn field="name" width={150}
+                                              cellEditorFramework={NameCellEditor}
+                                              enableRowGroup enablePivot pinned editable/>
+                                <AgGridColumn field="country" width={150}
+                                              cellRenderer={RichGridDeclarativeExample.countryCellRenderer}
+                                              filterParams={{
+                                                  cellRenderer: RichGridDeclarativeExample.countryCellRenderer,
+                                                  cellHeight: 20
+                                              }}
+                                              enableRowGroup enablePivot pinned editable/>
+                                <AgGridColumn field="dob" width={175} headerName="DOB" filter="agDateColumnFilter"
+                                              pinned columnGroupShow="open"
+                                              cellRenderer={RichGridDeclarativeExample.dateCellRenderer}/>
                             </AgGridColumn>
                             <AgGridColumn headerName="IT Skills">
-                                <AgGridColumn field="skills" width={120} enableRowGroup enablePivot suppressSorting cellRendererFramework={SkillsCellRenderer} filterFramework={SkillsFilter}></AgGridColumn>
-                                <AgGridColumn field="proficiency" width={135} enableValue cellRendererFramework={ProficiencyCellRenderer} filterFramework={ProficiencyFilter}></AgGridColumn>
+                                <AgGridColumn field="skills" width={120} enableRowGroup enablePivot suppressSorting
+                                              cellRendererFramework={SkillsCellRenderer}
+                                              filterFramework={SkillsFilter}/>
+                                <AgGridColumn field="proficiency" width={135} enableValue
+                                              cellRendererFramework={ProficiencyCellRenderer}
+                                              filterFramework={ProficiencyFilter}/>
                             </AgGridColumn>
                             <AgGridColumn headerName="Contact">
-                                <AgGridColumn field="mobile" width={150} filter="text"></AgGridColumn>
-                                <AgGridColumn field="landline" width={150} filter="text"></AgGridColumn>
-                                <AgGridColumn field="address" width={500} filter="text"></AgGridColumn>
+                                <AgGridColumn field="mobile" width={150} filter="text"/>
+                                <AgGridColumn field="landline" width={150} filter="text"/>
+                                <AgGridColumn field="address" width={500} filter="text"/>
                             </AgGridColumn>
                         </AgGridReact>
                     </div>
@@ -215,7 +238,8 @@ export default class RichGridDeclarativeExample extends Component {
                         </div>
                         <div className="row">
                             <div className="col-sm-12">
-                                <h5>This example demonstrates many features of ag-Grid, with Grid and Column Definition defined declaratively (i.e. with markup).</h5>
+                                <h5>This example demonstrates many features of ag-Grid, with Grid and Column Definition
+                                    defined declaratively (i.e. with markup).</h5>
                                 <p><span style={{fontWeight: 500}}>Select All/Clear Selection</span>: Select or Deselect
                                     All
                                     Rows</p>

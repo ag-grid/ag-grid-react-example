@@ -39,7 +39,7 @@ class GridComponent extends Component {
     render() {
         return (
             <div style={{height: 400, width: 900, marginTop: 15}}
-                 className="ag-fresh">
+                 className="ag-theme-balham">
                 <AgGridReact
                     // properties
                     columnDefs={this.state.columnDefs}

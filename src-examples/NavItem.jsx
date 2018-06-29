@@ -1,6 +1,6 @@
 import React from 'react'
 import * as PropTypes from 'prop-types';
-import {Route, Link} from 'react-router-dom'
+import {Link, Route} from 'react-router-dom'
 
 // for bootstrap li active functionality
 export default function NavItem({children, to, exact}) {
