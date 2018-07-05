@@ -1,6 +1,6 @@
 {
   "name": "ag-grid-react-example",
-  "version": "18.0.0",
+  "version": "18.1.0",
   "description": "Example Reach applicaiton using ag-Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
@@ -17,14 +17,13 @@
     "build-dashboard": "webpack --config config/webpack.config.trader.js --progress --profile --bail",
     "build-all": "npm run build-examples && npm run build-dashboard",
     "build": "npm run clean && npm run mkdirs && npm run build-all && npm run copy",
-    "copy-to-docs": "ncp dist/examples ../ag-grid-docs/src/framework-examples/react-examples/examples && ncp dist/trader ../ag-grid-docs/src/framework-examples/react-examples/trader",
-    "build-to-docs": "npm run build && npm run copy-to-docs",
     "start": "npm run examples"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/ag-grid/ag-grid-react-example.git"
   },
+  "private": true,
   "keywords": [
     "react",
     "grid",
@@ -58,9 +57,9 @@
     "typescript": "2.3.x"
   },
   "dependencies": {
-    "ag-grid": "^18.0.0",
-    "ag-grid-enterprise": "^18.0.0",
-    "ag-grid-react": "^18.0.0",
+    "ag-grid": "^18.1.0",
+    "ag-grid-enterprise": "^18.1.0",
+    "ag-grid-react": "^18.1.0",
     "bootstrap": "3.3.7",
     "d3": "4.9.1",
     "file-loader": "0.11.1",
