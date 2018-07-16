@@ -33,5 +33,8 @@ export default connect(
             currencySymbol: state.currencySymbol,
             exchangeRate: state.exchangeRate
         }
-    }
+    },
+    null,
+    null,
+    { withRef: true } // must be supplied for react/redux when using GridOptions.reactNext
 )(PriceRenderer);

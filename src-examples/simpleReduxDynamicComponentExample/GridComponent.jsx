@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import * as PropTypes from "prop-types";
 
 import {AgGridReact} from "ag-grid-react";
 import {connect} from "react-redux";
@@ -45,6 +46,9 @@ class GridComponent extends Component {
                     columnDefs={this.state.columnDefs}
                     rowData={this.props.rowData}
 
+                    reactNext={true}
+                    reduxStore={this.context.store} // must be supplied when using redux with reactNext
+
                     // events
                     onGridReady={this.onGridReady}>
                 </AgGridReact>
@@ -52,6 +56,10 @@ class GridComponent extends Component {
         )
     }
 }
+
+GridComponent.contextTypes = {
+    store: PropTypes.object                         // must be supplied when using redux with reactNext
+};
 
 // pull off row data changes
 export default connect(
