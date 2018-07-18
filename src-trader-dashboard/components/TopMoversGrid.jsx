@@ -17,21 +17,21 @@ class TopMoversGrid extends Component {
                     field: 'last',
                     headerName: 'Last',
                     headerClass: 'align-right',
-                    cellRenderer: 'animateShowChange',
+                    cellRenderer: 'agAnimateShowChangeCellRenderer',
                     cellClass: 'align-right'
                 },
                 {
                     field: 'net',
                     headerName: 'Net',
                     headerClass: 'align-right',
-                    cellRenderer: 'animateShowChange',
+                    cellRenderer: 'agAnimateShowChangeCellRenderer',
                     cellClass: 'align-right'
                 },
                 {
                     field: 'pct_net_change',
                     headerName: '% NC',
                     headerClass: 'align-right',
-                    cellRenderer: 'animateShowChange',
+                    cellRenderer: 'agAnimateShowChangeCellRenderer',
                     cellClass: 'align-right',
                     sort: 'desc',
                     valueFormatter(params) {

@@ -120,7 +120,7 @@ const FX_DELTA_HEADERS = [
         field: 'last',
         headerName: 'Last',
         headerClass: 'align-right',
-        cellRenderer: 'animateShowChange',
+        cellRenderer: 'agAnimateShowChangeCellRenderer',
         cellClass: 'align-right',
         width: 100
     },
@@ -128,7 +128,7 @@ const FX_DELTA_HEADERS = [
         field: 'net',
         headerName: 'Net',
         headerClass: 'align-right',
-        cellRenderer: 'animateShowChange',
+        cellRenderer: 'agAnimateShowChangeCellRenderer',
         cellClass: 'align-right',
         width: 90
     },
@@ -145,7 +145,7 @@ const FX_DELTA_HEADERS = [
         headerName: symbol,
         width: 67,
         cellClass: 'align-right',
-        cellRenderer: 'animateShowChange',
+        cellRenderer: 'agAnimateShowChangeCellRenderer',
         cellClassRules: {
             'fx-positive': 'x > 0.8',
             'fx-null': 'x === null',
