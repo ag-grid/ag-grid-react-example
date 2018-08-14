@@ -6,7 +6,7 @@ import {render} from "react-dom";
 import {Provider} from "react-redux";
 
 import "ag-grid/dist/styles/ag-grid.css";
-import "ag-grid/dist/styles/theme-fresh.css";
+import "ag-grid/dist/styles/ag-theme-fresh.css";
 
 import StoreService from './services/StoreService';
 import TraderDashboard from "./components/TraderDashboard.jsx";
