@@ -61,7 +61,7 @@ export default class MyApp extends Component {
 
     render() {
         return (
-            <div style={{height: '100%'}} className="ag-fresh">
+            <div style={{height: '100%'}} className="ag-theme-fresh">
                 <AgGridReact columnDefs={this.state.columnDefs} rowData={this.state.rowData}/>
             </div>
         );

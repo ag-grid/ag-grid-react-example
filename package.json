@@ -57,7 +57,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "ag-grid": "^18.1.0",
+    "ag-grid-community": "^18.1.0",
     "ag-grid-enterprise": "^18.1.0",
     "ag-grid-react": "^18.1.0",
     "bootstrap": "3.3.7",
