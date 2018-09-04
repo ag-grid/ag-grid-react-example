@@ -22,7 +22,7 @@ export default class RichGridDeclarativeExample extends Component {
 
         this.state = {
             quickFilterText: null,
-            showToolPanel: false,
+            sideBar: false,
             rowData: new RowDataFactory().createRowData(),
             icons: {
                 columnRemoveFromGroup: '<i class="fa fa-remove"/>',
@@ -50,8 +50,8 @@ export default class RichGridDeclarativeExample extends Component {
     };
 
     /* Demo related methods */
-    onToggleToolPanel = (event) => {
-        this.setState({showToolPanel: event.target.checked});
+    onToggleSidebar = (event) => {
+        this.setState({sideBar: event.target.checked});
     };
 
     deselectAll() {
@@ -142,8 +142,8 @@ export default class RichGridDeclarativeExample extends Component {
                     <div style={{display: "inline-block", width: "100%", marginTop: 10, marginBottom: 10}}>
                         <div style={{float: "left"}}>
                             <label>
-                                <input type="checkbox" onChange={this.onToggleToolPanel} style={{marginRight: 5}}/>
-                                Show Tool Panel
+                                <input type="checkbox" onChange={this.onToggleSidebar} style={{marginRight: 5}}/>
+                                Show Side Bar
                             </label>
                         </div>
                         <div style={{float: "left", marginLeft: 20}}>
@@ -169,7 +169,7 @@ export default class RichGridDeclarativeExample extends Component {
                             onCellClicked={this.onCellClicked}
 
                             // binding to simple properties
-                            showToolPanel={this.state.showToolPanel}
+                            sideBar={this.state.sideBar}
                             quickFilterText={this.state.quickFilterText}
 
                             // binding to an object property
@@ -247,10 +247,10 @@ export default class RichGridDeclarativeExample extends Component {
                                     All
                                     Rows
                                     (expand the Employee column to show the Country column first)</p>
-                                <p><span style={{fontWeight: 500}}>Toggle The Tool Panel</span>: Let your users Pivot,
+                                <p><span style={{fontWeight: 500}}>Toggle The Side Bar</span>: Let your users Pivot,
                                     Group
                                     and
-                                    Aggregate using the Tool Panel</p>
+                                    Aggregate using the Side Bar</p>
                                 <p><span style={{fontWeight: 500}}>Refresh Data</span>: Dynamically Update Grid Data</p>
                                 <p><span style={{fontWeight: 500}}>Quick Filter</span>: Perform Quick Grid Wide
                                     Filtering
@@ -322,12 +322,11 @@ export default class RichGridDeclarativeExample extends Component {
                             <div className="col-sm-4">
                                 <div className="card">
                                     <div className="card-body">
-                                        <h4 className="card-title">Tool Panel</h4>
+                                        <h4 className="card-title">Side Bar</h4>
                                         <p className="card-text">Let your users Pivot, Group and Aggregate using the
-                                            Tool
-                                            Panel</p>
-                                        <a target="_blank" href="https://www.ag-grid.com//javascript-grid-tool-panel/"
-                                           className="btn btn-primary">Tool Panel</a>
+                                            Side Bar</p>
+                                        <a target="_blank" href="https://www.ag-grid.com//javascript-grid-side-bar/"
+                                           className="btn btn-primary">Side Bar</a>
                                     </div>
                                 </div>
                             </div>
