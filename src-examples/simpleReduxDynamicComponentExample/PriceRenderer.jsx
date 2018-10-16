@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
+import FontContext from './fontContext'
+
 class PriceRenderer extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +20,9 @@ class PriceRenderer extends Component {
 
     render() {
         return (
-            <span>{this.props.currencySymbol}{this.state.convertedValue}</span>
+            <FontContext.Consumer>
+                {fontWeight => <span style={{fontWeight}}> {this.props.currencySymbol}{this.state.convertedValue}</span> }
+            </FontContext.Consumer>
         );
     }
 
@@ -36,5 +40,5 @@ export default connect(
     },
     null,
     null,
-    { withRef: true } // must be supplied for react/redux when using GridOptions.reactNext
+    {withRef: true} // must be supplied for react/redux when using GridOptions.reactNext
 )(PriceRenderer);
