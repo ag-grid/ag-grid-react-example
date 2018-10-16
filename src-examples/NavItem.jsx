@@ -6,8 +6,8 @@ import {Link, Route} from 'react-router-dom'
 export default function NavItem({children, to, exact}) {
     return (
         <Route path={to} exact={exact} children={({match}) => (
-            <li className={match ? 'active' : null}>
-                <Link to={to}>{children}</Link>
+            <li className="nav-item">
+                <Link className={match ? 'nav-link active' : 'nav-link'} to={to}>{children}</Link>
             </li>
         )}/>
     )
