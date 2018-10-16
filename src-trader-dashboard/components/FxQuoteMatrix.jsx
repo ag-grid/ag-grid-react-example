@@ -3,9 +3,6 @@ import {connect} from "react-redux";
 
 import {AgGridReact} from "ag-grid-react";
 
-import assign from "lodash/assign";
-import uniq from "lodash/uniq";
-
 class FxQuoteMatrix extends Component {
     constructor(props) {
         super(props);
