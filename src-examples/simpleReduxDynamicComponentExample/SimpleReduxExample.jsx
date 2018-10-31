@@ -9,6 +9,8 @@ import GridComponent from "./GridComponent";
 
 import gridData from "./gridDataReducer";
 
+import FontContext from './fontContext'
+
 let store = createStore(gridData);
 
 /*
@@ -26,7 +28,9 @@ export default class SimpleReduxExample extends Component {
                 <div>
                     <h1>Simple Redux Example using Connected React Components</h1>
                     <HeaderComponent/>
-                    <GridComponent/>
+                    <FontContext.Provider value="bold">
+                        <GridComponent/>
+                    </FontContext.Provider>
                 </div>
             </Provider>
         )

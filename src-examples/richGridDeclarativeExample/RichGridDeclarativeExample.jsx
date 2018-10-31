@@ -232,7 +232,7 @@ export default class RichGridDeclarativeExample extends Component {
                             </AgGridColumn>
                         </AgGridReact>
                     </div>
-                    <div>
+                    <div style={{marginTop: 10}}>
                         <div className="row">
                             <div className="col-sm-12"><h1>Rich Grid with Declarative Markup Example</h1></div>
                         </div>

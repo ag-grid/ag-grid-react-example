@@ -20,7 +20,11 @@ module.exports = {
                 include: SRC_DIR,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react', 'es2015', 'stage-0']
+                    presets: ['@babel/preset-react', '@babel/preset-env'],
+                    plugins: [
+                        require('@babel/plugin-proposal-function-bind'),
+                        require('@babel/plugin-proposal-class-properties')
+                    ]
                 }
             }
         ]

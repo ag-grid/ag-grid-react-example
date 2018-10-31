@@ -8,7 +8,7 @@ import SimpleReduxDynamicExample from "./simpleReduxDynamicComponentExample/Simp
 
 const SideBar = () => (
     <div style={{float: "left", width: 335, marginRight: 25}}>
-        <ul className="nav nav-pills nav-stacked">
+        <ul className="nav nav-pills">
             <NavItem to='/rich-grid-declarative'>Rich Grid with Declarative Markup</NavItem>
             <NavItem to='/simple-redux-dynamic'>Simple Redux Dynamic Component Example</NavItem>
         </ul>

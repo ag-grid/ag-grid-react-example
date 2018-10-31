@@ -6,6 +6,8 @@ import {connect} from "react-redux";
 
 import PriceRenderer from "./PriceRenderer";
 
+const ThemeContext = React.createContext('light');
+
 /*
  * This component serves to display the row data (provided by redux)
  */
