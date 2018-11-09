@@ -157,7 +157,7 @@ export default class RichGridDeclarativeExample extends Component {
                             <button onClick={this.invokeSkillsFilterMethod}
                                     className="btn btn-primary">Invoke Skills Filter Method
                             </button>
-                            <button onClick={this.dobFilter} className="btn btn-primary">DOB equals to 01/01/2000ß
+                            <button onClick={this.dobFilter} className="btn btn-primary">DOB equals to 01/01/2000
                             </button>
                         </div>
                     </div>
