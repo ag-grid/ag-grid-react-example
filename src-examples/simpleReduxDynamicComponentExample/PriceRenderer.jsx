@@ -21,7 +21,8 @@ class PriceRenderer extends Component {
     render() {
         return (
             <FontContext.Consumer>
-                {fontWeight => <span style={{fontWeight}}> {this.props.currencySymbol}{this.state.convertedValue}</span> }
+                {fontWeight => <span
+                    style={{fontWeight}}> {this.props.currencySymbol}{this.state.convertedValue}</span>}
             </FontContext.Consumer>
         );
     }
@@ -40,5 +41,5 @@ export default connect(
     },
     null,
     null,
-    {withRef: true} // must be supplied for react/redux when using GridOptions.reactNext
+    {forwardRef: true} // must be supplied for react/redux when using GridOptions.reactNext
 )(PriceRenderer);
