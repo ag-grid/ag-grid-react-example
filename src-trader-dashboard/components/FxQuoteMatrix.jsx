@@ -32,25 +32,27 @@ class FxQuoteMatrix extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const newRowData = nextProps.rowData;
+        if (this.gridApi) {
+            const newRowData = nextProps.rowData;
 
-        const updatedRows = [];
+            const updatedRows = [];
 
-        for (let i = 0; i < newRowData.length; i++) {
-            let newRow = newRowData[i];
-            let currentRowNode = this.gridApi.getRowNode(newRow.symbol);
+            for (let i = 0; i < newRowData.length; i++) {
+                let newRow = newRowData[i];
+                let currentRowNode = this.gridApi.getRowNode(newRow.symbol);
 
-            const {data} = currentRowNode;
-            for (const def of this.state.columnDefs) {
-                if (data[def.field] !== newRow[def.field]) {
-                    updatedRows.push(newRow);
-                    break;
+                const {data} = currentRowNode;
+                for (const def of this.state.columnDefs) {
+                    if (data[def.field] !== newRow[def.field]) {
+                        updatedRows.push(newRow);
+                        break;
+                    }
                 }
             }
+
+
+            this.gridApi.updateRowData({update: updatedRows});
         }
-
-
-        this.gridApi.updateRowData({update: updatedRows});
 
     }
 
@@ -78,7 +80,7 @@ class FxQuoteMatrix extends Component {
 export default connect(
     (state) => {
         return {
-            rowData: state.fxData
+            rowData: state ? state.fxData : null
         }
     }
 )(FxQuoteMatrix);

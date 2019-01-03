@@ -84,7 +84,7 @@ class TopMoversGrid extends Component {
 export default connect(
     (state) => {
         return {
-            rowData: state.fxTopMovers
+            rowData: state ? state.fxTopMovers : null
         }
     }
 )(TopMoversGrid);

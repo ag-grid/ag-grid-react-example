@@ -51,11 +51,11 @@ export default class DateComponent extends React.Component {
         return (
             <div style={filterStyle}>
                 <span style={resetStyle} onClick={this.resetDate.bind(this)}>x</span>
-                <input onInput={this.onDateChanged.bind(this)} ref="dd" placeholder="dd" style={ddStyle}
+                <input onChange={this.onDateChanged.bind(this)} ref="dd" placeholder="dd" style={ddStyle}
                        value={this.state.textBoxes.dd} maxLength="2"/>/
-                <input onInput={this.onDateChanged.bind(this)} ref="mm" placeholder="mm" style={mmStyle}
+                <input onChange={this.onDateChanged.bind(this)} ref="mm" placeholder="mm" style={mmStyle}
                        value={this.state.textBoxes.mm} maxLength="2"/>/
-                <input onInput={this.onDateChanged.bind(this)} ref="yyyy" placeholder="yyyy" style={yyyyStyle}
+                <input onChange={this.onDateChanged.bind(this)} ref="yyyy" placeholder="yyyy" style={yyyyStyle}
                        value={this.state.textBoxes.yyyy} maxLength="4"/>
             </div>
         );
