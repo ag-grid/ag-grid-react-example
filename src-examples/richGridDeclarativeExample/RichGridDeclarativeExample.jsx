@@ -179,12 +179,9 @@ export default class RichGridDeclarativeExample extends Component {
                             rowData={this.state.rowData}
 
                             // no binding, just providing hard coded strings for the properties
-                            // boolean properties will default to true if provided (ie enableColResize => enableColResize="true")
+                            // boolean properties will default to true if provided (ie suppressRowClickSelection => suppressRowClickSelection="true")
                             suppressRowClickSelection
                             rowSelection="multiple"
-                            enableColResize
-                            enableSorting
-                            enableFilter
                             floatingFilter
                             groupHeaders
 
@@ -193,6 +190,9 @@ export default class RichGridDeclarativeExample extends Component {
 
                             // setting default column properties
                             defaultColDef={{
+                                resizable: true,
+                                sortable: true,
+                                filter: true,
                                 headerComponentFramework: SortableHeaderComponent,
                                 headerComponentParams: {
                                     menuIcon: 'fa-bars'
@@ -200,7 +200,7 @@ export default class RichGridDeclarativeExample extends Component {
                             }}
                         >
                             <AgGridColumn headerName="#" width={30}
-                                          checkboxSelection suppressSorting suppressMenu suppressFilter pinned>
+                                          checkboxSelection sortable={false} suppressMenu filter={false} pinned>
                             </AgGridColumn>
                             <AgGridColumn headerName="Employee" headerGroupComponentFramework={HeaderGroupComponent}>
                                 <AgGridColumn field="name" width={150}
@@ -218,10 +218,10 @@ export default class RichGridDeclarativeExample extends Component {
                                               cellRenderer={RichGridDeclarativeExample.dateCellRenderer}/>
                             </AgGridColumn>
                             <AgGridColumn headerName="IT Skills">
-                                <AgGridColumn field="skills" width={120} enableRowGroup enablePivot suppressSorting
+                                <AgGridColumn field="skills" width={120} enableRowGroup enablePivot sortable={false}
                                               cellRendererFramework={SkillsCellRenderer}
                                               filterFramework={SkillsFilter}/>
-                                <AgGridColumn field="proficiency" width={135} enableValue
+                                <AgGridColumn field="proficiency" width={160} enableValue
                                               cellRendererFramework={ProficiencyCellRenderer}
                                               filterFramework={ProficiencyFilter}/>
                             </AgGridColumn>

@@ -155,7 +155,9 @@ export default class extends Component {
                 <AgGridReact
                     // properties
                     columnDefs={this.state.columnDefs}
-                    enableSorting="true"
+                    defaultColDef={{
+                        sortable: true
+                    }}
                     rowSelection="single"
 
                     // callbacks

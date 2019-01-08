@@ -63,8 +63,10 @@ class FxQuoteMatrix extends Component {
                 <AgGridReact
                     // properties
                     columnDefs={this.state.columnDefs}
-                    enableSorting="false"
-                    enableFilter="false"
+                    defaultColDef={{
+                        sortable: false,
+                        filter: false
+                    }}
 
                     // callbacks
                     getRowNodeId={this.getRowNodeId}

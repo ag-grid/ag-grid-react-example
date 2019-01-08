@@ -67,8 +67,10 @@ class TopMoversGrid extends Component {
                     // properties
                     columnDefs={this.state.columnDefs}
                     rowData={this.props.rowData}
-                    enableSorting
-                    enableFilter="false"
+                    defaultColDef={{
+                        sortable: true,
+                        filter: false
+                    }}
                     animateRows
                     deltaRowDataMode
                     getRowNodeId={this.getRowNodeId}
