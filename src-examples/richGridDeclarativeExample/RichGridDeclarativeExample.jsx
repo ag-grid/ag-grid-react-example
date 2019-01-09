@@ -25,12 +25,12 @@ export default class RichGridDeclarativeExample extends Component {
             sideBar: false,
             rowData: new RowDataFactory().createRowData(),
             icons: {
-                columnRemoveFromGroup: '<i class="fa fa-remove"/>',
+                columnRemoveFromGroup: '<i class="fa fa-times"/>',
                 filter: '<i class="fa fa-filter"/>',
-                sortAscending: '<i class="fa fa-long-arrow-down"/>',
-                sortDescending: '<i class="fa fa-long-arrow-up"/>',
-                groupExpanded: '<i class="fa fa-minus-square-o"/>',
-                groupContracted: '<i class="fa fa-plus-square-o"/>'
+                sortAscending: '<i class="fa fa-long-arrow-alt-down"/>',
+                sortDescending: '<i class="fa fa-long-arrow-alt-up"/>',
+                groupExpanded: '<i class="far fa-minus-square"/>',
+                groupContracted: '<i class="far fa-plus-square"/>'
             }
         };
     }
