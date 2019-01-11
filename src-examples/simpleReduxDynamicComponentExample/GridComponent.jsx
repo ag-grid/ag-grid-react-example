@@ -1,12 +1,9 @@
 import React, {Component} from "react";
-import * as PropTypes from "prop-types";
-
-import {AgGridReact} from "ag-grid-react";
 import {connect} from "react-redux";
 
-import PriceRenderer from "./PriceRenderer";
+import {AgGridReact} from "ag-grid-react";
 
-const ThemeContext = React.createContext('light');
+import PriceRenderer from "./PriceRenderer";
 
 /*
  * This component serves to display the row data (provided by redux)
@@ -49,7 +46,6 @@ class GridComponent extends Component {
                     rowData={this.props.rowData}
 
                     reactNext={true}
-                    reduxStore={this.context.store} // must be supplied when using redux with reactNext
 
                     // events
                     onGridReady={this.onGridReady}>
@@ -58,10 +54,6 @@ class GridComponent extends Component {
         )
     }
 }
-
-GridComponent.contextTypes = {
-    store: PropTypes.object                         // must be supplied when using redux with reactNext
-};
 
 // pull off row data changes
 export default connect(
