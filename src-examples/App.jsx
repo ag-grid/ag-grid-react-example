@@ -12,7 +12,7 @@ const SideBar = () => (
         <ul className="nav nav-pills">
             <NavItem to='/rich-grid-declarative'>Rich Grid with Declarative Markup</NavItem>
             <NavItem to='/simple-redux-dynamic'>Simple Redux Dynamic Component Example</NavItem>
-            <NavItem to='/simple-redux-hook'>Simple Redux Dynamic Component Example</NavItem>
+            <NavItem to='/simple-redux-hook'>Simple React Hook Component Example</NavItem>
         </ul>
     </div>
 );
