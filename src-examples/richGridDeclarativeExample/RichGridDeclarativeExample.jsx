@@ -141,16 +141,7 @@ export default class RichGridDeclarativeExample extends Component {
                     </div>
                     <div style={{display: "inline-block", width: "100%", marginTop: 10, marginBottom: 10}}>
                         <div style={{float: "left"}}>
-                            <label>
-                                <input type="checkbox" onChange={this.onToggleSidebar} style={{marginRight: 5}}/>
-                                Show Side Bar
-                            </label>
-                        </div>
-                        <div style={{float: "left", marginLeft: 20}}>
                             <button onClick={this.onRefreshData} className="btn btn-primary">Refresh Data</button>
-                        </div>
-                        <div style={{float: "left", marginLeft: 20}}>
-                            <input type="text" onChange={this.onQuickFilterText} placeholder="Type text to filter..."/>
                         </div>
                         <div style={{float: "right"}}>
                             Filter API:
@@ -159,6 +150,17 @@ export default class RichGridDeclarativeExample extends Component {
                             </button>
                             <button onClick={this.dobFilter} className="btn btn-primary">DOB equals to 01/01/2000
                             </button>
+                        </div>
+                    </div>
+                   <div style={{display: "inline-block", width: "100%", marginTop: 10, marginBottom: 10}}>
+                        <div style={{float: "left"}}>
+                            <label>
+                                <input type="checkbox" onChange={this.onToggleSidebar} style={{marginRight: 5}}/>
+                                Show Side Bar
+                            </label>
+                        </div>
+                        <div style={{float: "left", marginLeft: 20}}>
+                            <input type="text" onChange={this.onQuickFilterText} placeholder="Type text to filter..."/>
                         </div>
                     </div>
                     <div style={{height: 400, width: 900}} className="ag-theme-balham">
