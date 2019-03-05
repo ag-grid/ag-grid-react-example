@@ -17,7 +17,8 @@
     "build-dashboard": "webpack --config config/webpack.config.trader.js --progress --profile --bail",
     "build-all": "npm run build-examples && npm run build-dashboard",
     "build": "npm run clean && npm run mkdirs && npm run build-all && npm run copy",
-    "start": "npm run examples"
+    "start": "npm run examples",
+    "test" : "sh ./ts-tests/runTsTests.sh"
   },
   "repository": {
     "type": "git",
@@ -38,11 +39,13 @@
   "homepage": "http://www.ag-grid.com/",
   "devDependencies": {
     "@babel/core": "7.3.3",
-    "babel-loader": "8.0.5",
-    "@babel/preset-env": "7.3.1",
-    "@babel/preset-react": "7.0.0",
     "@babel/plugin-proposal-class-properties": "7.3.3",
     "@babel/plugin-proposal-function-bind": "7.2.0",
+    "@babel/preset-env": "7.3.1",
+    "@babel/preset-react": "7.0.0",
+    "@types/react": "^16.8.6",
+    "@types/react-dom": "^16.8.2",
+    "babel-loader": "8.0.5",
     "css-loader": "2.1.0",
     "file-loader": "3.0.1",
     "gulp": "3.9.1",
@@ -52,6 +55,7 @@
     "prop-types": "15.7.2",
     "rimraf": "2.6.3",
     "style-loader": "0.23.1",
+    "typescript": "^3.3.3333",
     "webpack": "4.29.5",
     "webpack-cli": "3.2.3",
     "webpack-dev-server": "3.2.0"
