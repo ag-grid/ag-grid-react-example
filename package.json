@@ -18,7 +18,7 @@
     "build-all": "npm run build-examples && npm run build-dashboard",
     "build": "npm run clean && npm run mkdirs && npm run build-all && npm run copy",
     "start": "npm run examples",
-    "test" : "sh ./ts-tests/runTsTests.sh"
+    "test" : "./ts-tests/runTsTests.sh"
   },
   "repository": {
     "type": "git",
