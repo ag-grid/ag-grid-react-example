@@ -200,6 +200,8 @@ export default class RichGridDeclarativeExample extends Component {
                                     menuIcon: 'fa-bars'
                                 }
                             }}
+
+                            reactNext={true}
                         >
                             <AgGridColumn headerName="#" width={30}
                                           checkboxSelection sortable={false} suppressMenu filter={false} pinned>
