@@ -56,7 +56,7 @@ export default class SkillsFilter extends React.Component {
         return passed;
     };
 
-    getModel() {
+    getModelAsString() {
         return ''
     }
 
@@ -83,7 +83,6 @@ export default class SkillsFilter extends React.Component {
 
         const skillsTemplates = [];
         RefData.IT_SKILLS.forEach((skill, index) => {
-
             const skillName = RefData.IT_SKILLS_NAMES[index];
             const template = (
                 <label key={skill}
