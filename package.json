@@ -1,6 +1,6 @@
 {
   "name": "ag-grid-react-example",
-  "version": "19.1.2",
+  "version": "20.2.0",
   "description": "Example Reach applicaiton using ag-Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "build-all": "npm run build-examples && npm run build-dashboard",
     "build": "npm run clean && npm run mkdirs && npm run build-all && npm run copy",
     "start": "npm run examples",
-    "test" : "./ts-tests/runTsTests.sh"
+    "test": "./ts-tests/runTsTests.sh"
   },
   "repository": {
     "type": "git",
@@ -61,9 +61,9 @@
     "webpack-dev-server": "3.2.1"
   },
   "dependencies": {
-    "ag-grid-community": "^20.0.0",
-    "ag-grid-enterprise": "^20.0.0",
-    "ag-grid-react": "^20.0.0",
+    "ag-grid-community": "^20.2.0",
+    "ag-grid-enterprise": "^20.2.0",
+    "ag-grid-react": "^20.2.0",
     "bootstrap": "4.3.1",
     "d3": "4.9.1",
     "lodash": "4.17.11",
