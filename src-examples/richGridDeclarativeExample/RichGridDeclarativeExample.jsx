@@ -16,14 +16,14 @@ import "./RichGridDeclarativeExample.css";
 import "ag-grid-enterprise";
 
 export default class RichGridDeclarativeExample extends Component {
-
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             quickFilterText: null,
             sideBar: false,
             rowData: new RowDataFactory().createRowData(),
+            rowCount: null,
             icons: {
                 columnRemoveFromGroup: '<i class="fa fa-times"/>',
                 filter: '<i class="fa fa-filter"/>',
@@ -39,6 +39,8 @@ export default class RichGridDeclarativeExample extends Component {
     onGridReady = (params) => {
         this.api = params.api;
         this.columnApi = params.columnApi;
+
+        this.calculateRowCount();
     };
 
     onCellClicked = (event) => {
@@ -86,7 +88,18 @@ export default class RichGridDeclarativeExample extends Component {
         // simply wait for the next tick
         setTimeout(() => {
             this.api.onFilterChanged();
-        }, 0)
+        });
+    };
+
+    calculateRowCount = () => {
+        if (this.api && this.state.rowData) {
+            const model = this.api.getModel();
+            const totalRows = this.state.rowData.length;
+            const processedRows = model.getRowCount();
+            this.setState({
+                rowCount: processedRows.toLocaleString() + ' / ' + totalRows.toLocaleString()
+            });
+        }
     };
 
     static countryCellRenderer(params) {
@@ -115,7 +128,7 @@ export default class RichGridDeclarativeExample extends Component {
                 <h1>Rich Grid with Declarative Markup Example</h1>
                 <div style={{display: "inline-block", width: "100%"}}>
                     <div style={{float: "left"}}>
-                        <b>Employees Skills and Contact Details</b><span id="rowCount"/>
+                        <b>Employees Skills and Contact Details: </b>{ this.state.rowCount }
                     </div>
                 </div>
                 <div style={{marginTop: 10}}>
@@ -152,15 +165,14 @@ export default class RichGridDeclarativeExample extends Component {
                             </button>
                         </div>
                     </div>
-                   <div style={{display: "inline-block", width: "100%", marginTop: 10, marginBottom: 10}}>
+                    <div style={{display: "inline-block", width: "100%", marginTop: 10, marginBottom: 10}}>
                         <div style={{float: "left"}}>
-                            <label>
-                                <input type="checkbox" onChange={this.onToggleSidebar} style={{marginRight: 5}}/>
-                                Show Side Bar
-                            </label>
+                            <label htmlFor="sideBarToggle">Show Side Bar&nbsp;</label>
+                            <input type="checkbox" id="sideBarToggle" onChange={this.onToggleSidebar} style={{marginRight: 5}}/>
                         </div>
-                        <div style={{float: "left", marginLeft: 20}}>
-                            <input type="text" onChange={this.onQuickFilterText} placeholder="Type text to filter..."/>
+                        <div style={{float: "right", marginLeft: 20}}>
+                            <label htmlFor="quickFilter">Quick Filter:&nbsp;</label>
+                            <input type="text" id="quickFilter" onChange={this.onQuickFilterText} placeholder="Type text to filter..."/>
                         </div>
                     </div>
                     <div style={{height: 400, width: 900}} className="ag-theme-balham">
@@ -169,6 +181,7 @@ export default class RichGridDeclarativeExample extends Component {
                             onGridReady={this.onGridReady}
                             onRowSelected={this.onRowSelected}
                             onCellClicked={this.onCellClicked}
+                            onModelUpdated={this.calculateRowCount}
 
                             // binding to simple properties
                             sideBar={this.state.sideBar}
@@ -184,7 +197,6 @@ export default class RichGridDeclarativeExample extends Component {
                             // boolean properties will default to true if provided (ie suppressRowClickSelection => suppressRowClickSelection="true")
                             suppressRowClickSelection
                             rowSelection="multiple"
-                            floatingFilter
                             groupHeaders
 
                             // setting grid wide date component
@@ -199,8 +211,7 @@ export default class RichGridDeclarativeExample extends Component {
                                 headerComponentParams: {
                                     menuIcon: 'fa-bars'
                                 }
-                            }}
-                        >
+                            }}>
                             <AgGridColumn headerName="#" width={30}
                                           checkboxSelection sortable={false} suppressMenu filter={false} pinned>
                             </AgGridColumn>
@@ -233,130 +244,6 @@ export default class RichGridDeclarativeExample extends Component {
                                 <AgGridColumn field="address" width={500} filter="text"/>
                             </AgGridColumn>
                         </AgGridReact>
-                    </div>
-                    <div style={{marginTop: 10}}>
-                        <div className="row">
-                            <div className="col-sm-12"><h1>Rich Grid with Declarative Markup Example</h1></div>
-                        </div>
-                        <div className="row">
-                            <div className="col-sm-12">
-                                <h5>This example demonstrates many features of ag-Grid, with Grid and Column Definition
-                                    defined declaratively (i.e. with markup).</h5>
-                                <p><span style={{fontWeight: 500}}>Select All/Clear Selection</span>: Select or Deselect
-                                    All
-                                    Rows</p>
-                                <p><span style={{fontWeight: 500}}>Hide/Show Country Column</span>: Select or Deselect
-                                    All
-                                    Rows
-                                    (expand the Employee column to show the Country column first)</p>
-                                <p><span style={{fontWeight: 500}}>Toggle The Side Bar</span>: Let your users Pivot,
-                                    Group
-                                    and
-                                    Aggregate using the Side Bar</p>
-                                <p><span style={{fontWeight: 500}}>Refresh Data</span>: Dynamically Update Grid Data</p>
-                                <p><span style={{fontWeight: 500}}>Quick Filter</span>: Perform Quick Grid Wide
-                                    Filtering
-                                    with
-                                    the Quick Filter</p>
-                                <p><span style={{fontWeight: 500}}>DOB Filter</span>: Set the DOB filter to 01/01/2000
-                                    using
-                                    the
-                                    Filter API (expand the Employee column to show the DOB column)</p>
-                                <p><span style={{fontWeight: 500}}>Custom Headers</span>: Sort, Filter and Render
-                                    Headers
-                                    using
-                                    Header Components</p>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-sm-4">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h4 className="card-title">Grid & Column API</h4>
-                                        <p className="card-text">Utilise Grid Features Programmatically Using the APIs
-                                            Available</p>
-                                        <a target="_blank" href="https://www.ag-grid.com/javascript-grid-api/"
-                                           className="btn btn-primary">Grid API</a>
-                                        <a target="_blank" href="https://www.ag-grid.com//javascript-grid-column-api/"
-                                           className="btn btn-primary">Column API</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-sm-4">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h4 className="card-title">Header Components</h4>
-                                        <p className="card-text">Customer the Header with React Components</p>
-                                        <a target="_blank"
-                                           href="https://www.ag-grid.com//javascript-grid-header-rendering/#headerComponent"
-                                           className="btn btn-primary">Header Component</a>
-                                        <a target="_blank"
-                                           href="https://www.ag-grid.com//javascript-grid-header-rendering/#headerGroupComponent"
-                                           className="btn btn-primary">Header Group Component</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-sm-4">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h4 className="card-title">Filters</h4>
-                                        <p className="card-text">Filter with Quick Filters, Floating Filters, Built In
-                                            Filters
-                                            or Using the
-                                            Filter API</p>
-                                        <a target="_blank" href="https://www.ag-grid.com//javascript-grid-filter-quick/"
-                                           className="btn btn-primary">Quick
-                                            Filter</a>
-                                        <a target="_blank"
-                                           href="https://www.ag-grid.com//javascript-grid-floating-filter-component/"
-                                           className="btn btn-primary">Floating Filters</a>
-                                        <a target="_blank" href="https://www.ag-grid.com//javascript-grid-filtering/"
-                                           className="btn btn-primary">Built in
-                                            Filters</a>
-                                        <a target="_blank"
-                                           href="https://www.ag-grid.com//javascript-grid-filtering/#accessing-filter-component-instances"
-                                           className="btn btn-primary">Filter API</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-sm-4">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h4 className="card-title">Side Bar</h4>
-                                        <p className="card-text">Let your users Pivot, Group and Aggregate using the
-                                            Side Bar</p>
-                                        <a target="_blank" href="https://www.ag-grid.com//javascript-grid-side-bar/"
-                                           className="btn btn-primary">Side Bar</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-sm-8">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h4 className="card-title">The Rest</h4>
-                                        <p className="card-text">Pinned Columns, Checkbox Selection, Customer Renderers,
-                                            Data
-                                            Updates</p>
-                                        <a target="_blank"
-                                           href="https://www.ag-grid.com/best-react-data-grid/?framework=react"
-                                           className="btn btn-primary">React with ag-Grid</a>
-                                        <a target="_blank" href="https://www.ag-grid.com//javascript-grid-pinning/"
-                                           className="btn btn-primary">Pinned Column</a>
-                                        <a target="_blank"
-                                           href="https://www.ag-grid.com//javascript-grid-selection/#checkboxSelection"
-                                           className="btn btn-primary">Checkbox Selection</a>
-                                        <a target="_blank"
-                                           href="https://www.ag-grid.com//javascript-grid-cell-rendering/"
-                                           className="btn btn-primary">Cell
-                                            Renderers</a>
-                                        <a target="_blank" href="https://www.ag-grid.com/javascript-grid-data-update/"
-                                           className="btn btn-primary">Updating Data</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

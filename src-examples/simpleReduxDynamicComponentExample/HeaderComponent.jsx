@@ -25,8 +25,8 @@ class HeaderComponent extends Component {
     render() {
         return (
             <div style={{marginTop: 15}}>
-                <button onClick={this.setCurrency.bind(this, '£', 1)}>Set Currency to GBP</button>
-                <button onClick={this.setCurrency.bind(this, '$', 1.29)}>Set Currency to USD</button>
+                <button onClick={this.setCurrency.bind(this, '£', 1)} className="btn btn-primary">Set Currency to GBP</button>
+                <button onClick={this.setCurrency.bind(this, '$', 1.29)} className="btn btn-primary">Set Currency to USD</button>
             </div>
         )
     }
