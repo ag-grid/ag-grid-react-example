@@ -38,14 +38,14 @@
   },
   "homepage": "http://www.ag-grid.com/",
   "devDependencies": {
-    "@babel/core": "7.3.4",
-    "@babel/plugin-proposal-class-properties": "7.3.4",
+    "@babel/core": "7.4.4",
+    "@babel/plugin-proposal-class-properties": "7.4.4",
     "@babel/plugin-proposal-function-bind": "7.2.0",
-    "@babel/preset-env": "7.3.4",
+    "@babel/preset-env": "7.4.4",
     "@babel/preset-react": "7.0.0",
-    "@types/react": "16.8.8",
-    "@types/react-dom": "16.8.2",
-    "babel-loader": "8.0.5",
+    "@types/react": "16.8.17",
+    "@types/react-dom": "16.8.4",
+    "babel-loader": "8.0.6",
     "css-loader": "2.1.1",
     "file-loader": "3.0.1",
     "gulp": "3.9.1",
@@ -55,10 +55,10 @@
     "prop-types": "15.7.2",
     "rimraf": "2.6.3",
     "style-loader": "0.23.1",
-    "typescript": "3.3.3333",
-    "webpack": "4.29.6",
-    "webpack-cli": "3.3.0",
-    "webpack-dev-server": "3.2.1"
+    "typescript": "3.4.5",
+    "webpack": "4.31.0",
+    "webpack-cli": "3.3.2",
+    "webpack-dev-server": "3.4.1"
   },
   "dependencies": {
     "ag-grid-community": "^20.0.0",
@@ -67,9 +67,9 @@
     "bootstrap": "4.3.1",
     "d3": "4.9.1",
     "lodash": "4.17.11",
-    "react": "16.8.4",
-    "react-dom": "16.8.4",
-    "react-redux": "6.0.1",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-redux": "7.0.3",
     "react-router-dom": "5.0.0",
     "redux": "4.0.1"
   }
