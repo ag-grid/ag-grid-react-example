@@ -1,6 +1,6 @@
 {
   "name": "ag-grid-react-example",
-  "version": "21.1.0",
+  "version": "21.2.0",
   "description": "Example Reach applicaiton using ag-Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
