@@ -18,7 +18,7 @@
     "build-all": "npm run build-examples && npm run build-dashboard",
     "build": "npm run clean && npm run mkdirs && npm run build-all && npm run copy",
     "start": "npm run examples",
-    "test" : "./ts-tests/runTsTests.sh"
+    "test": "./ts-tests/runTsTests.sh"
   },
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "@babel/plugin-proposal-function-bind": "7.2.0",
     "@babel/preset-env": "7.4.4",
     "@babel/preset-react": "7.0.0",
-    "@types/react": "16.9.0",
+    "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "babel-loader": "8.0.6",
     "css-loader": "2.1.1",
