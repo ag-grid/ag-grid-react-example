@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import {Context} from "./store";
 import {AgGridReact} from "ag-grid-react";
 
@@ -22,7 +22,7 @@ export default function GridComponent() {
                 columnDefs={columnDefs}
                 rowData={rowData}
 
-                reactNext={true}
+                reactNext
 
                 // events
                 onGridReady={onGridReady}>
