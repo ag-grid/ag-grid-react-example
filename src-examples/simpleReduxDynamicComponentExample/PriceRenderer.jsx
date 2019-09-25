@@ -41,5 +41,5 @@ export default connect(
     },
     null,
     null,
-    {forwardRef: true} // must be supplied for react/redux when using GridOptions.reactNext
+    {forwardRef: true} // must be supplied for react/redux when using AgGridReact
 )(PriceRenderer);

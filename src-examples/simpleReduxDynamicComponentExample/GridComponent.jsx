@@ -45,8 +45,6 @@ class GridComponent extends Component {
                     columnDefs={this.state.columnDefs}
                     rowData={this.props.rowData}
 
-                    reactNext={true}
-
                     // events
                     onGridReady={this.onGridReady}>
                 </AgGridReact>

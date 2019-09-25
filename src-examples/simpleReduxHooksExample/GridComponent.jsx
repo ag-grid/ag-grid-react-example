@@ -22,7 +22,7 @@ export default function GridComponent() {
                 columnDefs={columnDefs}
                 rowData={rowData}
 
-                reactNext
+                defaultColDef={{filter: true}}
 
                 // events
                 onGridReady={onGridReady}>
