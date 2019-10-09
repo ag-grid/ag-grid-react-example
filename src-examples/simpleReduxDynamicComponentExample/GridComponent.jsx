@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-
 import {AgGridReact} from "ag-grid-react";
 
 import PriceRenderer from "./PriceRenderer";

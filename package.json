@@ -61,6 +61,7 @@
     "webpack-dev-server": "3.4.1"
   },
   "dependencies": {
+    "@ag-community/client-side-row-model": "^21.2.0",
     "ag-grid-community": "^21.0.0",
     "ag-grid-enterprise": "^21.0.0",
     "ag-grid-react": "^21.2.2",

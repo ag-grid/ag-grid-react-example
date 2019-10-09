@@ -5,6 +5,7 @@ import {render} from "react-dom";
 
 import {Provider} from "react-redux";
 
+import '@ag-community/client-side-row-model'
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-fresh.css";
 

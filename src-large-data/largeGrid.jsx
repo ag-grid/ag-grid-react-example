@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import SimpleCellRenderer from './simpleCellRenderer.jsx';
-
 import {AgGridReact} from 'ag-grid-react';
+
+import '@ag-community/client-side-row-model'
 
 // put this line in to use ag-Grid enterprise
 // import 'ag-grid-enterprise';

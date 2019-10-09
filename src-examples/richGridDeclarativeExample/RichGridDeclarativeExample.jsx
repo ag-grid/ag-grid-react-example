@@ -12,8 +12,11 @@ import HeaderGroupComponent from './HeaderGroupComponent.jsx';
 import SortableHeaderComponent from './SortableHeaderComponent.jsx';
 
 import "./RichGridDeclarativeExample.css";
+
+import '@ag-community/client-side-row-model'
+
 // take this line out if you do not want to use ag-Grid-Enterprise
-import "ag-grid-enterprise";
+// import "ag-grid-enterprise";
 
 export default class RichGridDeclarativeExample extends Component {
     constructor(props) {
