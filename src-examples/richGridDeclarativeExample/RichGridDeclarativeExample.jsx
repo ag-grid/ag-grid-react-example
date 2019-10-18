@@ -13,10 +13,11 @@ import SortableHeaderComponent from './SortableHeaderComponent.jsx';
 
 import "./RichGridDeclarativeExample.css";
 
-import '@ag-community/client-side-row-model'
+// for community features
+// import {AllModules} from "@ag-community/grid-all-modules";
 
-// take this line out if you do not want to use ag-Grid-Enterprise
-// import "ag-grid-enterprise";
+// for enterprise features
+import {AllModules} from "@ag-enterprise/grid-all-modules";
 
 export default class RichGridDeclarativeExample extends Component {
     constructor(props) {
@@ -195,6 +196,9 @@ export default class RichGridDeclarativeExample extends Component {
 
                             // binding to array properties
                             rowData={this.state.rowData}
+
+                            // register all modules (row model, csv/excel, row grouping etc)
+                            modules={AllModules}
 
                             // no binding, just providing hard coded strings for the properties
                             // boolean properties will default to true if provided (ie suppressRowClickSelection => suppressRowClickSelection="true")

@@ -62,10 +62,8 @@
   },
   "dependencies": {
     "@ag-community/grid-core": "^21.0.0",
-    "@ag-community/client-side-row-model": "^21.0.0",
-    "@ag-community/infinite-row-model": "^21.0.0",
-    "@ag-community/csv-export": "^21.0.0",
-    "ag-grid-enterprise": "^21.0.0",
+    "@ag-community/grid-all-modules": "^21.0.0",
+    "@ag-enterprise/grid-all-modules": "^21.0.0",
     "ag-grid-react": "^21.2.2",
     "bootstrap": "4.3.1",
     "d3": "4.9.1",
