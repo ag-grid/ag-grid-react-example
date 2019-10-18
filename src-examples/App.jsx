@@ -4,6 +4,8 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import NavItem from "./NavItem";
 
 import '@ag-community/client-side-row-model'
+import '@ag-community/infinite-row-model'
+import '@ag-community/csv-export'
 
 import RichGridDeclarativeExample from "./richGridDeclarativeExample/RichGridDeclarativeExample";
 import SimpleReduxDynamicExample from "./simpleReduxDynamicComponentExample/SimpleReduxExample";
