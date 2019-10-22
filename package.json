@@ -64,7 +64,7 @@
     "@ag-community/grid-core": "^21.0.0",
     "@ag-community/grid-all-modules": "^21.0.0",
     "@ag-enterprise/grid-all-modules": "^21.0.0",
-    "ag-grid-react": "^21.2.2",
+    "ag-grid-react": "~21.2.0",
     "bootstrap": "4.3.1",
     "d3": "4.9.1",
     "lodash": "4.17.11",
