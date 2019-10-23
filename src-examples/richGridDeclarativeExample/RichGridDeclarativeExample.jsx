@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {AgGridColumn, AgGridReact} from "ag-grid-react";
+import {AgGridColumn, AgGridReact} from "@ag-community/grid-react";
 import RowDataFactory from "./RowDataFactory";
 import DateComponent from "./DateComponent.jsx";
 import SkillsCellRenderer from './SkillsCellRenderer.jsx';

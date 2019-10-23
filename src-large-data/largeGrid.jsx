@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SimpleCellRenderer from './simpleCellRenderer.jsx';
-import {AgGridReact} from 'ag-grid-react';
+import {AgGridReact} from '@ag-community/grid-react';
 
 // for community features
 import {AllCommunityModules} from "@ag-community/grid-all-modules";
