@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import {Context} from "./store";
-import {AgGridReact} from "@ag-community/grid-react";
+import {AgGridReact} from "@ag-grid-community/grid-react";
 
 /*
  * This component serves to display the row data (provided by redux)

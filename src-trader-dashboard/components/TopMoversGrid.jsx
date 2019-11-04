@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-import {AgGridReact} from "@ag-community/grid-react";
+import {AgGridReact} from "@ag-grid-community/grid-react";
 
 class TopMoversGrid extends Component {
     constructor(props) {

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import {AgGridReact} from "@ag-community/grid-react";
+import {AgGridReact} from "@ag-grid-community/grid-react";
 
 import map from "lodash/map";
 import difference from "lodash/difference";
