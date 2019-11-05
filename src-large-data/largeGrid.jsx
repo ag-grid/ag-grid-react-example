@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import SimpleCellRenderer from './simpleCellRenderer.jsx';
-import {AgGridReact} from '@ag-grid-community/grid-react';
+import {AgGridReact} from '@ag-grid-community/react';
 
 // for community features
-import {AllCommunityModules} from "@ag-grid-community/grid-all-modules";
+import {AllCommunityModules} from "@ag-grid-community/all-modules";
 
 // for enterprise features
-// import {AllModules} from "@ag-grid-enterprise/grid-all-modules";
+// import {AllModules} from "@ag-grid-enterprise/all-modules";
 
 export default class MyApp extends Component {
 

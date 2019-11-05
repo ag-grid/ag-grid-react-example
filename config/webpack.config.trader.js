@@ -31,7 +31,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            "@ag-grid-community/grid-core": path.resolve('./node_modules/@ag-grid-community/grid-core'),
+            "@ag-grid-community/core": path.resolve('./node_modules/@ag-grid-community/core'),
             "ag-grid-enterprise": path.resolve('./node_modules/ag-grid-enterprise'),
             react: path.resolve('./node_modules/react')
         },

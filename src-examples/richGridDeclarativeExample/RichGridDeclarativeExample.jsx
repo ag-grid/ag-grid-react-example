@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {AgGridColumn, AgGridReact} from "@ag-grid-community/grid-react";
+import {AgGridColumn, AgGridReact} from "@ag-grid-community/react";
 import RowDataFactory from "./RowDataFactory";
 import DateComponent from "./DateComponent.jsx";
 import SkillsCellRenderer from './SkillsCellRenderer.jsx';
@@ -14,10 +14,10 @@ import SortableHeaderComponent from './SortableHeaderComponent.jsx';
 import "./RichGridDeclarativeExample.css";
 
 // for community features
-// import {AllCommunityModules} from "@ag-grid-community/grid-all-modules";
+// import {AllCommunityModules} from "@ag-grid-community/all-modules";
 
 // for enterprise features
-import {AllModules} from "@ag-grid-enterprise/grid-all-modules";
+import {AllModules} from "@ag-grid-enterprise/all-modules";
 
 export default class RichGridDeclarativeExample extends Component {
     constructor(props) {
