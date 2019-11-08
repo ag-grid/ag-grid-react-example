@@ -1,6 +1,6 @@
 {
   "name": "ag-grid-react-example",
-  "version": "22.0.0-beta.0",
+  "version": "22.0.0",
   "description": "Example Reach applicaiton using ag-Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
@@ -61,10 +61,10 @@
     "webpack-dev-server": "3.4.1"
   },
   "dependencies": {
-    "@ag-grid-community/all-modules": "^22.0.0-beta.0",
-    "@ag-grid-community/core": "^22.0.0-beta.0",
-    "@ag-grid-community/react": "^22.0.0-beta.0",
-    "@ag-grid-enterprise/all-modules": "^22.0.0-beta.0",
+    "@ag-grid-community/all-modules": "~22.0.0",
+    "@ag-grid-community/core": "~22.0.0",
+    "@ag-grid-community/react": "~22.0.0",
+    "@ag-grid-enterprise/all-modules": "~22.0.0",
     "bootstrap": "4.3.1",
     "d3": "4.9.1",
     "lodash": "4.17.11",
