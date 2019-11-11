@@ -35,9 +35,9 @@ module.exports = {
     },
     resolve: {
         alias: {
-            "@ag-community/grid-core/modules": path.resolve('./node_modules/@ag-community/grid-core/dist/es2015/modules'),
-            "@ag-community/grid-core": path.resolve('./node_modules/@ag-community/grid-core'),
-            "ag-grid-enterprise": path.resolve('./node_modules/ag-grid-enterprise'),
+            // "@ag-grid-community/core/modules": path.resolve('./node_modules/@ag-grid-community/core/dist/es2015/modules'),
+            "@ag-grid-community/core": path.resolve('./node_modules/@ag-grid-community/core'),
+            // "ag-grid-enterprise": path.resolve('./node_modules/ag-grid-enterprise'),
             react: path.resolve('./node_modules/react')
         },
         extensions: ['.js', '.jsx']

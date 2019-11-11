@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {AgGridReact} from "@ag-community/grid-react";
+import {AgGridReact} from "@ag-grid-community/react";
 
 import PriceRenderer from "./PriceRenderer";
 

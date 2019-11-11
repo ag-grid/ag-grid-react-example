@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import SimpleCellRenderer from './simpleCellRenderer.jsx';
-import {AgGridReact} from '@ag-community/grid-react';
+import {AgGridReact} from '@ag-grid-community/react';
 
 // for community features
-import {AllCommunityModules} from "@ag-community/grid-all-modules";
+import {AllModules} from "@ag-grid-enterprise/all-modules";
 
 // for enterprise features
-// import {AllModules} from "@ag-enterprise/grid-all-modules";
+// import {AllModules} from "@ag-grid-enterprise/all-modules";
 
 export default class MyApp extends Component {
 
@@ -64,7 +64,7 @@ export default class MyApp extends Component {
     render() {
         return (
             <div style={{height: '100%'}} className="ag-theme-fresh">
-                <AgGridReact columnDefs={this.state.columnDefs} rowData={this.state.rowData} modules={AllCommunityModules}/>
+                <AgGridReact columnDefs={this.state.columnDefs} rowData={this.state.rowData} modules={AllModules}/>
             </div>
         );
     }
