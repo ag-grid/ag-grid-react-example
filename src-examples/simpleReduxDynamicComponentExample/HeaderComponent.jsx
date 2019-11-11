@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-// take this line out if you do not want to use ag-Grid-Enterprise
-import "ag-grid-enterprise";
 
 import {setCurrency, updateRowData} from "./gridDataActions";
 

@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import {Provider} from "react-redux";
 import {createStore} from "redux";
-// take this line out if you do not want to use ag-Grid-Enterprise
-import "ag-grid-enterprise";
 
 import HeaderComponent from "./HeaderComponent";
 import GridComponent from "./GridComponent";

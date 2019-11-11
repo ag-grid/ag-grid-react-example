@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {AgGridColumn, AgGridReact} from "ag-grid-react";
+import {AgGridColumn, AgGridReact} from "@ag-grid-community/react";
 import RowDataFactory from "./RowDataFactory";
 import DateComponent from "./DateComponent.jsx";
 import SkillsCellRenderer from './SkillsCellRenderer.jsx';
@@ -12,8 +12,12 @@ import HeaderGroupComponent from './HeaderGroupComponent.jsx';
 import SortableHeaderComponent from './SortableHeaderComponent.jsx';
 
 import "./RichGridDeclarativeExample.css";
-// take this line out if you do not want to use ag-Grid-Enterprise
-import "ag-grid-enterprise";
+
+// for community features
+// import {AllCommunityModules} from "@ag-grid-community/all-modules";
+
+// for enterprise features
+import {AllModules} from "@ag-grid-enterprise/all-modules";
 
 export default class RichGridDeclarativeExample extends Component {
     constructor(props) {
@@ -192,6 +196,9 @@ export default class RichGridDeclarativeExample extends Component {
 
                             // binding to array properties
                             rowData={this.state.rowData}
+
+                            // register all modules (row model, csv/excel, row grouping etc)
+                            modules={AllModules}
 
                             // no binding, just providing hard coded strings for the properties
                             // boolean properties will default to true if provided (ie suppressRowClickSelection => suppressRowClickSelection="true")

@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-
-import {AgGridReact} from "ag-grid-react";
+import {AgGridReact} from "@ag-grid-community/react";
 
 import PriceRenderer from "./PriceRenderer";
 
@@ -44,8 +43,6 @@ class GridComponent extends Component {
                     // properties
                     columnDefs={this.state.columnDefs}
                     rowData={this.props.rowData}
-
-                    reactNext={true}
 
                     // events
                     onGridReady={this.onGridReady}>

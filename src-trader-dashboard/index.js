@@ -5,11 +5,11 @@ import {render} from "react-dom";
 
 import {Provider} from "react-redux";
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-fresh.css";
-
 import StoreService from './services/StoreService';
 import TraderDashboard from "./components/TraderDashboard.jsx";
+
+import "@ag-grid-enterprise/all-modules/dist/styles/ag-grid.css";
+import "@ag-grid-enterprise/all-modules/dist/styles/ag-theme-fresh.css";
 
 let store = StoreService.STORE;
 

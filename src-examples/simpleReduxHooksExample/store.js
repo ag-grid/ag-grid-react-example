@@ -1,15 +1,21 @@
 import React from "react";
 import PriceRenderer from "./PriceRenderer";
+import PriceEditor from "./PriceEditor";
+import PriceFilter from "./PriceFilter";
 
 export const initialState = {
     rowData: [],
     columnDefs: [
         {
-            field: 'symbol'
+            field: 'symbol',
+            editable: true
         },
         {
             field: 'price',
             cellClass: 'align-right',
+            editable: true,
+            cellEditorFramework: PriceEditor,
+            filterFramework: PriceFilter,
             cellRendererFramework: PriceRenderer
         }
     ]

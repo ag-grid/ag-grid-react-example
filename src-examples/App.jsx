@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
 
 import NavItem from "./NavItem";
-
 import RichGridDeclarativeExample from "./richGridDeclarativeExample/RichGridDeclarativeExample";
 import SimpleReduxDynamicExample from "./simpleReduxDynamicComponentExample/SimpleReduxExample";
 import SimpleReduxHookExample from "./simpleReduxHooksExample/SimpleReduxHookExample";
