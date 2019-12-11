@@ -63,7 +63,7 @@ class TopMoversGrid extends Component {
     render() {
         return (
             <div style={{height: 410, width: 400}}
-                 className="ag-theme-fresh">
+                 className="ag-theme-balham">
                 <AgGridReact
                     // properties
                     columnDefs={this.state.columnDefs}

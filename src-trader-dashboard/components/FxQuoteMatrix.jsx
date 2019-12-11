@@ -61,7 +61,7 @@ class FxQuoteMatrix extends Component {
     render() {
         return (
             <div style={{height: 410, width: 800}}
-                 className="ag-theme-fresh">
+                 className="ag-theme-balham">
                 <AgGridReact
                     // properties
                     columnDefs={this.state.columnDefs}
