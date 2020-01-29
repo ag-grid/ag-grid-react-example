@@ -38,7 +38,7 @@
   },
   "homepage": "http://www.ag-grid.com/",
   "devDependencies": {
-    "@ag-grid-community/core": "~22.0.0",
+    "@ag-grid-community/core": "~22.1.1",
     "@babel/core": "7.4.4",
     "@babel/plugin-proposal-class-properties": "7.4.4",
     "@babel/plugin-proposal-function-bind": "7.2.0",
@@ -62,8 +62,8 @@
     "webpack-dev-server": "3.4.1"
   },
   "dependencies": {
-    "@ag-grid-enterprise/all-modules": "~22.0.0",
-    "@ag-grid-community/react": "~22.0.0",
+    "@ag-grid-enterprise/all-modules": "~22.1.1",
+    "@ag-grid-community/react": "~22.1.1",
     "bootstrap": "4.3.1",
     "d3": "4.9.1",
     "lodash": "4.17.11",
