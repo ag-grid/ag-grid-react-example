@@ -64,7 +64,7 @@
   "dependencies": {
     "@ag-grid-enterprise/all-modules": "~22.1.1",
     "@ag-grid-community/react": "~22.1.1",
-    "bootstrap": "4.3.1",
+    "bootstrap": "4.4.1",
     "d3": "4.9.1",
     "lodash": "4.17.11",
     "react": "16.8.6",
