@@ -75,23 +75,25 @@ export default class RichGridDeclarativeExample extends Component {
     };
 
     invokeSkillsFilterMethod = () => {
-        let skillsFilter = this.api.getFilterInstance('skills');
-        let componentInstance = skillsFilter.getFrameworkComponentInstance();
-        componentInstance.helloFromSkillsFilter();
+        this.api.getFilterInstance('skills', (instance) => {
+            let componentInstance = instance.getFrameworkComponentInstance();
+            componentInstance.helloFromSkillsFilter();
+        });
     };
 
     dobFilter = () => {
-        let dateFilterComponent = this.api.getFilterInstance('dob');
-        dateFilterComponent.setModel({
-            type: 'equals',
-            dateFrom: '2000-01-01'
-        });
+        this.api.getFilterInstance('dob', (dateFilterComponent) => {
+            dateFilterComponent.setModel({
+                type: 'equals',
+                dateFrom: '2000-01-01'
+            });
 
-        // as the date filter is a React component, and its using setState internally, we need
-        // to allow time for the state to be set (as setState is an async operation)
-        // simply wait for the next tick
-        setTimeout(() => {
-            this.api.onFilterChanged();
+            // as the date filter is a React component, and its using setState internally, we need
+            // to allow time for the state to be set (as setState is an async operation)
+            // simply wait for the next tick
+            setTimeout(() => {
+                this.api.onFilterChanged();
+            });
         });
     };
 
@@ -219,7 +221,7 @@ export default class RichGridDeclarativeExample extends Component {
                                     menuIcon: 'fa-bars'
                                 }
                             }}>
-                            <AgGridColumn headerName="#" width={30}
+                            <AgGridColumn headerName="#" width={40}
                                 checkboxSelection sortable={false} suppressMenu filter={false} pinned>
                             </AgGridColumn>
                             <AgGridColumn headerName="Employee" headerGroupComponentFramework={HeaderGroupComponent}>
