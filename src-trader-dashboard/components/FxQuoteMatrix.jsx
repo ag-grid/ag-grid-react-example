@@ -53,7 +53,7 @@ class FxQuoteMatrix extends Component {
             }
 
 
-            this.gridApi.updateRowData({update: updatedRows});
+            this.gridApi.applyTransaction({update: updatedRows});
         }
 
     }
