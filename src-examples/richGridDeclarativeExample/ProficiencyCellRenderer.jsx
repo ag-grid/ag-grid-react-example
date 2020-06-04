@@ -5,6 +5,10 @@ import React from 'react';
 // html as a normal ag-Grid cellRenderer.
 export default class ProficiencyCellRenderer extends React.Component {
 
+    getReactContainerClasses() {
+        return ['div-outer-div'];
+    }
+
     render() {
         let backgroundColor;
         if (this.props.value < 20) {
