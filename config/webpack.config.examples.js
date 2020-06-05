@@ -3,7 +3,7 @@ const path = require('path');
 const SRC_DIR = path.resolve(__dirname, '../src-examples');
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     entry: SRC_DIR + "/index.js",
     output: {
         path: path.resolve(__dirname, '../'),
@@ -45,7 +45,9 @@ module.exports = {
     performance: {
         hints: false
     },
+    devtool: 'inline-source-map',
     devServer: {
+        public: 'http://localhost:8080',
         port: 8080,
         historyApiFallback: true
     }
