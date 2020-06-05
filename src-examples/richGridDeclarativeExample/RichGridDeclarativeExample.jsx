@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { AgGridColumn, AgGridReact } from "@ag-grid-community/react";
+import React, {Component} from "react";
+import {AgGridColumn, AgGridReact} from "@ag-grid-community/react";
 import RowDataFactory from "./RowDataFactory";
 import DateComponent from "./DateComponent.jsx";
 import SkillsCellRenderer from './SkillsCellRenderer.jsx';
@@ -12,12 +12,11 @@ import HeaderGroupComponent from './HeaderGroupComponent.jsx';
 import SortableHeaderComponent from './SortableHeaderComponent.jsx';
 
 import "./RichGridDeclarativeExample.css";
+// for enterprise features
+import {AllModules} from "@ag-grid-enterprise/all-modules";
 
 // for community features
 // import {AllCommunityModules} from "@ag-grid-community/all-modules";
-
-// for enterprise features
-import { AllModules } from "@ag-grid-enterprise/all-modules";
 
 export default class RichGridDeclarativeExample extends Component {
     constructor(props) {
@@ -44,6 +43,8 @@ export default class RichGridDeclarativeExample extends Component {
         this.api = params.api;
         this.columnApi = params.columnApi;
 
+        this.api.sizeColumnsToFit();
+
         this.calculateRowCount();
     };
 
@@ -57,7 +58,7 @@ export default class RichGridDeclarativeExample extends Component {
 
     /* Demo related methods */
     onToggleSidebar = (event) => {
-        this.setState({ sideBar: event.target.checked });
+        this.setState({sideBar: event.target.checked});
     };
 
     deselectAll() {
@@ -65,7 +66,7 @@ export default class RichGridDeclarativeExample extends Component {
     }
 
     onQuickFilterText = (event) => {
-        this.setState({ quickFilterText: event.target.value });
+        this.setState({quickFilterText: event.target.value});
     };
 
     onRefreshData = () => {
@@ -130,14 +131,14 @@ export default class RichGridDeclarativeExample extends Component {
 
     render() {
         return (
-            <div style={{ width: '900px' }}>
+            <div style={{width: '100%'}}>
                 <h1>Rich Grid with Declarative Markup Example</h1>
-                <div style={{ display: "inline-block", width: "100%" }}>
-                    <div style={{ float: "left" }}>
+                <div style={{display: "inline-block", width: "100%"}}>
+                    <div style={{float: "left"}}>
                         <b>Employees Skills and Contact Details: </b>{this.state.rowCount}
                     </div>
                 </div>
-                <div style={{ marginTop: 10 }}>
+                <div style={{marginTop: 10}}>
                     <div>
                         <span>
                             Grid API:
@@ -148,7 +149,7 @@ export default class RichGridDeclarativeExample extends Component {
                                 this.api.deselectAll();
                             }} className="btn btn-primary">Clear Selection</button>
                         </span>
-                        <span style={{ float: "right" }}>
+                        <span style={{float: "right"}}>
                             Column API:
                             <button onClick={() => {
                                 this.columnApi.setColumnVisible('country', false);
@@ -158,30 +159,32 @@ export default class RichGridDeclarativeExample extends Component {
                             }} className="btn btn-primary">Show Country Column</button>
                         </span>
                     </div>
-                    <div style={{ display: "inline-block", width: "100%", marginTop: 10, marginBottom: 10 }}>
-                        <div style={{ float: "left" }}>
+                    <div style={{display: "inline-block", width: "100%", marginTop: 10, marginBottom: 10}}>
+                        <div style={{float: "left"}}>
                             <button onClick={this.onRefreshData} className="btn btn-primary">Refresh Data</button>
                         </div>
-                        <div style={{ float: "right" }}>
+                        <div style={{float: "right"}}>
                             Filter API:
                             <button onClick={this.invokeSkillsFilterMethod}
-                                className="btn btn-primary">Invoke Skills Filter Method
+                                    className="btn btn-primary">Invoke Skills Filter Method
                             </button>
                             <button onClick={this.dobFilter} className="btn btn-primary">DOB equals to 01/01/2000
                             </button>
                         </div>
                     </div>
-                    <div style={{ display: "inline-block", width: "100%", marginTop: 10, marginBottom: 10 }}>
-                        <div style={{ float: "left" }}>
+                    <div style={{display: "inline-block", width: "100%", marginTop: 10, marginBottom: 10}}>
+                        <div style={{float: "left"}}>
                             <label htmlFor="sideBarToggle">Show Side Bar&nbsp;</label>
-                            <input type="checkbox" id="sideBarToggle" onChange={this.onToggleSidebar} style={{ marginRight: 5 }} />
+                            <input type="checkbox" id="sideBarToggle" onChange={this.onToggleSidebar}
+                                   style={{marginRight: 5}}/>
                         </div>
-                        <div style={{ float: "right", marginLeft: 20 }}>
+                        <div style={{float: "right", marginLeft: 20}}>
                             <label htmlFor="quickFilter">Quick Filter:&nbsp;</label>
-                            <input type="text" id="quickFilter" onChange={this.onQuickFilterText} placeholder="Type text to filter..." />
+                            <input type="text" id="quickFilter" onChange={this.onQuickFilterText}
+                                   placeholder="Type text to filter..."/>
                         </div>
                     </div>
-                    <div style={{ height: 400, width: 900 }} className="ag-theme-balham">
+                    <div style={{height: 650, width: '100%'}} className="ag-theme-alpine">
                         <AgGridReact
                             // listening for events
                             onGridReady={this.onGridReady}
@@ -222,35 +225,35 @@ export default class RichGridDeclarativeExample extends Component {
                                 }
                             }}>
                             <AgGridColumn headerName="#" width={40}
-                                checkboxSelection sortable={false} suppressMenu filter={false} pinned>
+                                          checkboxSelection sortable={false} suppressMenu filter={false} pinned>
                             </AgGridColumn>
                             <AgGridColumn headerName="Employee" headerGroupComponentFramework={HeaderGroupComponent}>
                                 <AgGridColumn field="name" width={150}
-                                    cellEditorFramework={NameCellEditor}
-                                    enableRowGroup enablePivot pinned editable />
+                                              cellEditorFramework={NameCellEditor}
+                                              enableRowGroup enablePivot pinned editable/>
                                 <AgGridColumn field="country" width={150}
-                                    cellRenderer={RichGridDeclarativeExample.countryCellRenderer}
-                                    filterParams={{
-                                        cellRenderer: RichGridDeclarativeExample.countryCellRenderer,
-                                        cellHeight: 20
-                                    }}
-                                    enableRowGroup enablePivot pinned editable />
+                                              cellRenderer={RichGridDeclarativeExample.countryCellRenderer}
+                                              filterParams={{
+                                                  cellRenderer: RichGridDeclarativeExample.countryCellRenderer,
+                                                  cellHeight: 20
+                                              }}
+                                              enableRowGroup enablePivot pinned editable/>
                                 <AgGridColumn field="dob" width={175} headerName="DOB" filter="agDateColumnFilter"
-                                    pinned columnGroupShow="open"
-                                    cellRenderer={RichGridDeclarativeExample.dateCellRenderer} />
+                                              pinned columnGroupShow="open"
+                                              cellRenderer={RichGridDeclarativeExample.dateCellRenderer}/>
                             </AgGridColumn>
                             <AgGridColumn headerName="IT Skills">
                                 <AgGridColumn field="skills" width={120} enableRowGroup enablePivot sortable={false}
-                                    cellRendererFramework={SkillsCellRenderer}
-                                    filterFramework={SkillsFilter} />
+                                              cellRendererFramework={SkillsCellRenderer}
+                                              filterFramework={SkillsFilter}/>
                                 <AgGridColumn field="proficiency" width={160} enableValue
-                                    cellRendererFramework={ProficiencyCellRenderer}
-                                    filterFramework={ProficiencyFilter} />
+                                              cellRendererFramework={ProficiencyCellRenderer}
+                                              filterFramework={ProficiencyFilter}/>
                             </AgGridColumn>
                             <AgGridColumn headerName="Contact">
-                                <AgGridColumn field="mobile" width={150} filter="text" />
-                                <AgGridColumn field="landline" width={150} filter="text" />
-                                <AgGridColumn field="address" width={500} filter="text" />
+                                <AgGridColumn field="mobile" width={150} filter="text"/>
+                                <AgGridColumn field="landline" width={150} filter="text"/>
+                                <AgGridColumn field="address" width={500} filter="text"/>
                             </AgGridColumn>
                         </AgGridReact>
                     </div>

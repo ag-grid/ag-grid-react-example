@@ -17,7 +17,7 @@ export default function GridComponent() {
     // row data will be provided via redux on this.props.rowData
     return (
         <div style={{height: 400, width: 900, marginTop: 15}}
-             className="ag-theme-balham">
+             className="ag-theme-alpine">
             <AgGridReact
                 // properties
                 columnDefs={columnDefs}
