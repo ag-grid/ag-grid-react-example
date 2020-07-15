@@ -67,7 +67,7 @@
     "@ag-grid-community/react": "~23.2.0",
     "bootstrap": "4.5.0",
     "d3": "4.9.1",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-redux": "7.2.0",
