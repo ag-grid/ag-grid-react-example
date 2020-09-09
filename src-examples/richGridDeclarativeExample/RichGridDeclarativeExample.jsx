@@ -228,10 +228,10 @@ export default class RichGridDeclarativeExample extends Component {
                                           checkboxSelection sortable={false} suppressMenu filter={false} pinned>
                             </AgGridColumn>
                             <AgGridColumn headerName="Employee" headerGroupComponentFramework={HeaderGroupComponent}>
-                                <AgGridColumn field="name" width={150}
+                                <AgGridColumn field="name" width={170}
                                               cellEditorFramework={NameCellEditor}
                                               enableRowGroup enablePivot pinned editable/>
-                                <AgGridColumn field="country" width={150}
+                                <AgGridColumn field="country" width={180}
                                               cellRenderer={RichGridDeclarativeExample.countryCellRenderer}
                                               filterParams={{
                                                   cellRenderer: RichGridDeclarativeExample.countryCellRenderer,
@@ -246,13 +246,13 @@ export default class RichGridDeclarativeExample extends Component {
                                 <AgGridColumn field="skills" width={120} enableRowGroup enablePivot sortable={false}
                                               cellRendererFramework={SkillsCellRenderer}
                                               filterFramework={SkillsFilter}/>
-                                <AgGridColumn field="proficiency" width={160} enableValue
+                                <AgGridColumn field="proficiency" width={210} enableValue
                                               cellRendererFramework={ProficiencyCellRenderer}
                                               filterFramework={ProficiencyFilter}/>
                             </AgGridColumn>
                             <AgGridColumn headerName="Contact">
-                                <AgGridColumn field="mobile" width={150} filter="text"/>
-                                <AgGridColumn field="landline" width={150} filter="text"/>
+                                <AgGridColumn field="mobile" width={180} filter="text"/>
+                                <AgGridColumn field="landline" width={190} filter="text"/>
                                 <AgGridColumn field="address" width={500} filter="text"/>
                             </AgGridColumn>
                         </AgGridReact>
