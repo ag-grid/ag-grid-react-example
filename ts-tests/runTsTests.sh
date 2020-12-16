@@ -7,7 +7,8 @@ error_found=false
 
 # has an invalid property - should complain
 ./node_modules/.bin/tsc --target "ES5" --module 'commonjs' --lib esnext,dom --allowSyntheticDefaultImports --jsx 'preserve' --noEmit --strict ts-tests/InvalidGridProperty.tsx &> /dev/null
-if [ $? -ne 1 ]; then
+
+if [ $? -eq 0 ]; then
     echo "ag-grid-react grid with invalid property should throw a compiler error"
     error_found=true
 fi
