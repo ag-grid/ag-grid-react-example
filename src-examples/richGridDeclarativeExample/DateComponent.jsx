@@ -13,7 +13,7 @@ export default class DateComponent extends React.Component {
         //  The current date it holds, null by default, null if the date typed by the user is not valid or fields are blank
         //  The current values that the user types in the input boxes, by default ''
 
-        //The textBoxes state is necessary since it can be set from ag-Grid. This can be seen in this example through
+        //The textBoxes state is necessary since it can be set from AG Grid. This can be seen in this example through
         // the usage of the button DOB equals to 01/01/2000 in the example page.
         this.state = {
             date: null,
@@ -93,7 +93,7 @@ export default class DateComponent extends React.Component {
                 textBoxes: textBoxes
             },
             //Callback after the state is set. This is where we tell ag-grid that the date has changed so
-            //it will proceed with the filtering and we can then expect ag-Grid to call us back to getDate
+            //it will proceed with the filtering and we can then expect AG Grid to call us back to getDate
             this.props.onDateChanged
         );
     }

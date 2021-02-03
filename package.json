@@ -1,7 +1,7 @@
 {
   "name": "ag-grid-react-example",
   "version": "25.0.0",
-  "description": "Example Reach applicaiton using ag-Grid.",
+  "description": "Example Reach applicaiton using AG Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
     "trader": "webpack-dev-server --content-base src-trader-dashboard/ --config config/webpack.config.trader.js --mode development --open",
