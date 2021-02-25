@@ -10,12 +10,12 @@ export default class NameCellEditor extends React.Component {
 
     constructor(props) {
         super(props);
-        // the entire ag-Grid properties are passed as one single object inside the params
+        // the entire AG Grid properties are passed as one single object inside the params
         this.state = this.createInitialState(props);
     }
 
     // work out how to present the data based on what the user hit. you don't need to do any of
-    // this for your ag-Grid cellEditor to work, however it makes sense to do this so the user
+    // this for your AG Grid cellEditor to work, however it makes sense to do this so the user
     // experience is similar to Excel
     createInitialState(props) {
 
@@ -63,13 +63,13 @@ export default class NameCellEditor extends React.Component {
         this.setState(newState);
     }
 
-    // called by ag-Grid, to get the final value
+    // called by AG Grid, to get the final value
     getValue() {
         return this.state.value;
     }
 
     // cannot use componentDidMount because although the component might be ready from React's point of
-    // view, it may not yet be in the browser (put in by ag-Grid) so focus will not work
+    // view, it may not yet be in the browser (put in by AG Grid) so focus will not work
     afterGuiAttached() {
         // get ref from React component
         const eInput = this.refs.textField;

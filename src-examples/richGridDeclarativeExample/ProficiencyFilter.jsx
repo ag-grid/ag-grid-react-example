@@ -3,7 +3,7 @@ import React from 'react';
 const PROFICIENCY_NAMES = ['No Filter', 'Above 40%', 'Above 60%', 'Above 80%'];
 
 // the proficiency filter component. this demonstrates how to integrate
-// a React filter component with ag-Grid.
+// a React filter component with AG Grid.
 export default class ProficiencyFilter extends React.Component {
 
     constructor(props) {

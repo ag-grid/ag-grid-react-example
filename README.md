@@ -1,9 +1,9 @@
-ag-Grid React Example
+AG Grid React Example
 ==============
 
 ## Examples
 
-1. standard - shows a typical grid demonstrating many ag-Grid features
+1. standard - shows a typical grid demonstrating many AG Grid features
 
 2. large - shows a very large grid (767 columns and 1,000 rows) using React cell renderers
 

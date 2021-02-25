@@ -3,7 +3,7 @@ import RefData from './RefData';
 
 // the skills filter component. this can be laid out much better in a 'React'
 // way. there are design patterns you can apply to layout out your React classes.
-// however, i'm not worried, as the intention here is to show you ag-Grid
+// however, i'm not worried, as the intention here is to show you AG Grid
 // working with React, and that's all. i'm not looking for any awards for my
 // React design skills.
 export default class SkillsFilter extends React.Component {
