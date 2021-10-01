@@ -2,7 +2,7 @@ import React from "react";
 import * as PropTypes from "prop-types";
 
 // Date Component to be used in the date filter.
-// This is a very simple example of how a React component can be plugged as a DateComponentFramework
+// This is a very simple example of how a React component can be plugged as a agDateInput framework components
 // as you can see, the only requirement is that the React component implements the required methods
 // getDate and setDate and that it calls back into props.onDateChanged every time that the date changes.
 export default class DateComponent extends React.Component {

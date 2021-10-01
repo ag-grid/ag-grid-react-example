@@ -212,8 +212,9 @@ export default class RichGridDeclarativeExample extends Component {
                             groupHeaders
 
                             // setting grid wide date component
-                            dateComponentFramework={DateComponent}
-
+                            frameworkComponents={{
+                                agDateInput: DateComponent
+                            }}
                             // setting default column properties
                             defaultColDef={{
                                 resizable: true,
