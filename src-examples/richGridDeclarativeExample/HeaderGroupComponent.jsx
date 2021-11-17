@@ -6,7 +6,7 @@ export default class HeaderGroupComponent extends React.Component {
 
     constructor(props) {
         super(props);
-        this.props.columnGroup.getOriginalColumnGroup().addEventListener('expandedChanged', this.onExpandChanged.bind(this));
+        this.props.columnGroup.getProvidedColumnGroup().addEventListener('expandedChanged', this.onExpandChanged.bind(this));
         this.state = {
             expanded: null
         };
@@ -32,7 +32,7 @@ export default class HeaderGroupComponent extends React.Component {
 
     onExpandChanged() {
         this.setState({
-            expanded: this.props.columnGroup.getOriginalColumnGroup().isExpanded()
+            expanded: this.props.columnGroup.getProvidedColumnGroup().isExpanded()
         })
     }
 }
