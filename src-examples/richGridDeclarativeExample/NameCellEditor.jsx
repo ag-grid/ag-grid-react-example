@@ -1,9 +1,9 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
 
-const KEY_BACKSPACE = 8;
-const KEY_DELETE = 46;
-const KEY_F2 = 113;
+const KEY_BACKSPACE = 'Backspace';
+const KEY_DELETE = 'Delete';
+const KEY_F2 = 'F2';
 
 // cell renderer for the proficiency column. this is a very basic cell editor,
 export default class NameCellEditor extends React.Component {
@@ -23,7 +23,7 @@ export default class NameCellEditor extends React.Component {
         const putCursorAtEndOnFocus = false;
         const highlightAllOnFocus = false;
 
-        if (props.keyPress === KEY_BACKSPACE || props.keyPress === KEY_DELETE) {
+        if (props.key === KEY_BACKSPACE || props.key === KEY_DELETE) {
             // if backspace or delete pressed, we clear the cell
             startValue = '';
         } else if (props.charPress) {
@@ -32,7 +32,7 @@ export default class NameCellEditor extends React.Component {
         } else {
             // otherwise we start with the current value
             startValue = props.value;
-            if (props.keyPress === KEY_F2) {
+            if (props.key === KEY_F2) {
                 this.putCursorAtEndOnFocus = true;
             } else {
                 this.highlightAllOnFocus = true;
