@@ -135,7 +135,7 @@ const FX_DELTA_HEADERS = [
     {
         field: 'pct_net_change',
         headerName: '% NC',
-        cellRendererFramework: HorizontalBarComponent,
+        cellRenderer: HorizontalBarComponent,
         width: 85
     },
 ].concat(FX_CURRENCY_SYMBOLS.map((symbol) => {
