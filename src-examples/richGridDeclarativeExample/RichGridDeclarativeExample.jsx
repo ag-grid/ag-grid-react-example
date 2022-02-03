@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {AgGridColumn, AgGridReact} from "@ag-grid-community/react";
+import {AgGridReact} from "@ag-grid-community/react";
 import RowDataFactory from "./RowDataFactory";
 import DateComponent from "./DateComponent.jsx";
 import SkillsCellRenderer from './SkillsCellRenderer.jsx';
@@ -34,7 +34,81 @@ export default class RichGridDeclarativeExample extends Component {
                 sortDescending: '<i class="fa fa-long-arrow-up"/>',
                 groupExpanded: '<i class="fa fa-minus-square-o"/>',
                 groupContracted: '<i class="fa fa-plus-square-o"/>'
-            }
+            },
+            columnDefs: [
+                {
+                    headerName: "#",
+                    width: 40,
+                    checkboxSelection: true,
+                    sortable: false,
+                    suppressMenu: true,
+                    filter: false,
+                    pinned: true
+                },
+                {
+                    headerName: "Employee",
+                    headerGroupComponent: HeaderGroupComponent,
+                    children: [
+                        {
+                            field: "name",
+                            width: 170,
+                            cellEditor: NameCellEditor,
+                            enableRowGroup: true,
+                            enablePivot: true,
+                            pinned: true,
+                            editable: true
+
+                        },
+                        {
+                            field: "country",
+                            width: 180,
+                            cellRenderer: RichGridDeclarativeExample.countryCellRenderer,
+                            filterParams: {
+                                cellRenderer: RichGridDeclarativeExample.countryCellRenderer,
+                                cellHeight: 20
+                            },
+                            enableRowGroup: true, enablePivot: true, pinned: true, editable: true
+                        },
+
+                        {
+                            headerName: "DOB",
+                            field: "dob", width: 175,
+                            filter: "agDateColumnFilter",
+                            pinned: true, columnGroupShow: "open",
+                            cellRenderer: RichGridDeclarativeExample.dateCellRenderer
+                        }
+                    ]
+                },
+                {
+                    headerName: "IT Skills",
+                    children: [
+                        {
+                            field: "skills",
+                            width: 120,
+                            enableRowGroup: true,
+                            enablePivot: true,
+                            sortable: false,
+                            cellRenderer: SkillsCellRenderer,
+                            filter: SkillsFilter
+                        },
+                        {
+                            field: "proficiency",
+                            width: 210,
+                            enableValue: true,
+                            cellRenderer: ProficiencyCellRenderer,
+                            filter: ProficiencyFilter
+                        }
+                    ]
+                },
+                {
+                    headerName: "Contact",
+                    children: [
+                        {field: "mobile", width: 180, filter: "text"},
+                        {field: "landline", width: 190, filter: "text"},
+                        {field: "address", width: 500, filter: "text"}
+                    ]
+                }
+            ]
         };
     }
 
@@ -109,10 +183,10 @@ export default class RichGridDeclarativeExample extends Component {
     };
 
     static countryCellRenderer(params) {
-        if (params.value) {
-            return `<img border='0' width='15' height='10' style='margin-bottom: 2px' src='http://flags.fmcdn.net/data/flags/mini/${RefData.COUNTRY_CODES[params.value]}.png'> ${params.value}`;
+        if (params.value && RefData.COUNTRY_CODES[params.value]) {
+            return <><img border='0' width='15' height='10' style={{marginBottom: 2}} src={`http://flags.fmcdn.net/data/flags/mini/${RefData.COUNTRY_CODES[params.value]}.png`}/> {params.value}</>;
         } else {
-            return null;
+            return <>{params.value}</>;
         }
     }
 
@@ -198,6 +272,9 @@ export default class RichGridDeclarativeExample extends Component {
                             // binding to an object property
                             icons={this.state.icons}
 
+                            // column definitions
+                            columnDefs={this.state.columnDefs}
+
                             // binding to array properties
                             rowData={this.state.rowData}
 
@@ -211,7 +288,7 @@ export default class RichGridDeclarativeExample extends Component {
                             groupHeaders
 
                             // setting grid wide date component
-                            frameworkComponents={{
+                            components={{
                                 agDateInput: DateComponent
                             }}
                             // setting default column properties
@@ -223,39 +300,7 @@ export default class RichGridDeclarativeExample extends Component {
                                 headerComponentParams: {
                                     menuIcon: 'fa-bars'
                                 }
-                            }}>
-                            <AgGridColumn headerName="#" width={40}
-                                          checkboxSelection sortable={false} suppressMenu filter={false} pinned>
-                            </AgGridColumn>
-                            <AgGridColumn headerName="Employee" headerGroupComponent={HeaderGroupComponent}>
-                                <AgGridColumn field="name" width={170}
-                                              cellEditor={NameCellEditor}
-                                              enableRowGroup enablePivot pinned editable/>
-                                <AgGridColumn field="country" width={180}
-                                              cellRenderer={RichGridDeclarativeExample.countryCellRenderer}
-                                              filterParams={{
-                                                  cellRenderer: RichGridDeclarativeExample.countryCellRenderer,
-                                                  cellHeight: 20
-                                              }}
-                                              enableRowGroup enablePivot pinned editable/>
-                                <AgGridColumn field="dob" width={175} headerName="DOB" filter="agDateColumnFilter"
-                                              pinned columnGroupShow="open"
-                                              cellRenderer={RichGridDeclarativeExample.dateCellRenderer}/>
-                            </AgGridColumn>
-                            <AgGridColumn headerName="IT Skills">
-                                <AgGridColumn field="skills" width={120} enableRowGroup enablePivot sortable={false}
-                                              cellRenderer={SkillsCellRenderer}
-                                              filter={SkillsFilter}/>
-                                <AgGridColumn field="proficiency" width={210} enableValue
-                                              cellRenderer={ProficiencyCellRenderer}
-                                              filter={ProficiencyFilter}/>
-                            </AgGridColumn>
-                            <AgGridColumn headerName="Contact">
-                                <AgGridColumn field="mobile" width={180} filter="text"/>
-                                <AgGridColumn field="landline" width={190} filter="text"/>
-                                <AgGridColumn field="address" width={500} filter="text"/>
-                            </AgGridColumn>
-                        </AgGridReact>
+                            }}/>
                     </div>
                 </div>
             </div>
