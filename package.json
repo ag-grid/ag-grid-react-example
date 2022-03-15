@@ -1,6 +1,6 @@
 {
   "name": "ag-grid-react-example",
-  "version": "26.2.0",
+  "version": "27.1.0",
   "description": "Example Reach applicaiton using AG Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "build-dashboard": "webpack --config config/webpack.config.trader.js --progress --profile --bail",
     "build-all": "npm run build-examples && npm run build-dashboard",
     "build": "npm run clean && npm run mkdirs && npm run build-all && npm run copy && npm run hash",
-    "hash": "sh ./hashDirectory.sh > .hash",
+    "hash": "bash ./hashDirectory.sh > .hash",
     "start": "npm run examples",
     "test": "./ts-tests/runTsTests.sh"
   },
@@ -39,7 +39,7 @@
   },
   "homepage": "http://www.ag-grid.com/",
   "devDependencies": {
-    "@ag-grid-community/core": "~26.2.0",
+    "@ag-grid-community/core": "~27.1.0",
     "@babel/core": "7.13.16",
     "@babel/plugin-proposal-class-properties": "7.13.0",
     "@babel/plugin-proposal-function-bind": "7.12.13",
@@ -47,8 +47,8 @@
     "@babel/preset-react": "7.13.13",
     "@types/react": "^17.0.35",
     "@types/react-dom": "^17.0.11",
-    "babel-loader": "8.2.2",
-    "css-loader": "5.2.4",
+    "babel-loader": "8.2.3",
+    "css-loader": "5.2.7",
     "file-loader": "6.2.0",
     "gulp": "3.9.1",
     "merge2": "1.4.1",
@@ -63,15 +63,15 @@
     "webpack-dev-server": "3.11.2"
   },
   "dependencies": {
-    "@ag-grid-community/react": "~26.2.0",
-    "@ag-grid-enterprise/all-modules": "~26.2.0",
+    "@ag-grid-community/react": "~27.1.0",
+    "@ag-grid-enterprise/all-modules": "~27.1.0",
     "bootstrap": "4.5.0",
     "d3": "4.9.1",
     "lodash": "4.17.20",
     "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-redux": "7.2.4",
-    "react-router-dom": "5.2.0",
-    "redux": "4.1.0"
+    "react-redux": "7.2.6",
+    "react-router-dom": "5.3.0",
+    "redux": "4.1.2",
+    "react-dom": "17.0.2"
   }
 }

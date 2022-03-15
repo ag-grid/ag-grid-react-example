@@ -49,7 +49,7 @@ export default class MyApp extends Component {
             columnDefs.push({
                 headerName: colName.toUpperCase(),
                 field: colName,
-                cellRendererFramework: SimpleCellRenderer,
+                cellRenderer: SimpleCellRenderer,
                 width: 100
             });
         });

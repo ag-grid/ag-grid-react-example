@@ -14,9 +14,9 @@ export const initialState = {
             field: 'price',
             cellClass: 'align-right',
             editable: true,
-            cellEditorFramework: PriceEditor,
-            filterFramework: PriceFilter,
-            cellRendererFramework: PriceRenderer
+            cellEditor: PriceEditor,
+            filter: PriceFilter,
+            cellRenderer: PriceRenderer
         }
     ]
 };
