@@ -17,6 +17,7 @@
     "build-dashboard": "webpack --config config/webpack.config.trader.js --progress --profile --bail",
     "build-all": "npm run build-examples && npm run build-dashboard",
     "build": "npm run clean && npm run mkdirs && npm run build-all && npm run copy && npm run hash",
+    "build-prod": "npm run build",
     "hash": "bash ./hashDirectory.sh > .hash",
     "start": "npm run examples",
     "test": "./ts-tests/runTsTests.sh"
