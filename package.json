@@ -1,6 +1,6 @@
 {
   "name": "ag-grid-react-example",
-  "version": "27.2.0",
+  "version": "27.3.0",
   "description": "Example Reach applicaiton using AG Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
@@ -40,7 +40,7 @@
   },
   "homepage": "https://www.ag-grid.com/",
   "devDependencies": {
-    "@ag-grid-community/core": "~27.2.0",
+    "@ag-grid-community/core": "~27.3.0",
     "@babel/core": "7.13.16",
     "@babel/plugin-proposal-class-properties": "7.13.0",
     "@babel/plugin-proposal-function-bind": "7.12.13",
@@ -64,8 +64,8 @@
     "webpack-dev-server": "3.11.2"
   },
   "dependencies": {
-    "@ag-grid-community/react": "~27.2.0",
-    "@ag-grid-enterprise/all-modules": "~27.2.0",
+    "@ag-grid-community/react": "~27.3.0",
+    "@ag-grid-enterprise/all-modules": "~27.3.0",
     "bootstrap": "4.5.0",
     "d3": "4.9.1",
     "lodash": "4.17.20",
