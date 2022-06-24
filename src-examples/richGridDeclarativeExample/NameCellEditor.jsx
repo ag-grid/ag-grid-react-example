@@ -23,7 +23,7 @@ export default class NameCellEditor extends React.Component {
         const putCursorAtEndOnFocus = false;
         const highlightAllOnFocus = false;
 
-        if (props.key === KEY_BACKSPACE || props.key === KEY_DELETE) {
+        if (props.eventKey === KEY_BACKSPACE || props.eventKey === KEY_DELETE) {
             // if backspace or delete pressed, we clear the cell
             startValue = '';
         } else if (props.charPress) {
@@ -32,7 +32,7 @@ export default class NameCellEditor extends React.Component {
         } else {
             // otherwise we start with the current value
             startValue = props.value;
-            if (props.key === KEY_F2) {
+            if (props.eventKey === KEY_F2) {
                 this.putCursorAtEndOnFocus = true;
             } else {
                 this.highlightAllOnFocus = true;
