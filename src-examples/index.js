@@ -4,7 +4,7 @@ import React from "react";
 import {render} from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 
-import "@ag-grid-enterprise/styles/ag-grid.css";
+import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-alpine.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
