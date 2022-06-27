@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
-import { AgGridReact } from "@ag-grid-community/react";
-import { ClientSideRowModelModule } from "@ag-grid-enterprise/all-modules";
+import {AgGridReact} from "@ag-grid-community/react";
+import {ClientSideRowModelModule} from "@ag-grid-community/client-side-row-model";
 
 import map from "lodash/map";
 import difference from "lodash/difference";
@@ -26,21 +26,21 @@ export default class extends Component {
                     headerName: 'Price',
                     valueFormatter: this.numberFormatter,
                     cellRenderer: 'agAnimateShowChangeCellRenderer',
-                    cellStyle: { 'textAlign': 'right' }
+                    cellStyle: {'textAlign': 'right'}
                 },
                 {
                     field: 'bid',
                     headerName: 'Bid',
                     valueFormatter: this.numberFormatter,
                     cellRenderer: 'agAnimateShowChangeCellRenderer',
-                    cellStyle: { 'textAlign': 'right' }
+                    cellStyle: {'textAlign': 'right'}
                 },
                 {
                     field: 'ask',
                     headerName: 'Ask',
                     valueFormatter: this.numberFormatter,
                     cellRenderer: 'agAnimateShowChangeCellRenderer',
-                    cellStyle: { 'textAlign': 'right' }
+                    cellStyle: {'textAlign': 'right'}
                 }
             ]
         };
@@ -72,7 +72,7 @@ export default class extends Component {
 
         // make realistic - call in a batch
         let rowData = map(this.props.selectedExchange.supportedStocks, symbol => this.exchangeService.getTicker(symbol));
-        this.gridApi.applyTransaction({ add: rowData });
+        this.gridApi.applyTransaction({add: rowData});
 
         // select the first symbol to show the chart
         this.gridApi.getModel().getRow(0).setSelected(true);
@@ -118,12 +118,12 @@ export default class extends Component {
             // Remove ag-grid nodes as necessary
             const rowsToRemove = [];
             this.gridApi.forEachNode(node => {
-                const { data } = node;
+                const {data} = node;
                 if (includes(symbolsRemoved, data.symbol)) {
                     rowsToRemove.push(data);
                 }
             });
-            this.gridApi.applyTransaction({ remove: rowsToRemove });
+            this.gridApi.applyTransaction({remove: rowsToRemove});
 
             // Subscribe to new ones that need to be added
             const symbolsAdded = difference(nextSymbols, currentSymbols);
@@ -133,7 +133,7 @@ export default class extends Component {
 
             // Insert new ag-grid nodes as necessary
             let rowData = map(symbolsAdded, symbol => this.exchangeService.getTicker(symbol));
-            this.gridApi.applyTransaction({ add: rowData });
+            this.gridApi.applyTransaction({add: rowData});
 
             // select the first symbol to show the chart
             this.gridApi.getModel().getRow(0).setSelected(true);
@@ -146,13 +146,13 @@ export default class extends Component {
             return;
         }
 
-        this.gridApi.applyTransaction({ update: [symbol] });
+        this.gridApi.applyTransaction({update: [symbol]});
     }
 
     render() {
         return (
-            <div style={{ height: 410, width: 800 }}
-                className="ag-theme-balham">
+            <div style={{height: 410, width: 800}}
+                 className="ag-theme-balham">
                 <AgGridReact
                     // properties
                     columnDefs={this.state.columnDefs}

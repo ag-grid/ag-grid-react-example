@@ -12,11 +12,25 @@ import HeaderGroupComponent from './HeaderGroupComponent.jsx';
 import SortableHeaderComponent from './SortableHeaderComponent.jsx';
 
 import "./RichGridDeclarativeExample.css";
-// for enterprise features
-import {AllModules} from "@ag-grid-enterprise/all-modules";
 
-// for community features
-// import {AllCommunityModules} from "@ag-grid-community/all-modules";
+import {ClientSideRowModelModule} from "@ag-grid-community/client-side-row-model";
+import {ColumnsToolPanelModule} from "@ag-grid-enterprise/column-tool-panel";
+import {ExcelExportModule} from "@ag-grid-enterprise/excel-export";
+import {FiltersToolPanelModule} from "@ag-grid-enterprise/filter-tool-panel";
+import {SparklinesModule} from "@ag-grid-enterprise/sparklines";
+import {GridChartsModule} from "@ag-grid-enterprise/charts";
+import {MasterDetailModule} from "@ag-grid-enterprise/master-detail";
+import {MenuModule} from "@ag-grid-enterprise/menu";
+import {MultiFilterModule} from "@ag-grid-enterprise/multi-filter";
+import {RangeSelectionModule} from "@ag-grid-enterprise/range-selection";
+import {RichSelectModule} from "@ag-grid-enterprise/rich-select";
+import {RowGroupingModule} from "@ag-grid-enterprise/row-grouping";
+import {ServerSideRowModelModule} from "@ag-grid-enterprise/server-side-row-model";
+import {SetFilterModule} from "@ag-grid-enterprise/set-filter";
+import {SideBarModule} from "@ag-grid-enterprise/side-bar";
+import {StatusBarModule} from "@ag-grid-enterprise/status-bar";
+import {ViewportRowModelModule} from "@ag-grid-enterprise/viewport-row-model";
+import {ClipboardModule} from "@ag-grid-enterprise/clipboard";
 
 export default class RichGridDeclarativeExample extends Component {
     constructor(props) {
@@ -112,6 +126,27 @@ export default class RichGridDeclarativeExample extends Component {
         };
     }
 
+    static countryCellRenderer(params) {
+        if (params.value && RefData.COUNTRY_CODES[params.value]) {
+            return <><img border='0' width='15' height='10' style={{marginBottom: 2}}
+                          src={`http://flags.fmcdn.net/data/flags/mini/${RefData.COUNTRY_CODES[params.value]}.png`}/> {params.value}</>;
+        } else {
+            return <>{params.value}</>;
+        }
+    }
+
+    static dateCellRenderer(params) {
+        return RichGridDeclarativeExample.pad(params.value.getDate(), 2) + '/' +
+            RichGridDeclarativeExample.pad(params.value.getMonth() + 1, 2) + '/' +
+            params.value.getFullYear();
+    }
+
+    static pad(num, totalStringSize) {
+        let asString = num + "";
+        while (asString.length < totalStringSize) asString = "0" + asString;
+        return asString;
+    }
+
     /* Grid Events we're listening to */
     onGridReady = (params) => {
         this.api = params.api;
@@ -181,26 +216,6 @@ export default class RichGridDeclarativeExample extends Component {
             });
         }
     };
-
-    static countryCellRenderer(params) {
-        if (params.value && RefData.COUNTRY_CODES[params.value]) {
-            return <><img border='0' width='15' height='10' style={{marginBottom: 2}} src={`http://flags.fmcdn.net/data/flags/mini/${RefData.COUNTRY_CODES[params.value]}.png`}/> {params.value}</>;
-        } else {
-            return <>{params.value}</>;
-        }
-    }
-
-    static dateCellRenderer(params) {
-        return RichGridDeclarativeExample.pad(params.value.getDate(), 2) + '/' +
-            RichGridDeclarativeExample.pad(params.value.getMonth() + 1, 2) + '/' +
-            params.value.getFullYear();
-    }
-
-    static pad(num, totalStringSize) {
-        let asString = num + "";
-        while (asString.length < totalStringSize) asString = "0" + asString;
-        return asString;
-    }
 
     render() {
         return (
@@ -279,7 +294,24 @@ export default class RichGridDeclarativeExample extends Component {
                             rowData={this.state.rowData}
 
                             // register all modules (row model, csv/excel, row grouping etc)
-                            modules={AllModules}
+                            modules={[ClientSideRowModelModule,
+                                ColumnsToolPanelModule,
+                                ExcelExportModule,
+                                FiltersToolPanelModule,
+                                SparklinesModule,
+                                GridChartsModule,
+                                MasterDetailModule,
+                                MenuModule,
+                                MultiFilterModule,
+                                RangeSelectionModule,
+                                RichSelectModule,
+                                RowGroupingModule,
+                                ServerSideRowModelModule,
+                                SetFilterModule,
+                                SideBarModule,
+                                StatusBarModule,
+                                ViewportRowModelModule,
+                                ClipboardModule]}
 
                             // no binding, just providing hard coded strings for the properties
                             // boolean properties will default to true if provided (ie suppressRowClickSelection => suppressRowClickSelection="true")
