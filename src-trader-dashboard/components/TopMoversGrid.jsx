@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, {Component} from "react";
+import {connect} from "react-redux";
 
-import { AgGridReact } from "@ag-grid-community/react";
-import { ClientSideRowModelModule } from "@ag-grid-enterprise/all-modules";
+import {AgGridReact} from "@ag-grid-community/react";
+import {ClientSideRowModelModule} from "@ag-grid-community/client-side-row-model";
 
 class TopMoversGrid extends Component {
     constructor(props) {
@@ -62,8 +62,8 @@ class TopMoversGrid extends Component {
 
     render() {
         return (
-            <div style={{ height: 410, width: 400 }}
-                className="ag-theme-balham">
+            <div style={{height: 410, width: 400}}
+                 className="ag-theme-balham">
                 <AgGridReact
                     // properties
                     columnDefs={this.state.columnDefs}

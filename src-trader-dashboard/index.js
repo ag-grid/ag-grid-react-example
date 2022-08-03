@@ -8,8 +8,8 @@ import {Provider} from "react-redux";
 import StoreService from './services/StoreService';
 import TraderDashboard from "./components/TraderDashboard.jsx";
 
-import "@ag-grid-enterprise/all-modules/dist/styles/ag-grid.css";
-import "@ag-grid-enterprise/all-modules/dist/styles/ag-theme-balham.css";
+import "@ag-grid-community/styles/ag-grid.css";
+import "@ag-grid-community/styles/ag-theme-balham.css";
 
 let store = StoreService.STORE;
 

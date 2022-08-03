@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, {Component} from "react";
+import {connect} from "react-redux";
 
-import { AgGridReact } from "@ag-grid-community/react";
+import {AgGridReact} from "@ag-grid-community/react";
 
-import { ClientSideRowModelModule } from "@ag-grid-enterprise/all-modules";
+import {ClientSideRowModelModule} from "@ag-grid-community/client-side-row-model";
 
 class FxQuoteMatrix extends Component {
     constructor(props) {
@@ -43,7 +43,7 @@ class FxQuoteMatrix extends Component {
                 let newRow = newRowData[i];
                 let currentRowNode = this.gridApi.getRowNode(newRow.symbol);
 
-                const { data } = currentRowNode;
+                const {data} = currentRowNode;
                 for (const def of this.state.columnDefs) {
                     if (data[def.field] !== newRow[def.field]) {
                         updatedRows.push(newRow);
@@ -53,15 +53,15 @@ class FxQuoteMatrix extends Component {
             }
 
 
-            this.gridApi.applyTransaction({ update: updatedRows });
+            this.gridApi.applyTransaction({update: updatedRows});
         }
 
     }
 
     render() {
         return (
-            <div style={{ height: 410, width: 800 }}
-                className="ag-theme-balham">
+            <div style={{height: 410, width: 800}}
+                 className="ag-theme-balham">
                 <AgGridReact
                     // properties
                     columnDefs={this.state.columnDefs}
