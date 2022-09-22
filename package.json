@@ -94,5 +94,11 @@
     "react-router-dom": "5.3.0",
     "redux": "4.1.2",
     "react-dom": "18.0.0"
+  },
+  "nx": {
+    "implicitDependencies": [
+      "@ag-grid-community/react",
+      "@ag-grid-enterprise/all-modules"
+    ]
   }
 }
