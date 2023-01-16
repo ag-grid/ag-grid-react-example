@@ -1,8 +1,6 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
 
-const KEY_BACKSPACE = 'Backspace';
-const KEY_DELETE = 'Delete';
 const KEY_F2 = 'F2';
 
 // cell renderer for the proficiency column. this is a very basic cell editor,
@@ -23,10 +21,7 @@ export default class NameCellEditor extends React.Component {
         const putCursorAtEndOnFocus = false;
         const highlightAllOnFocus = false;
 
-        if (props.eventKey === KEY_BACKSPACE || props.eventKey === KEY_DELETE) {
-            // if backspace or delete pressed, we clear the cell
-            startValue = '';
-        } else if (props.charPress) {
+        if (props.charPress) {
             // if a letter was pressed, we start with the letter
             startValue = props.charPress;
         } else {
@@ -104,9 +99,8 @@ export default class NameCellEditor extends React.Component {
     isCancelAfterEnd() {
         if (this.state.value && this.state.value.toUpperCase() === 'CANCEL') {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }
 
