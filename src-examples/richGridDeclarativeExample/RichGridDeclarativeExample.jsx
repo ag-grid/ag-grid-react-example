@@ -32,6 +32,39 @@ import {StatusBarModule} from "@ag-grid-enterprise/status-bar";
 import {ViewportRowModelModule} from "@ag-grid-enterprise/viewport-row-model";
 import {ClipboardModule} from "@ag-grid-enterprise/clipboard";
 
+const defaultColDef = {
+    resizable: true,
+    sortable: true,
+    filter: true,
+    headerComponent: SortableHeaderComponent,
+    headerComponentParams: {
+        menuIcon: 'fa-bars'
+    }
+};
+
+const modules = [ClientSideRowModelModule,
+    ColumnsToolPanelModule,
+    ExcelExportModule,
+    FiltersToolPanelModule,
+    SparklinesModule,
+    GridChartsModule,
+    MasterDetailModule,
+    MenuModule,
+    MultiFilterModule,
+    RangeSelectionModule,
+    RichSelectModule,
+    RowGroupingModule,
+    ServerSideRowModelModule,
+    SetFilterModule,
+    SideBarModule,
+    StatusBarModule,
+    ViewportRowModelModule,
+    ClipboardModule]
+
+const components = {
+    agDateInput: DateComponent
+}
+
 export default class RichGridDeclarativeExample extends Component {
     constructor(props) {
         super(props);
@@ -294,24 +327,7 @@ export default class RichGridDeclarativeExample extends Component {
                             rowData={this.state.rowData}
 
                             // register all modules (row model, csv/excel, row grouping etc)
-                            modules={[ClientSideRowModelModule,
-                                ColumnsToolPanelModule,
-                                ExcelExportModule,
-                                FiltersToolPanelModule,
-                                SparklinesModule,
-                                GridChartsModule,
-                                MasterDetailModule,
-                                MenuModule,
-                                MultiFilterModule,
-                                RangeSelectionModule,
-                                RichSelectModule,
-                                RowGroupingModule,
-                                ServerSideRowModelModule,
-                                SetFilterModule,
-                                SideBarModule,
-                                StatusBarModule,
-                                ViewportRowModelModule,
-                                ClipboardModule]}
+                            modules={modules}
 
                             // no binding, just providing hard coded strings for the properties
                             // boolean properties will default to true if provided (ie suppressRowClickSelection => suppressRowClickSelection="true")
@@ -320,19 +336,9 @@ export default class RichGridDeclarativeExample extends Component {
                             groupHeaders
 
                             // setting grid wide date component
-                            components={{
-                                agDateInput: DateComponent
-                            }}
+                            components={components}
                             // setting default column properties
-                            defaultColDef={{
-                                resizable: true,
-                                sortable: true,
-                                filter: true,
-                                headerComponent: SortableHeaderComponent,
-                                headerComponentParams: {
-                                    menuIcon: 'fa-bars'
-                                }
-                            }}/>
+                            defaultColDef={defaultColDef}/>
                     </div>
                 </div>
             </div>
