@@ -5,7 +5,7 @@
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
     "trader": "webpack-dev-server --content-base src-trader-dashboard/ --config config/webpack.config.trader.js --mode development --open",
-    "examples": "webpack-dev-server --content-base src-examples/ --config config/webpack.config.examples.js --mode development --open",
+    "examples": "NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --content-base src-examples/ --config config/webpack.config.examples.js --mode development --open",
     "large": "webpack-dev-server --content-base src-large-data/ --config config/webpack.config.large.js --mode development --open",
     "clean": "rimraf dist .hash",
     "mkdirs": "mkdirp dist/trader/dist dist/examples/dist",
