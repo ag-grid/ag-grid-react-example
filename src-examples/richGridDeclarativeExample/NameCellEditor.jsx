@@ -21,9 +21,9 @@ export default class NameCellEditor extends React.Component {
         const putCursorAtEndOnFocus = false;
         const highlightAllOnFocus = false;
 
-        if (props.charPress) {
+        if (props.eventKey.length) {
             // if a letter was pressed, we start with the letter
-            startValue = props.charPress;
+            startValue = props.eventKey;
         } else {
             // otherwise we start with the current value
             startValue = props.value;
