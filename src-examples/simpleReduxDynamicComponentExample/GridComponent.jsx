@@ -84,8 +84,7 @@ class GridComponent extends Component {
                     ]}
 
                     // events
-                    onGridReady={this.onGridReady}>
-                </AgGridReact>
+                    onGridReady={this.onGridReady} />
             </div>
         )
     }

@@ -76,8 +76,7 @@ class FxQuoteMatrix extends Component {
                     modules={[ClientSideRowModelModule]}
 
                     // events
-                    onGridReady={this.onGridReady}>
-                </AgGridReact>
+                    onGridReady={this.onGridReady} />
             </div>
         );
     }
