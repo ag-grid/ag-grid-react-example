@@ -16,8 +16,8 @@
     "build-examples": "NODE_OPTIONS=--openssl-legacy-provider webpack --config config/webpack.config.examples.js --progress --profile --bail",
     "build-dashboard": "NODE_OPTIONS=--openssl-legacy-provider webpack --config config/webpack.config.trader.js --progress --profile --bail",
     "build-all": "npm run build-examples && npm run build-dashboard",
-    "buildx": "npm run clean && npm run mkdirs && npm run build-all && npm run copy && npm run hash",
-    "build-prodx": "npm run build",
+    "build": "npm run clean && npm run mkdirs && npm run build-all && npm run copy && npm run hash",
+    "build-prod": "npm run build",
     "hash": "bash ./hashDirectory.sh > .hash",
     "start": "npm run examples",
     "test": "exit 0 ; ./ts-tests/runTsTests.sh"
