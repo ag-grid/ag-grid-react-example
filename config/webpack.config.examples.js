@@ -12,6 +12,11 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.mjs$/,
+                include: /node_modules/,
+                type: 'javascript/auto'
+            },
+            {
                 test: /\.css$/,
                 loader: "style-loader!css-loader"
             },
@@ -40,7 +45,7 @@ module.exports = {
             // "ag-grid-enterprise": path.resolve('./node_modules/ag-grid-enterprise'),
             react: path.resolve('./node_modules/react')
         },
-        extensions: ['.js', '.jsx']
+        extensions: ['*.mjs', '.js', '.jsx']
     },
     performance: {
         hints: false
