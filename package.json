@@ -88,7 +88,7 @@
     "@ag-grid-community/styles": "~30.1.0",
     "bootstrap": "4.5.0",
     "d3": "4.9.1",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "react": "18.0.0",
     "react-redux": "7.2.6",
     "react-router-dom": "5.3.0",
