@@ -46,7 +46,7 @@
     "@babel/plugin-proposal-function-bind": "7.12.13",
     "@babel/preset-env": "7.13.15",
     "@babel/preset-react": "7.13.13",
-    "@types/react": "18.0.27",
+    "@types/react": "~18.0.0",
     "@types/react-dom": "~18.0.0",
     "babel-loader": "8.2.3",
     "css-loader": "6.8.1",
