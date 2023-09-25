@@ -6,13 +6,13 @@ export default class HeaderGroupComponent extends React.Component {
 
     constructor(props) {
         super(props);
-        this.props.columnGroup.getProvidedColumnGroup().addEventListener('expandedChanged', this.onExpandChanged.bind(this));
         this.state = {
             expanded: null
         };
     }
 
     componentDidMount() {
+        this.props.columnGroup.getProvidedColumnGroup().addEventListener('expandedChanged', this.onExpandChanged.bind(this));
         this.onExpandChanged();
     }
 

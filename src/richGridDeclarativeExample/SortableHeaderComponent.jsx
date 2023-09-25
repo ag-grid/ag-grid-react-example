@@ -7,6 +7,8 @@ export default class SortableHeaderComponent extends React.Component {
     constructor(props) {
         super(props);
 
+        this.menuButtonRef = React.createRef();
+
         // this.sortChanged = this.onSortChanged.bind(this);
         this.props.column.addEventListener('sortChanged', this.onSortChanged);
 
@@ -43,7 +45,7 @@ export default class SortableHeaderComponent extends React.Component {
         let menuButton = null;
         if (this.props.enableMenu) {
             menuButton =
-                <div ref="menuButton" className="customHeaderMenuButton" onClick={this.onMenuClick.bind(this)}><i
+                <div ref={this.menuButtonRef} className="customHeaderMenuButton" onClick={this.onMenuClick.bind(this)}><i
                     className={"fa " + this.props.menuIcon}/></div>
         }
 
@@ -75,7 +77,7 @@ export default class SortableHeaderComponent extends React.Component {
     };
 
     onMenuClick() {
-        this.props.showColumnMenu(this.refs.menuButton);
+        this.props.showColumnMenu(this.menuButtonRef.current);
     };
 
 }

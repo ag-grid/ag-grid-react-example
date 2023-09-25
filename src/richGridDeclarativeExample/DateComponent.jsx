@@ -9,6 +9,10 @@ export default class DateComponent extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.ddRef = React.createRef();
+        this.mmRef = React.createRef();
+        this.yyyyRef = React.createRef();
         //The state of this component is represented of:
         //  The current date it holds, null by default, null if the date typed by the user is not valid or fields are blank
         //  The current values that the user types in the input boxes, by default ''
@@ -51,11 +55,11 @@ export default class DateComponent extends React.Component {
         return (
             <div style={filterStyle}>
                 <span style={resetStyle} onClick={this.resetDate.bind(this)}>x</span>
-                <input onChange={this.onDateChanged.bind(this)} ref="dd" placeholder="dd" style={ddStyle}
+                <input onChange={this.onDateChanged.bind(this)} ref={this.ddRef} placeholder="dd" style={ddStyle}
                        value={this.state.textBoxes.dd} maxLength="2"/>/
-                <input onChange={this.onDateChanged.bind(this)} ref="mm" placeholder="mm" style={mmStyle}
+                <input onChange={this.onDateChanged.bind(this)} ref={this.mmRef} placeholder="mm" style={mmStyle}
                        value={this.state.textBoxes.mm} maxLength="2"/>/
-                <input onChange={this.onDateChanged.bind(this)} ref="yyyy" placeholder="yyyy" style={yyyyStyle}
+                <input onChange={this.onDateChanged.bind(this)} ref={this.yyyyRef} placeholder="yyyy" style={yyyyStyle}
                        value={this.state.textBoxes.yyyy} maxLength="4"/>
             </div>
         );
@@ -115,11 +119,11 @@ export default class DateComponent extends React.Component {
     }
 
     onDateChanged() {
-        let date = this.parseDate(this.refs.dd.value, this.refs.mm.value, this.refs.yyyy.value);
+        let date = this.parseDate(this.ddRef.current.value, this.mmRef.current.value, this.yyyyRef.current.value);
         let textBoxes = {
-            dd: this.refs.dd.value,
-            mm: this.refs.mm.value,
-            yyyy: this.refs.yyyy.value,
+            dd: this.ddRef.current.value,
+            mm: this.mmRef.current.value,
+            yyyy: this.yyyyRef.current.value,
         };
 
         this.updateAndNotifyAgGrid(date, textBoxes)

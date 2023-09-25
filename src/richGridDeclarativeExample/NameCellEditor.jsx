@@ -8,6 +8,9 @@ export default class NameCellEditor extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.textFieldRef = React.createRef();
+
         // the entire AG Grid properties are passed as one single object inside the params
         this.state = this.createInitialState(props);
     }
@@ -43,7 +46,7 @@ export default class NameCellEditor extends React.Component {
 
     render() {
         return (
-            <input ref="textField" value={this.state.value} onChange={this.onChangeListener.bind(this)}/>
+            <input ref={this.textFieldRef} value={this.state.value} onChange={this.onChangeListener.bind(this)}/>
         );
     }
 
@@ -67,7 +70,7 @@ export default class NameCellEditor extends React.Component {
     // view, it may not yet be in the browser (put in by AG Grid) so focus will not work
     afterGuiAttached() {
         // get ref from React component
-        const eInput = this.refs.textField;
+        const eInput = this.textFieldRef.current;
 
         eInput.focus();
 
