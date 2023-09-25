@@ -1,11 +1,9 @@
 AG Grid React Example
 ==============
 
-## Examples
+## Rich Grid Example
 
-1. standard - shows a typical grid demonstrating many AG Grid features
-
-2. large - shows a very large grid (767 columns and 1,000 rows) using React cell renderers
+Shows a typical grid demonstrating many AG Grid features
 
 See [www.ag-grid.com](http://www.ag-grid.com) for full documentation and examples.
 
@@ -14,5 +12,5 @@ Building
 
 To build:
 - `npm install`
-- `npm run examples`, `npm run large` or `npm run trader`
+- `npm start`
 - navigate to localhost:8080
