@@ -7,6 +7,6 @@ export default defineConfig({
   resolve: {
     // for ag-grid local dev only - not necessary if not using symlinks
     preserveSymlinks: true,
-    dedupe: ['ag-grid-community']
+    dedupe: ['@ag-grid-community/core']
   }
 })
