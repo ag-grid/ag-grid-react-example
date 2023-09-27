@@ -22,7 +22,7 @@
   "scripts": {
     "start": "npm run dev -- --port 8080",
     "dev": "vite",
-    "build": "vite build",
+    "buildx": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
