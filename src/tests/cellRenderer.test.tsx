@@ -1,10 +1,13 @@
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { ColDef } from '@ag-grid-community/core';
+import { ColDef, ModuleRegistry } from '@ag-grid-community/core';
 import { AgGridReact, CustomCellRendererProps } from '@ag-grid-community/react';
 import { render, screen } from '@testing-library/react';
+import exp from 'constants';
 import React, { useRef, useState } from 'react';
 import { act } from 'react-dom/test-utils';
 import { describe, expect, test } from 'vitest';
+
+ModuleRegistry.register(ClientSideRowModelModule);
 
 interface RowData {
     make: string;
@@ -41,7 +44,7 @@ const App = () => {
     const [colDefs, setColDefs] = useState<ColDef<RowData>[]>([
         { field: 'make' },
         { field: 'model' },
-        { field: 'price' },
+        { field: 'price', valueFormatter: (params) => "$" + params.value.toLocaleString()},
         { field: 'bought', cellRenderer: BuyCellRenderer }
     ]);
 
@@ -51,8 +54,7 @@ const App = () => {
                 ref={gridRef}
                 rowData={rowData}
                 columnDefs={colDefs}
-                reactiveCustomComponents
-                modules={[ClientSideRowModelModule]} />
+                reactiveCustomComponents />
         </div>
     );
 };
@@ -64,18 +66,20 @@ describe('Basic Grid', () => {
         await screen.findByText('Boxster')
     });
 
-    test('render grid and then sort by price', async () => {
+    test('value formatter and cell renderer', async () => {
         render(<App />);
 
-        let porcheButton = await screen.findByText('Buy: Porsche');
-        expect(porcheButton).toBeDefined();
+        // Test the value formatter
+        expect(screen.getByText('$72,000')).toBeDefined();
+
+        const porscheButton = await screen.findByText('Buy: Porsche');
+        expect(porscheButton).toBeDefined();
 
         // Handy debug function to see the center rows of the grid
         // screen.debug(document.querySelector('.ag-center-cols-container')!);
 
-        act(() => porcheButton.click());
+        act(() => porscheButton.click());
 
-        let bought = await screen.findByText('Bought a Porsche');
-        expect(bought).toBeDefined();
+        expect(screen.findByText('Bought a Porsche')).toBeDefined();
     });
 });

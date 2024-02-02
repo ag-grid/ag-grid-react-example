@@ -1,10 +1,12 @@
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { ColDef } from '@ag-grid-community/core';
+import { ColDef, ModuleRegistry } from '@ag-grid-community/core';
 import { AgGridReact } from '@ag-grid-community/react';
 import { render, screen } from '@testing-library/react';
 import React, { useRef, useState } from 'react';
 
 import { expect, describe, test } from 'vitest';
+
+ModuleRegistry.register(ClientSideRowModelModule);
 
 interface RowData {
     make: string;
@@ -13,8 +15,6 @@ interface RowData {
 }
 
 const App = () => {
-    const gridRef = useRef<AgGridReact<RowData>>(null);
-
     const [rowData] = useState<RowData[]>([
         { make: 'Toyota', model: 'Celica', price: 35000 },
         { make: 'Ford', model: 'Mondeo', price: 32000 },
@@ -29,21 +29,16 @@ const App = () => {
     return (
         <div className="ag-theme-quartz" style={{ height: 400, width: 600 }}>
             <AgGridReact<RowData>
-                ref={gridRef}
                 rowData={rowData}
-                columnDefs={colDefs}
-                modules={[ClientSideRowModelModule]} />
+                columnDefs={colDefs} />
         </div>
     );
 };
 
 describe('Basic Grid', () => {
-
     test('render basic grid', async () => {
         render(<App />);
         expect(screen.findByText('Boxster')).toBeDefined();
         expect(screen.findByText('72000')).toBeDefined();
-
     });
-
 });

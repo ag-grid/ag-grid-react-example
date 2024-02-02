@@ -1,11 +1,12 @@
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { ColDef } from '@ag-grid-community/core';
+import { ColDef, ModuleRegistry } from '@ag-grid-community/core';
 import { AgGridReact } from '@ag-grid-community/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React, { useRef, useState } from 'react';
 import { describe, expect, test } from 'vitest';
 
+ModuleRegistry.register(ClientSideRowModelModule);
 interface RowData {
     make: string;
     model: string;
@@ -33,7 +34,7 @@ const App = () => {
                 rowData={rowData}
                 columnDefs={colDefs}
                 ensureDomOrder // Required to test sorting via test queries so that DOM order matches the order of the rows in the grid
-                modules={[ClientSideRowModelModule]} />
+             />
         </div>
     );
 };
