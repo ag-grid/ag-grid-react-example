@@ -5,8 +5,12 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    // for ag-grid local dev only - not necessary if not using symlinks
-    preserveSymlinks: true,
     dedupe: ['@ag-grid-community/core']
-  }
+  },
+  test: {
+        environment: 'jsdom',
+        setupFiles: ['./tests/setup.ts'],
+        testMatch: ['./tests/**/*.test.tsx'],
+        globals: true
+      }
 })
