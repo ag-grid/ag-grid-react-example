@@ -1,10 +1,12 @@
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { ColDef } from '@ag-grid-community/core';
+import { ColDef, ModuleRegistry } from '@ag-grid-community/core';
 import { AgGridReact } from '@ag-grid-community/react';
 import { describe, test, expect } from 'vitest';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React, { useRef, useState } from 'react';
+
+ModuleRegistry.register(ClientSideRowModelModule);
 
 interface RowData {
     make: string;
@@ -31,8 +33,7 @@ const App = () => {
             <AgGridReact<RowData>
                 ref={gridRef}
                 rowData={rowData}
-                columnDefs={colDefs}
-                modules={[ClientSideRowModelModule]} />
+                columnDefs={colDefs} />
         </div>
     );
 };
@@ -42,22 +43,20 @@ describe('Edit Cell Grid', () => {
     test('double click cell to edit', async () => {
         render(<App />);
 
-        let porschePrice = await screen.findByText('$72,000')
+        const porschePrice = await screen.findByText('$72,000')
         expect(porschePrice).toBeDefined();
 
         // double click to enter edit mode       
         await userEvent.dblClick(porschePrice);
 
-        let input: HTMLInputElement = within(porschePrice).getByLabelText('Input Editor');
+        const input: HTMLInputElement = within(porschePrice).getByLabelText('Input Editor');
 
         await userEvent.keyboard('100000');
 
         // press enter to save
         fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
 
-        porschePrice = await screen.findByText('$100,000')
-        expect(porschePrice).toBeDefined();
-
+        expect(screen.findByText('$100,000')).toBeDefined();
     });
 
 });

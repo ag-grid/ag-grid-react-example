@@ -1,11 +1,13 @@
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { ColDef } from '@ag-grid-community/core';
+import { ColDef, ModuleRegistry } from '@ag-grid-community/core';
 import { describe, expect, test } from 'vitest';
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React, { useRef, useState } from 'react';
 import { act } from 'react-dom/test-utils';
 import { AgGridReact } from '@ag-grid-community/react';
+
+ModuleRegistry.register(ClientSideRowModelModule);
 
 interface RowData {
     make: string;
@@ -32,8 +34,7 @@ const App = () => {
             <AgGridReact<RowData>
                 ref={gridRef}
                 rowData={rowData}
-                columnDefs={colDefs}
-                modules={[ClientSideRowModelModule]} />
+                columnDefs={colDefs} />
         </div>
     );
 };

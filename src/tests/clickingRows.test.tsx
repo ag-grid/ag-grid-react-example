@@ -1,11 +1,12 @@
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { ColDef, RowClickedEvent } from '@ag-grid-community/core';
-import { expect, describe,  test, beforeEach } from 'vitest';
+import { ColDef, ModuleRegistry, RowClickedEvent } from '@ag-grid-community/core';
+import { AgGridReact } from '@ag-grid-community/react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React, { useCallback, useRef, useState } from 'react';
-import { AgGridReact } from '@ag-grid-community/react';
+import React, { useCallback, useState } from 'react';
+import { describe, expect, test } from 'vitest';
 
+ModuleRegistry.register(ClientSideRowModelModule);
 interface RowData {
     make: string;
     model: string;
@@ -13,8 +14,6 @@ interface RowData {
 }
 
 const App = () => {
-    const gridRef = useRef<AgGridReact<RowData>>(null);
-
     const [rowData] = useState<RowData[]>([
         { make: 'Toyota', model: 'Celica', price: 35000 },
         { make: 'Ford', model: 'Mondeo', price: 32000 },
@@ -41,15 +40,13 @@ const App = () => {
         <div>
             <div data-testid="rowClicked">Row Clicked: {rowClicked?.make}</div>
             <div data-testid="rowDoubleClicked">Row Double Clicked: {rowDoubleClicked?.make}</div>
-        <div className="ag-theme-quartz" style={{ height: 400, width: 600 }}>
-            <AgGridReact<RowData>
-                ref={gridRef}
-                rowData={rowData}
-                columnDefs={colDefs}
-                onRowClicked={onRowClicked}
-                onRowDoubleClicked={onRowDoubleClicked}
-                modules={[ClientSideRowModelModule]} />
-        </div>
+            <div className="ag-theme-quartz" style={{ height: 400, width: 600 }}>
+                <AgGridReact<RowData>
+                    rowData={rowData}
+                    columnDefs={colDefs}
+                    onRowClicked={onRowClicked}
+                    onRowDoubleClicked={onRowDoubleClicked} />
+            </div>
         </div>
     );
 };
@@ -60,12 +57,12 @@ describe('Row Clicks Grid', () => {
     test('render grid and click a row', async () => {
         render(<App />);
 
-        let row = await screen.findByText('Ford');
+        const row = await screen.findByText('Ford');
         expect(row).toBeDefined();
 
         await userEvent.click(row);
 
-        let rowClicked = await screen.findByTestId('rowClicked');
+        const rowClicked = await screen.findByTestId('rowClicked');
         expect(rowClicked.textContent).toBe('Row Clicked: Ford');
     });
 
@@ -73,12 +70,12 @@ describe('Row Clicks Grid', () => {
     test('render grid and double click a row', async () => {
         render(<App />);
 
-        let row = await screen.findByText('Porsche');
+        const row = await screen.findByText('Porsche');
         expect(row).toBeDefined();
 
         await userEvent.dblClick(row);
 
-        let rowClicked = await screen.findByTestId('rowDoubleClicked');
+        const rowClicked = await screen.findByTestId('rowDoubleClicked');
         expect(rowClicked.textContent).toBe('Row Double Clicked: Porsche');
     });
 
