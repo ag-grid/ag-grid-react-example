@@ -1,7 +1,7 @@
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import { ColDef } from '@ag-grid-community/core';
 import { AgGridReact } from '@ag-grid-community/react';
-import { describe, test } from 'vitest';
+import { describe, test, expect } from 'vitest';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React, { useRef, useState } from 'react';
@@ -43,6 +43,7 @@ describe('Edit Cell Grid', () => {
         render(<App />);
 
         let porschePrice = await screen.findByText('$72,000')
+        expect(porschePrice).toBeDefined();
 
         // double click to enter edit mode       
         await userEvent.dblClick(porschePrice);
@@ -55,6 +56,7 @@ describe('Edit Cell Grid', () => {
         fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
 
         porschePrice = await screen.findByText('$100,000')
+        expect(porschePrice).toBeDefined();
 
     });
 

@@ -1,9 +1,10 @@
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import { ColDef } from '@ag-grid-community/core';
-import { configure, render, screen, within } from '@testing-library/react';
-import React, { useRef, useState } from 'react';
-import userEvent from '@testing-library/user-event'
 import { AgGridReact } from '@ag-grid-community/react';
+import { render, screen } from '@testing-library/react';
+import React, { useRef, useState } from 'react';
+
+import { expect, describe, test } from 'vitest';
 
 interface RowData {
     make: string;
@@ -40,7 +41,8 @@ describe('Basic Grid', () => {
 
     test('render basic grid', async () => {
         render(<App />);
-        await screen.findByText('Boxster')
+        expect(screen.findByText('Boxster')).toBeDefined();
+        expect(screen.findByText('72000')).toBeDefined();
 
     });
 

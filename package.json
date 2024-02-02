@@ -25,7 +25,8 @@
     "buildx": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "vitest"
+    "test:e2e": "vitest run",
+    "test:watch": "vitest --ui"
   },
   "dependencies": {
     "@ag-grid-community/client-side-row-model": "~31.0.2",
