@@ -24,15 +24,15 @@
     "dev": "vite",
     "buildx": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:e2e": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "bootstrap": "4.5.0",
-    "@ag-grid-community/react": "~31.0.2",
-    "@ag-grid-community/core": "~31.0.2",
     "@ag-grid-community/client-side-row-model": "~31.0.2",
+    "@ag-grid-community/core": "~31.0.2",
+    "@ag-grid-community/react": "~31.0.2",
+    "@ag-grid-community/styles": "~31.0.2",
     "@ag-grid-enterprise/charts": "~31.0.2",
     "@ag-grid-enterprise/clipboard": "~31.0.2",
     "@ag-grid-enterprise/column-tool-panel": "~31.0.2",
@@ -51,16 +51,24 @@
     "@ag-grid-enterprise/sparklines": "~31.0.2",
     "@ag-grid-enterprise/status-bar": "~31.0.2",
     "@ag-grid-enterprise/viewport-row-model": "~31.0.2",
-    "@ag-grid-community/styles": "~31.0.2"
+    "bootstrap": "4.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.1",
+    "@testing-library/react": "^14.2.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
+    "@vitest/ui": "^1.2.2",
     "eslint": "^8.45.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
-    "vite": "^4.4.5"
+    "jsdom": "^24.0.0",
+    "vite": "^4.4.5",
+    "vitest": "^1.2.2"
   }
 }
