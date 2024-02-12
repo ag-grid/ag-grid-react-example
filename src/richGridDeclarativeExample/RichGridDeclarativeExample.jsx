@@ -263,10 +263,10 @@ export default class RichGridDeclarativeExample extends Component {
                         <span style={{float: "right"}}>
                             Column API:
                             <button onClick={() => {
-                                this.api.setColumnVisible('country', false);
+                                this.api.setColumnsVisible(['country'], false);
                             }} className="btn btn-primary">Hide Country Column</button>
                             <button onClick={() => {
-                                this.api.setColumnVisible('country', true);
+                                this.api.setColumnsVisible(['country'], true);
                             }} className="btn btn-primary">Show Country Column</button>
                         </span>
                     </div>
