@@ -217,25 +217,16 @@ export default class RichGridDeclarativeExample extends Component {
     };
 
     invokeSkillsFilterMethod = () => {
-        this.api.getFilterInstance('skills', (instance) => {
+        this.api.getColumnFilterInstance('skills').then((instance) => {
             instance.helloFromSkillsFilter();
         });
     };
 
     dobFilter = () => {
-        this.api.getFilterInstance('dob', (dateFilterComponent) => {
-            dateFilterComponent.setModel({
-                type: 'equals',
-                dateFrom: '2000-01-01'
-            });
-
-            // as the date filter is a React component, and its using setState internally, we need
-            // to allow time for the state to be set (as setState is an async operation)
-            // simply wait for the next tick
-            setTimeout(() => {
-                this.api.onFilterChanged();
-            });
-        });
+        this.api.setColumnFilterModel('dob', {
+            type: 'equals',
+            dateFrom: '2000-01-01'
+        }).then(() => this.api.onFilterChanged());
     };
 
     calculateRowCount = () => {
@@ -272,10 +263,10 @@ export default class RichGridDeclarativeExample extends Component {
                         <span style={{float: "right"}}>
                             Column API:
                             <button onClick={() => {
-                                this.api.setColumnVisible('country', false);
+                                this.api.setColumnsVisible(['country'], false);
                             }} className="btn btn-primary">Hide Country Column</button>
                             <button onClick={() => {
-                                this.api.setColumnVisible('country', true);
+                                this.api.setColumnsVisible(['country'], true);
                             }} className="btn btn-primary">Show Country Column</button>
                         </span>
                     </div>
